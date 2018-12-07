@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Smash : MonoBehaviour {
+public class LifeUI : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
