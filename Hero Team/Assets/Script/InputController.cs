@@ -15,6 +15,9 @@ public class InputController : MonoBehaviour
         Released
     }
 
+    [SerializeField]
+    private bool mouseMode;
+
     // Use this for initialization
     void Start()
     {
@@ -24,28 +27,56 @@ public class InputController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        //タップに関する何か
-        if (Input.touches[0].phase == TouchPhase.Began)
+        if (mouseMode)
         {
-            State = Status.Pushed;
-            TouchMovePoint = TouchPoint = Input.touches[0].position;
-        }
-        else if (Input.touches[0].phase == TouchPhase.Moved)
-        {
-            State = Status.Pressing;
-            TouchMovePoint = Input.touches[0].position;
-        }
-        else if (Input.touches[0].phase == TouchPhase.Stationary)
-        {
-            State = Status.Pressing;
-        }
-        else if (Input.touches[0].phase == TouchPhase.Ended)
-        {
-            State = Status.Released;
+            //タップに関する何か
+            if (Input.GetMouseButtonDown(0))
+            {
+                State = Status.Pushed;
+                TouchMovePoint = TouchPoint = Input.mousePosition;
+            }
+            else if (Input.GetMouseButton(0))
+            {
+                State = Status.Pressing;
+                TouchMovePoint = Input.mousePosition;
+            }
+            else if (Input.GetMouseButtonUp(0))
+            {
+                State = Status.Released;
+            }
+            else
+            {
+                State = Status.Free;
+            }
         }
         else
         {
-            State = Status.Free;
+            if (Input.touchCount > 0)
+            {
+                //タップに関する何か
+                if (Input.touches[0].phase == TouchPhase.Began)
+                {
+                    State = Status.Pushed;
+                    TouchMovePoint = TouchPoint = Input.touches[0].position;
+                }
+                else if (Input.touches[0].phase == TouchPhase.Moved)
+                {
+                    State = Status.Pressing;
+                    TouchMovePoint = Input.touches[0].position;
+                }
+                else if (Input.touches[0].phase == TouchPhase.Stationary)
+                {
+                    State = Status.Pressing;
+                }
+                else if (Input.touches[0].phase == TouchPhase.Ended)
+                {
+                    State = Status.Released;
+                }
+            }
+            else
+            {
+                State = Status.Free;
+            }
         }
     }
 }
