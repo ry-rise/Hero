@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class BossMove : MonoBehaviour {
+public class Boss : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
