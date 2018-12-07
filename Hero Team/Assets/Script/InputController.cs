@@ -2,15 +2,50 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class InputController : MonoBehaviour {
+public class InputController : MonoBehaviour
+{
+    public Vector2 TouchPoint { get; private set; }
+    public Vector2 TouchMovePoint { get; private set; }
+    public Status State { get; private set; }
+    public enum Status
+    {
+        Free,
+        Pushed,
+        Pressing,
+        Released
+    }
 
-	// Use this for initialization
-	void Start () {
-		
-	}
-	
-	// Update is called once per frame
-	void Update () {
-		
-	}
+    // Use this for initialization
+    void Start()
+    {
+        State = Status.Free;
+    }
+
+    // Update is called once per frame
+    void Update()
+    {
+        //タップに関する何か
+        if (Input.touches[0].phase == TouchPhase.Began)
+        {
+            State = Status.Pushed;
+            TouchMovePoint = TouchPoint = Input.touches[0].position;
+        }
+        else if (Input.touches[0].phase == TouchPhase.Moved)
+        {
+            State = Status.Pressing;
+            TouchMovePoint = Input.touches[0].position;
+        }
+        else if (Input.touches[0].phase == TouchPhase.Stationary)
+        {
+            State = Status.Pressing;
+        }
+        else if (Input.touches[0].phase == TouchPhase.Ended)
+        {
+            State = Status.Released;
+        }
+        else
+        {
+            State = Status.Free;
+        }
+    }
 }
