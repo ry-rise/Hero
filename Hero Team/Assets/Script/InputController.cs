@@ -4,8 +4,11 @@ using UnityEngine;
 
 public class InputController : MonoBehaviour
 {
+    //タッチした時の座標
     public Vector2 TouchPoint { get; private set; }
+    //タッチしている時の座標
     public Vector2 TouchMovePoint { get; private set; }
+    //画面タッチの状態
     public Status State { get; private set; }
     public enum Status
     {
