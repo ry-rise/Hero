@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class Hero : MonoBehaviour
 {
+    private GameObject goddess;
     private InputController controller;
     private bool isStarted;
     [SerializeField]
@@ -18,6 +19,7 @@ public class Hero : MonoBehaviour
     // Use this for initialization
     void Start()
     {
+        goddess = GameObject.FindGameObjectWithTag("Player");
         controller = GameObject.Find("GameManager").GetComponent<InputController>();
         wallHitter = GameObject.Find("GameManager").GetComponent<WallHitter>();
         isStarted = false;
@@ -27,7 +29,7 @@ public class Hero : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
+    void FixedUpdate()
     {
         if (!isStarted)
         {
@@ -44,8 +46,16 @@ public class Hero : MonoBehaviour
         if (controller.State == InputController.Status.Released)
         {
             isStarted = true;
+            transform.parent = null;
             moveVector = new Vector2(Mathf.Cos(angle * Mathf.Deg2Rad), Mathf.Sin(angle * Mathf.Deg2Rad)) * speed;
             rb.velocity = moveVector;
+        }
+        else
+        {
+            if (transform.parent == null)
+            {
+                transform.parent = goddess.transform;
+            }
         }
     }
 

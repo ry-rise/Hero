@@ -11,7 +11,7 @@ public class Goddess : MonoBehaviour {
     }
 
     // Update is called once per frame
-    void Update() {
+    void FixedUpdate() {
         if (controller.State == InputController.Status.Pressing || controller.State == InputController.Status.Pushed)
         {
             transform.position = new Vector2(controller.TouchMovePoint.x, transform.position.y);
