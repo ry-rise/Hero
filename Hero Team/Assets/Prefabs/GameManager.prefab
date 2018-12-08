@@ -64,7 +64,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ce74d422a1f9ce84f89e4ae74951b45a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mainCamera: {fileID: 0}
   wallPrefab: {fileID: 1399693481985620, guid: 93ec77afb68dc0d44b3cc29550e2b902, type: 2}
 --- !u!114 &114984091844520100
 MonoBehaviour:

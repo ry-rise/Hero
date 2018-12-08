@@ -5,8 +5,7 @@ using UnityEngine.UI;
 
 public class WallHitter : MonoBehaviour
 {
-    [SerializeField]
-    private Camera mainCamera;    //映っているか半手数rカメラ参照
+    private Camera mainCamera;
     [SerializeField]
     private GameObject wallPrefab;
     private Wall[] walls;
@@ -15,6 +14,7 @@ public class WallHitter : MonoBehaviour
     // Use this for initialization
     private void Start()
     {
+        mainCamera = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<Camera>();
         WallSetting();
     }
 

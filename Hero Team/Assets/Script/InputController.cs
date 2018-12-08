@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class InputController : MonoBehaviour
 {
+    //カメラ
+    private Camera mainCamera;
     //タッチした時の座標
     public Vector2 TouchPoint { get; private set; }
     //タッチしている時の座標
@@ -25,6 +27,7 @@ public class InputController : MonoBehaviour
     void Start()
     {
         State = Status.Free;
+        mainCamera = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<Camera>();
     }
 
     // Update is called once per frame
@@ -36,7 +39,7 @@ public class InputController : MonoBehaviour
             if (Input.GetMouseButtonDown(0))
             {
                 State = Status.Pushed;
-                TouchMovePoint = TouchPoint = Input.mousePosition;
+                TouchMovePoint = TouchPoint = mainCamera.ScreenToWorldPoint(Input.mousePosition);
             }
             else if (Input.GetMouseButtonUp(0))
             {
@@ -45,7 +48,7 @@ public class InputController : MonoBehaviour
             else if (Input.GetMouseButton(0))
             {
                 State = Status.Pressing;
-                TouchMovePoint = Input.mousePosition;
+                TouchMovePoint = mainCamera.ScreenToWorldPoint(Input.mousePosition);
             }
             else
             {
@@ -60,12 +63,12 @@ public class InputController : MonoBehaviour
                 if (Input.touches[0].phase == TouchPhase.Began)
                 {
                     State = Status.Pushed;
-                    TouchMovePoint = TouchPoint = Input.touches[0].position;
+                    TouchMovePoint = TouchPoint = mainCamera.ScreenToWorldPoint(Input.touches[0].position);
                 }
                 else if (Input.touches[0].phase == TouchPhase.Moved)
                 {
                     State = Status.Pressing;
-                    TouchMovePoint = Input.touches[0].position;
+                    TouchMovePoint = mainCamera.ScreenToWorldPoint(Input.touches[0].position);
                 }
                 else if (Input.touches[0].phase == TouchPhase.Stationary)
                 {

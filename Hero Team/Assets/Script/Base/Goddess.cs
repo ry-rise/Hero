@@ -4,13 +4,17 @@ using UnityEngine;
 
 public class Goddess : MonoBehaviour {
 
-	// Use this for initialization
-	void Start () {
-		
-	}
-	
-	// Update is called once per frame
-	void Update () {
-		
-	}
+    private InputController controller;
+    // Use this for initialization
+    void Start() {
+        controller = GameObject.Find("GameManager").GetComponent<InputController>();
+    }
+
+    // Update is called once per frame
+    void Update() {
+        if (controller.State == InputController.Status.Pressing || controller.State == InputController.Status.Pushed)
+        {
+            transform.position = new Vector2(controller.TouchMovePoint.x, transform.position.y);
+        }
+    }
 }
