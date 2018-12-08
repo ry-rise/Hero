@@ -55,29 +55,10 @@ public class Hero : MonoBehaviour
 
     private void Moving()
     {
-        if (isPenetrated)
-        {
-            if (penetratTimeCount < penetratTime)
-            {
-                penetratTimeCount += Time.fixedDeltaTime;
-            }
-            else
-            {
-                TypeChange(false);
-            }
-        }
+        PenetratCounter();
+        //壁の当たり判定をとってくる
         WallHitter.HitPointFlag hitPointFlag = wallHitter.IsHit(gameObject);
-        /*
-        if((hitPointFlag & WallHitter.HitPointFlag.Left) == WallHitter.HitPointFlag.Left)
-        {
-
-        }
-        if ((hitPointFlag & WallHitter.HitPointFlag.Right) == WallHitter.HitPointFlag.Right)
-        {
-        }
-        if ((hitPointFlag & WallHitter.HitPointFlag.Top) == WallHitter.HitPointFlag.Top)
-        {
-        }*/
+        //落下したら
         if ((hitPointFlag & WallHitter.HitPointFlag.Bottom) == WallHitter.HitPointFlag.Bottom)
         {
             FallOut();
@@ -112,25 +93,39 @@ public class Hero : MonoBehaviour
         }
     }
 
+    private void PenetratCounter()
+    {
+        if (isPenetrated)
+        {
+            if (penetratTimeCount < penetratTime)
+            {
+                Debug.Log(penetratTimeCount);
+                penetratTimeCount += Time.fixedDeltaTime;
+            }
+            else
+            {
+                TypeChange(false);
+            }
+        }
+    }
+
     //貫通弾に変える
     public void TypeChange(bool IsPenetrated)
     {
+        isPenetrated = IsPenetrated;
         if (IsPenetrated)
         {
-            isPenetrated = true;
-            penetratTime = 0;
+            penetratTimeCount = 0;
             gameObject.layer = LayerMask.NameToLayer("PenetratBall");
         }
         else
         {
-            isPenetrated = false;
             gameObject.layer = LayerMask.NameToLayer("Ball");
         }
     }
 
     private void FallOut()
     {
-        TypeChange(false);
         Setting();
     }
 }

@@ -149,7 +149,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   startAngle: 45
   speed: 5
-  penetratTime: 0
+  penetratTime: 10
 --- !u!212 &212742993798812390
 SpriteRenderer:
   m_ObjectHideFlags: 1
