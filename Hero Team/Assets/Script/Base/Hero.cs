@@ -99,7 +99,6 @@ public class Hero : MonoBehaviour
         {
             if (penetratTimeCount < penetratTime)
             {
-                Debug.Log(penetratTimeCount);
                 penetratTimeCount += Time.fixedDeltaTime;
             }
             else

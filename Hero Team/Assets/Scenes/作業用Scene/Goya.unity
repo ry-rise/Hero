@@ -643,11 +643,6 @@ Prefab:
       propertyPath: m_RootOrder
       value: 2
       objectReference: {fileID: 0}
-    - target: {fileID: 114474241581150474, guid: ce99b7ead2dda7b458af785e460ddcfd,
-        type: 2}
-      propertyPath: penetratTime
-      value: 10
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ce99b7ead2dda7b458af785e460ddcfd, type: 2}
   m_IsPrefabAsset: 0
