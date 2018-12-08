@@ -38,14 +38,14 @@ public class InputController : MonoBehaviour
                 State = Status.Pushed;
                 TouchMovePoint = TouchPoint = Input.mousePosition;
             }
+            else if (Input.GetMouseButtonUp(0))
+            {
+                State = Status.Released;
+            }
             else if (Input.GetMouseButton(0))
             {
                 State = Status.Pressing;
                 TouchMovePoint = Input.mousePosition;
-            }
-            else if (Input.GetMouseButtonUp(0))
-            {
-                State = Status.Released;
             }
             else
             {
