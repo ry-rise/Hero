@@ -11,9 +11,14 @@ public class Hero : MonoBehaviour
     private float startAngle;
     [SerializeField]
     private float speed;
-    private Vector2 moveVector;
     private WallHitter wallHitter;
     private Rigidbody2D rb;
+    [SerializeField]
+    private float penetratTime;
+    private float penetratTimeCount;
+    private bool isPenetrated;
+
+    private Vector2 firstPosition;
 
     // Use this for initialization
     void Start()
@@ -21,10 +26,8 @@ public class Hero : MonoBehaviour
         goddess = GameObject.FindGameObjectWithTag("Player");
         controller = GameObject.Find("GameManager").GetComponent<InputController>();
         wallHitter = GameObject.Find("GameManager").GetComponent<WallHitter>();
-        isStarted = false;
-        moveVector = Vector2.zero;
         rb = GetComponent<Rigidbody2D>();
-        TypeChange(false);
+        Setting(true);
     }
 
     // Update is called once per frame
@@ -46,20 +49,23 @@ public class Hero : MonoBehaviour
         {
             isStarted = true;
             transform.parent = null;
-            moveVector = new Vector2(Mathf.Cos(startAngle * Mathf.Deg2Rad), Mathf.Sin(startAngle * Mathf.Deg2Rad)) * speed;
-            rb.velocity = moveVector;
-        }
-        else
-        {
-            if (transform.parent == null)
-            {
-                transform.parent = goddess.transform;
-            }
+            rb.velocity = new Vector2(Mathf.Cos(startAngle * Mathf.Deg2Rad), Mathf.Sin(startAngle * Mathf.Deg2Rad)) * speed;
         }
     }
 
     private void Moving()
     {
+        if (isPenetrated)
+        {
+            if (penetratTimeCount < penetratTime)
+            {
+                penetratTimeCount += Time.fixedDeltaTime;
+            }
+            else
+            {
+                TypeChange(false);
+            }
+        }
         WallHitter.HitPointFlag hitPointFlag = wallHitter.IsHit(gameObject);
         /*
         if((hitPointFlag & WallHitter.HitPointFlag.Left) == WallHitter.HitPointFlag.Left)
@@ -75,6 +81,22 @@ public class Hero : MonoBehaviour
         if ((hitPointFlag & WallHitter.HitPointFlag.Bottom) == WallHitter.HitPointFlag.Bottom)
         {
             FallOut();
+        }
+    }
+
+    private void Setting(bool isSettedFirst = false)
+    {
+        rb.velocity = Vector2.zero;
+        transform.parent = goddess.transform;
+        TypeChange(false);
+        isStarted = false;
+        if (isSettedFirst)
+        {
+            firstPosition = transform.localPosition;
+        }
+        else
+        {
+            transform.localPosition = firstPosition;
         }
     }
 
@@ -95,10 +117,13 @@ public class Hero : MonoBehaviour
     {
         if (IsPenetrated)
         {
+            isPenetrated = true;
+            penetratTime = 0;
             gameObject.layer = LayerMask.NameToLayer("PenetratBall");
         }
         else
         {
+            isPenetrated = false;
             gameObject.layer = LayerMask.NameToLayer("Ball");
         }
     }
@@ -106,5 +131,6 @@ public class Hero : MonoBehaviour
     private void FallOut()
     {
         TypeChange(false);
+        Setting();
     }
 }
