@@ -9,7 +9,9 @@ public class WallHitter : MonoBehaviour
     private Camera mainCamera;    //映っているか半手数rカメラ参照
     [SerializeField]
     private GameObject wallPrefab;
-    private GameObject [] wallObjects;
+    private Wall[] walls;
+
+
     // Use this for initialization
     private void Start()
     {
@@ -22,35 +24,87 @@ public class WallHitter : MonoBehaviour
 
     }
 
+    public enum HitPoint
+    {
+        Top,
+        Bottom,
+        Left,
+        Right,
+    }
+
+    [System.Flags]
+    public enum HitPointFlag
+    {
+        None = 0,
+        Top = 1 << HitPoint.Top,
+        Bottom = 1 << HitPoint.Bottom,
+        Left = 1 << HitPoint.Left,
+        Right = 1 << HitPoint.Right,
+    }
+
     private void WallSetting()
     {
-        wallObjects = new GameObject[4];
-        wallObjects[0] = Instantiate(wallPrefab, new Vector2(GetScreenTopLeft().x, GetScreenTopLeft().y), Quaternion.identity);
-        wallObjects[1] = Instantiate(wallPrefab, new Vector2(GetScreenTopLeft().x, GetScreenBottomRight().y), Quaternion.identity);
-        wallObjects[2] = Instantiate(wallPrefab, new Vector2(GetScreenBottomRight().x, GetScreenTopLeft().y), Quaternion.identity);
-        wallObjects[3] = Instantiate(wallPrefab, new Vector2(GetScreenBottomRight().x, GetScreenBottomRight().y), Quaternion.identity);
+        walls = new Wall[4];
+        for (int n = 0; n < walls.Length; ++n)
+        {
+            walls[n] = Instantiate(wallPrefab).GetComponent<Wall>();
+        }
+        walls[(int)HitPoint.Top].transform.position = GetScreenTop();
+        walls[(int)HitPoint.Bottom].transform.position = GetScreenBottom();
+        walls[(int)HitPoint.Left].transform.position = GetScreenLeft();
+        walls[(int)HitPoint.Right].transform.position = GetScreenRight();
+
+        walls[(int)HitPoint.Top].transform.localScale = new Vector2(100, 1);
+        walls[(int)HitPoint.Bottom].transform.localScale = new Vector2(100, 1);
+        walls[(int)HitPoint.Left].transform.localScale = new Vector2(1, 100);
+        walls[(int)HitPoint.Right].transform.localScale = new Vector2(1, 100);
+
+        walls[(int)HitPoint.Bottom].GetComponent<BoxCollider2D>().isTrigger = true;
+    }
+
+    private Vector3 GetScreenTop()
+    {
+        return new Vector2((GetScreenTopLeft().x + GetScreenBottomRight().x) / 2, GetScreenTopLeft().y);
+    }
+    private Vector3 GetScreenBottom()
+    {
+        return new Vector2((GetScreenTopLeft().x + GetScreenBottomRight().x) / 2, GetScreenBottomRight().y);
+    }
+    private Vector3 GetScreenLeft()
+    {
+        return new Vector2(GetScreenTopLeft().x, (GetScreenTopLeft().y + GetScreenBottomRight().y) / 2);
+    }
+    private Vector3 GetScreenRight()
+    {
+        return new Vector2(GetScreenBottomRight().x, (GetScreenTopLeft().y + GetScreenBottomRight().y) / 2);
     }
 
     private Vector3 GetScreenTopLeft()
     {
         // 画面の左上を取得
-        Vector3 topLeft = mainCamera.ScreenToWorldPoint(Vector3.zero);
+        Vector2 topLeft = mainCamera.ScreenToWorldPoint(Vector2.zero);
         // 上下反転させる
-        topLeft.Scale(new Vector3(1f, -1f, 1f));
+        topLeft.Scale(new Vector2(1f, -1f));
         return topLeft;
     }
 
     private Vector3 GetScreenBottomRight()
     {
         // 画面の右下を取得
-        Vector3 bottomRight = mainCamera.ScreenToWorldPoint(new Vector3(Screen.width, Screen.height, 0.0f));
+        Vector2 bottomRight = mainCamera.ScreenToWorldPoint(new Vector2(Screen.width, Screen.height));
         // 上下反転させる
-        bottomRight.Scale(new Vector3(1f, -1f, 1f));
+        bottomRight.Scale(new Vector2(1f, -1f));
         return bottomRight;
     }
 
-    public bool IsHit(GameObject myObject)
+    public HitPointFlag IsHit(GameObject myObject)
     {
-        return false;
+        HitPointFlag hpf = 0;
+        for (int n = 0; n < 4; ++n)
+        {
+            if (walls[n].IsHitBall) hpf += 1 << n;
+        }
+
+        return hpf;
     }
 }

@@ -8,16 +8,22 @@ public class Hero : MonoBehaviour
     private bool isStarted;
     [SerializeField]
     private float startAngle;
+    private float angle;
     [SerializeField]
     private float speed;
     private Vector2 moveVector;
+    private WallHitter wallHitter;
+    private Rigidbody2D rb;
 
     // Use this for initialization
     void Start()
     {
         controller = GameObject.Find("GameManager").GetComponent<InputController>();
+        wallHitter = GameObject.Find("GameManager").GetComponent<WallHitter>();
         isStarted = false;
         moveVector = Vector2.zero;
+        rb = GetComponent<Rigidbody2D>();
+        angle = startAngle;
     }
 
     // Update is called once per frame
@@ -37,13 +43,28 @@ public class Hero : MonoBehaviour
     {
         if (controller.State == InputController.Status.Released)
         {
-            moveVector = new Vector2(Mathf.Cos(startAngle * Mathf.Deg2Rad), Mathf.Sin(startAngle * Mathf.Deg2Rad)) * speed;
             isStarted = true;
+            moveVector = new Vector2(Mathf.Cos(angle * Mathf.Deg2Rad), Mathf.Sin(angle * Mathf.Deg2Rad)) * speed;
+            rb.velocity = moveVector;
         }
     }
 
     void Moving()
     {
-        transform.Translate(moveVector * Time.deltaTime);
+        WallHitter.HitPointFlag hitPointFlag = wallHitter.IsHit(gameObject);
+        /*
+        if((hitPointFlag & WallHitter.HitPointFlag.Left) == WallHitter.HitPointFlag.Left)
+        {
+
+        }
+        if ((hitPointFlag & WallHitter.HitPointFlag.Right) == WallHitter.HitPointFlag.Right)
+        {
+        }
+        if ((hitPointFlag & WallHitter.HitPointFlag.Top) == WallHitter.HitPointFlag.Top)
+        {
+        }*/
+        if ((hitPointFlag & WallHitter.HitPointFlag.Bottom) == WallHitter.HitPointFlag.Bottom)
+        {
+        }
     }
 }

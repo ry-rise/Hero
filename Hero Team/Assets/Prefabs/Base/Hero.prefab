@@ -25,7 +25,7 @@ GameObject:
   - component: {fileID: 114474241581150474}
   m_Layer: 8
   m_Name: Hero
-  m_TagString: Player
+  m_TagString: Ball
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -90,7 +90,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   startAngle: 45
-  speed: 1
+  speed: 5
 --- !u!212 &212923926214977060
 SpriteRenderer:
   m_ObjectHideFlags: 1
