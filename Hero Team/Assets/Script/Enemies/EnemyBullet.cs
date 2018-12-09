@@ -9,7 +9,6 @@ public class EnemyBullet : MonoBehaviour {
     private float Y;
 	// Use this for initialization
 	void Start () {
-		
 	}
 	
 	// Update is called once per frame
@@ -18,5 +17,23 @@ public class EnemyBullet : MonoBehaviour {
         Y = this.transform.position.y;
         this.transform.position = new Vector3(X, Y - Speed * Time.deltaTime ,0);
 
+        if(transform.position.y < -7)
+        {
+            Destroy(this.gameObject);
+        }
+
 	}
+
+    void OnTriggerEnter2D(Collider2D Target)
+    {
+
+    
+        if (Target.gameObject.tag == "Bar" )
+        {
+           
+            Destroy(this.gameObject);
+
+        }
+     
+    }
 }
