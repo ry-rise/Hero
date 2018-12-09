@@ -6,8 +6,6 @@ public class Hero : MonoBehaviour
 {
     private InputController controller;
     private bool isStarted;
-    [SerializeField]
-    private float startAngle;
     private WallHitter wallHitter;
     private Rigidbody2D rb;
     [SerializeField]
@@ -82,7 +80,7 @@ public class Hero : MonoBehaviour
     {
         if (isFirsted)
         {
-            rb.velocity = new Vector2(Mathf.Cos(startAngle * Mathf.Deg2Rad), Mathf.Sin(startAngle * Mathf.Deg2Rad)) * Speed;
+            rb.velocity = new Vector2(Mathf.Cos(goddess.StartAngle * Mathf.Deg2Rad), Mathf.Sin(goddess.StartAngle * Mathf.Deg2Rad)) * Speed;
         }
         else
         {
@@ -94,7 +92,7 @@ public class Hero : MonoBehaviour
             }
             else
             {
-                rb.velocity = new Vector2(Mathf.Cos(startAngle * Mathf.Deg2Rad), Mathf.Sin(startAngle * Mathf.Deg2Rad)) * Speed;
+                rb.velocity = new Vector2(Mathf.Cos(goddess.StartAngle * Mathf.Deg2Rad), Mathf.Sin(goddess.StartAngle * Mathf.Deg2Rad)) * Speed;
             }
         }
     }

@@ -14,6 +14,7 @@ public class Goddess : MonoBehaviour {
 
     [SerializeField]
     private Edit status;
+    public int StartAngle { get { return status.StartAngle; } }
     public int SmashCountMax { get { return status.SmashCount; } }
     private int smashCount;
     public int SmashCount
