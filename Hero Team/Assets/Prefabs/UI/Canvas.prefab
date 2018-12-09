@@ -96,7 +96,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: -Tap-
+  m_Text: -Tap Start-
 --- !u!114 &114146425906128132
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -156,8 +156,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: da27f90180064994ba53a7654eb0a485, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  freeText: -Tap-
-  waitText: -Release Start-
+  waitText: -Tap Start-
 --- !u!114 &114593746855946518
 MonoBehaviour:
   m_ObjectHideFlags: 1

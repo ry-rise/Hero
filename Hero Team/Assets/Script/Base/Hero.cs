@@ -58,7 +58,7 @@ public class Hero : MonoBehaviour
 
     private void StartGame()
     {
-        if (controller.State == InputController.Status.Released)
+        if (controller.State == InputController.Status.Pushed)
         {
             isStarted = true;
             transform.parent = null;
