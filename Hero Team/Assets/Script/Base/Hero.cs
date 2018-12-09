@@ -8,17 +8,16 @@ public class Hero : MonoBehaviour
     private bool isStarted;
     [SerializeField]
     private float startAngle;
-    [SerializeField]
-    private float speed;
     private WallHitter wallHitter;
     private Rigidbody2D rb;
     [SerializeField]
     private float penetratTime;
     private float penetratTimeCount;
     private bool isPenetrated;
-    private Goddess goddess;
+    public Goddess goddess { get; private set; }
     [SerializeField]
     private StatusEdit status;
+    public float Speed { get { return status.Speed; } }
     public int Power { get { return status.Power; } }   //勇者の攻撃力
 
     // Use this for initialization
@@ -83,7 +82,7 @@ public class Hero : MonoBehaviour
     {
         if (isFirsted)
         {
-            rb.velocity = new Vector2(Mathf.Cos(startAngle * Mathf.Deg2Rad), Mathf.Sin(startAngle * Mathf.Deg2Rad)) * speed;
+            rb.velocity = new Vector2(Mathf.Cos(startAngle * Mathf.Deg2Rad), Mathf.Sin(startAngle * Mathf.Deg2Rad)) * Speed;
         }
         else
         {
@@ -91,11 +90,11 @@ public class Hero : MonoBehaviour
             {
                 float scalar = Mathf.Sqrt(rb.velocity.x * rb.velocity.x + rb.velocity.y * rb.velocity.y);
                 Vector2 unitVector = new Vector2(rb.velocity.x / scalar, rb.velocity.y / scalar);
-                rb.velocity = unitVector * speed;
+                rb.velocity = unitVector * Speed;
             }
             else
             {
-                rb.velocity = new Vector2(Mathf.Cos(startAngle * Mathf.Deg2Rad), Mathf.Sin(startAngle * Mathf.Deg2Rad)) * speed;
+                rb.velocity = new Vector2(Mathf.Cos(startAngle * Mathf.Deg2Rad), Mathf.Sin(startAngle * Mathf.Deg2Rad)) * Speed;
             }
         }
     }

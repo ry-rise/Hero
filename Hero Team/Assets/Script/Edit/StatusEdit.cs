@@ -10,4 +10,7 @@ public class StatusEdit : ScriptableObject
     [SerializeField, Tooltip("攻撃力")]
     private int power;
     public int Power { get { return power; } }
+    [SerializeField, Tooltip("速度")]
+    private int speed;
+    public int Speed { get { return speed; } }
 }

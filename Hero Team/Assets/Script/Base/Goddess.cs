@@ -1,20 +1,44 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Goddess : MonoBehaviour {
 
     private InputController controller;
-    [SerializeField]
-    private Vector2 firstPosition;
     public List<Hero> Balls;
     [SerializeField]
     private GameObject ballPrefab;
+    [SerializeField]
+    private SpriteRenderer backLight;
+
+    [SerializeField]
+    private Edit status;
+    public int SmashCountMax { get { return status.SmashCount; } }
+    private int smashCount;
+    public int SmashCount
+    {
+        get
+        {
+            return smashCount;
+        }
+        private set
+        {
+            smashCount = value;
+            if (smashCount > SmashCountMax)
+            {
+                smashCount = SmashCountMax;
+            }
+        }
+    }
+
+    public float SmashPercent { get { return (float)smashCount / SmashCountMax; } }
 
     // Use this for initialization
     private void Awake()
     {
         controller = GameObject.Find("GameManager").GetComponent<InputController>();
+        BackLightChanged(SmashPercent);
     }
 
     private void Start()
@@ -38,12 +62,23 @@ public class Goddess : MonoBehaviour {
         }
     }
 
-    void BallSet(bool isStarted = false)
+    private void BallSet(bool isStarted = false)
     {
-        Instantiate(ballPrefab, firstPosition, Quaternion.identity);
+        Instantiate(ballPrefab, status.FirstPosition, Quaternion.identity);
         if (!isStarted)
         {
             //ライフを減らす処理
         }
+    }
+
+    public void SmashCounter(int value)
+    {
+        SmashCount += value;
+        BackLightChanged(SmashPercent);
+    }
+
+    public void BackLightChanged(float alpha)
+    {
+        backLight.color = new Color(backLight.color.r, backLight.color.g, backLight.color.b, alpha);
     }
 }
