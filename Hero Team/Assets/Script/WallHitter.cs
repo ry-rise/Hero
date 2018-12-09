@@ -97,14 +97,36 @@ public class WallHitter : MonoBehaviour
         return bottomRight;
     }
 
-    public HitPointFlag IsHit(GameObject myObject)
+    //この当たり判定、使えるなら使ってみろ
+    public bool IsHit(GameObject myObject, HitPointFlag hitPoint = ~HitPointFlag.None, bool andFlag = false)
     {
         HitPointFlag hpf = 0;
         for (int n = 0; n < 4; ++n)
         {
-            if (walls[n].IsHitBall) hpf += 1 << n;
+            if (((int)hitPoint & (1 << n)) != (1 << n)) continue;
+            if (!walls[n].Search(myObject)) continue;
+            hpf += 1 << n;
         }
 
-        return hpf;
+        if (andFlag)
+        {
+            for (int n = 0; n < 4; ++n)
+            {
+                if (((int)hitPoint & (1 << n)) != (1 << n)) continue;
+                if (((int)hpf & (1 << n)) == (1 << n)) continue;
+                return false;
+            }
+            return true;
+        }
+        else
+        {
+            for (int n = 0; n < 4; ++n)
+            {
+                if (((int)hitPoint & (1 << n)) != (1 << n)) continue;
+                if (((int)hpf & (1 << n)) != (1 << n)) continue;
+                return true;
+            }
+            return false;
+        }
     }
 }

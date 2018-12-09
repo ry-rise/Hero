@@ -68,10 +68,8 @@ public class Hero : MonoBehaviour
     private void Moving()
     {
         PenetratCounter();
-        //壁の当たり判定をとってくる
-        WallHitter.HitPointFlag hitPointFlag = wallHitter.IsHit(gameObject);
         //落下したら
-        if ((hitPointFlag & WallHitter.HitPointFlag.Bottom) == WallHitter.HitPointFlag.Bottom)
+        if (wallHitter.IsHit(gameObject, WallHitter.HitPointFlag.Bottom))
         {
             FallOut();
         }

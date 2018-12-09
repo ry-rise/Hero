@@ -4,12 +4,12 @@ using UnityEngine;
 
 public class Wall : MonoBehaviour
 {
-    public bool IsHitBall { get; private set; }
+    private List<GameObject> isHitObject = new List<GameObject>();
+    public List<GameObject> IsHitObject { get { return isHitObject; } private set { isHitObject = value; } }
 
     // Use this for initialization
     void Start()
     {
-        IsHitBall = false;
     }
 
     // Update is called once per frame
@@ -17,35 +17,29 @@ public class Wall : MonoBehaviour
     {
     }
 
+    public bool Search(GameObject myObject)
+    {
+        if(IsHitObject.Contains(myObject)) return true;
+        return false;
+    }
+
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.tag == "Ball")
-        {
-            IsHitBall = true;
-        }
+        IsHitObject.Add(collision.gameObject);
     }
 
     private void OnTriggerExit2D(Collider2D collision)
     {
-        if (collision.tag == "Ball")
-        {
-            IsHitBall = false;
-        }
+        IsHitObject.Remove(collision.gameObject);
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.gameObject.tag == "Ball")
-        {
-            IsHitBall = true;
-        }
+        IsHitObject.Add(collision.gameObject);
     }
 
     private void OnCollisionExit2D(Collision2D collision)
     {
-        if (collision.gameObject.tag == "Ball")
-        {
-            IsHitBall = true;
-        }
+        IsHitObject.Remove(collision.gameObject);
     }
 }
