@@ -70,7 +70,7 @@ public class Hero : MonoBehaviour
         SetSpeed();
         PenetratCounter();
         //落下したら
-        if (wallHitter.IsHit(gameObject, WallHitter.HitPointFlag.Bottom))
+        if (wallHitter.IsHit(gameObject, HitPointFlag.Bottom))
         {
             FallOut();
         }

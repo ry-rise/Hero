@@ -3,6 +3,24 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
+public enum HitPointNumber
+{
+    Top,
+    Bottom,
+    Left,
+    Right,
+}
+
+[System.Flags]
+public enum HitPointFlag
+{
+    None = 0,
+    Top = 1 << HitPointNumber.Top,
+    Bottom = 1 << HitPointNumber.Bottom,
+    Left = 1 << HitPointNumber.Left,
+    Right = 1 << HitPointNumber.Right,
+}
+
 public class WallHitter : MonoBehaviour
 {
     private Camera mainCamera;
@@ -24,24 +42,6 @@ public class WallHitter : MonoBehaviour
 
     }
 
-    public enum HitPoint
-    {
-        Top,
-        Bottom,
-        Left,
-        Right,
-    }
-
-    [System.Flags]
-    public enum HitPointFlag
-    {
-        None = 0,
-        Top = 1 << HitPoint.Top,
-        Bottom = 1 << HitPoint.Bottom,
-        Left = 1 << HitPoint.Left,
-        Right = 1 << HitPoint.Right,
-    }
-
     private void WallSetting()
     {
         walls = new Wall[4];
@@ -49,17 +49,17 @@ public class WallHitter : MonoBehaviour
         {
             walls[n] = Instantiate(wallPrefab).GetComponent<Wall>();
         }
-        walls[(int)HitPoint.Top].transform.position = GetScreenTop();
-        walls[(int)HitPoint.Bottom].transform.position = GetScreenBottom();
-        walls[(int)HitPoint.Left].transform.position = GetScreenLeft();
-        walls[(int)HitPoint.Right].transform.position = GetScreenRight();
+        walls[(int)HitPointNumber.Top].transform.position = GetScreenTop();
+        walls[(int)HitPointNumber.Bottom].transform.position = GetScreenBottom();
+        walls[(int)HitPointNumber.Left].transform.position = GetScreenLeft();
+        walls[(int)HitPointNumber.Right].transform.position = GetScreenRight();
 
-        walls[(int)HitPoint.Top].transform.localScale = new Vector2(100, 1);
-        walls[(int)HitPoint.Bottom].transform.localScale = new Vector2(100, 1);
-        walls[(int)HitPoint.Left].transform.localScale = new Vector2(1, 100);
-        walls[(int)HitPoint.Right].transform.localScale = new Vector2(1, 100);
+        walls[(int)HitPointNumber.Top].transform.localScale = new Vector2(100, 1);
+        walls[(int)HitPointNumber.Bottom].transform.localScale = new Vector2(100, 1);
+        walls[(int)HitPointNumber.Left].transform.localScale = new Vector2(1, 100);
+        walls[(int)HitPointNumber.Right].transform.localScale = new Vector2(1, 100);
 
-        walls[(int)HitPoint.Bottom].GetComponent<BoxCollider2D>().isTrigger = true;
+        walls[(int)HitPointNumber.Bottom].GetComponent<BoxCollider2D>().isTrigger = true;
     }
 
     private Vector3 GetScreenTop()
