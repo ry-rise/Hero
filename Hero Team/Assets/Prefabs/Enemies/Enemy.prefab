@@ -78,6 +78,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 868fb788098e25f41bf5328b50f8df0c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  EnemyBullet: {fileID: 1178651131321100, guid: cdbba7ef1f8b9e44ca4c687bbb0e124f,
+    type: 2}
+  NextTime: 5
 --- !u!212 &212637647257780438
 SpriteRenderer:
   m_ObjectHideFlags: 1
