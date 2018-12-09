@@ -5,6 +5,7 @@ using UnityEngine;
 public class Goddess : MonoBehaviour {
 
     private InputController controller;
+
     // Use this for initialization
     void Start()
     {
@@ -12,7 +13,7 @@ public class Goddess : MonoBehaviour {
     }
 
     // Update is called once per frame
-    void FixedUpdate()
+    void Update()
     {
         if (controller.State == InputController.Status.Pressing || controller.State == InputController.Status.Pushed)
         {

@@ -33,17 +33,30 @@ public class Hero : MonoBehaviour
     // Update is called once per frame
     void FixedUpdate()
     {
-        if (!isStarted)
-        {
-            StartWaitting();
-        }
-        else
+        if (isStarted)
         {
             Moving();
         }
     }
 
-    private void StartWaitting()
+    private void Update()
+    {
+        if (!isStarted)
+        {
+            StartGame();
+        }
+        //Debug用
+        if (Input.GetKeyDown(KeyCode.Alpha1))
+        {
+            TypeChange(false);
+        }
+        if (Input.GetKeyDown(KeyCode.Alpha2))
+        {
+            TypeChange(true);
+        }
+    }
+
+    private void StartGame()
     {
         if (controller.State == InputController.Status.Released)
         {
@@ -78,18 +91,6 @@ public class Hero : MonoBehaviour
         else
         {
             transform.localPosition = firstPosition;
-        }
-    }
-
-    private void Update()
-    {
-        if (Input.GetKeyDown(KeyCode.Alpha1))
-        {
-            TypeChange(false);
-        }
-        if (Input.GetKeyDown(KeyCode.Alpha2))
-        {
-            TypeChange(true);
         }
     }
 
