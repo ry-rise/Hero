@@ -61,17 +61,39 @@ public class Hero : MonoBehaviour
         {
             isStarted = true;
             transform.parent = null;
-            rb.velocity = new Vector2(Mathf.Cos(startAngle * Mathf.Deg2Rad), Mathf.Sin(startAngle * Mathf.Deg2Rad)) * speed;
+            SetSpeed(true);
         }
     }
 
     private void Moving()
     {
+        SetSpeed();
         PenetratCounter();
         //落下したら
         if (wallHitter.IsHit(gameObject, WallHitter.HitPointFlag.Bottom))
         {
             FallOut();
+        }
+    }
+
+    private void SetSpeed(bool isFirsted = false)
+    {
+        if (isFirsted)
+        {
+            rb.velocity = new Vector2(Mathf.Cos(startAngle * Mathf.Deg2Rad), Mathf.Sin(startAngle * Mathf.Deg2Rad)) * speed;
+        }
+        else
+        {
+            if (Vector2.zero != rb.velocity)
+            {
+                float scalar = Mathf.Sqrt(rb.velocity.x * rb.velocity.x + rb.velocity.y * rb.velocity.y);
+                Vector2 unitVector = new Vector2(rb.velocity.x / scalar, rb.velocity.y / scalar);
+                rb.velocity = unitVector * speed;
+            }
+            else
+            {
+                rb.velocity = new Vector2(Mathf.Cos(startAngle * Mathf.Deg2Rad), Mathf.Sin(startAngle * Mathf.Deg2Rad)) * speed;
+            }
         }
     }
 
@@ -81,7 +103,7 @@ public class Hero : MonoBehaviour
         TypeChange(false);
         isStarted = false;
     }
-
+    //貫通
     private void PenetratCounter()
     {
         if (isPenetrated)

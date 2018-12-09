@@ -98,7 +98,7 @@ public class WallHitter : MonoBehaviour
     }
 
     //この当たり判定、使えるなら使ってみろ
-    public bool IsHit(GameObject myObject, HitPointFlag hitPoint = ~HitPointFlag.None, bool andFlag = false)
+    public bool IsHit(GameObject myObject, HitPointFlag hitPoint = ~HitPointFlag.None, bool andOperation = false)
     {
         HitPointFlag hpf = 0;
         for (int n = 0; n < 4; ++n)
@@ -108,7 +108,8 @@ public class WallHitter : MonoBehaviour
             hpf += 1 << n;
         }
 
-        if (andFlag)
+        //AND演算
+        if (andOperation)
         {
             for (int n = 0; n < 4; ++n)
             {
@@ -118,6 +119,7 @@ public class WallHitter : MonoBehaviour
             }
             return true;
         }
+        //OR演算
         else
         {
             for (int n = 0; n < 4; ++n)
