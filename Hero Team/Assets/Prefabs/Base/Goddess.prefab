@@ -120,6 +120,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e012ef41e68b1d840b8cc4229a3675d9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  scales:
+  - {x: 2, y: 0.2}
 --- !u!212 &212239606250258162
 SpriteRenderer:
   m_ObjectHideFlags: 1

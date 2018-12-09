@@ -673,21 +673,6 @@ Prefab:
       propertyPath: m_Pivot.y
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 114112600218745804, guid: 9927a559fb2f3024b9463713421a82a6,
-        type: 2}
-      propertyPath: m_Text
-      value: -Tap-
-      objectReference: {fileID: 0}
-    - target: {fileID: 114225129932902376, guid: 9927a559fb2f3024b9463713421a82a6,
-        type: 2}
-      propertyPath: freeText
-      value: -Tap-
-      objectReference: {fileID: 0}
-    - target: {fileID: 114225129932902376, guid: 9927a559fb2f3024b9463713421a82a6,
-        type: 2}
-      propertyPath: waitText
-      value: -Release Start-
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9927a559fb2f3024b9463713421a82a6, type: 2}
   m_IsPrefabAsset: 0
