@@ -150,6 +150,7 @@ MonoBehaviour:
   startAngle: -90
   speed: 5
   penetratTime: 10
+  status: {fileID: 11400000, guid: b7707a47203446a428ccb719d0bfbe48, type: 2}
 --- !u!212 &212742993798812390
 SpriteRenderer:
   m_ObjectHideFlags: 1

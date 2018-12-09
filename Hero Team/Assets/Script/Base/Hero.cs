@@ -17,6 +17,9 @@ public class Hero : MonoBehaviour
     private float penetratTimeCount;
     private bool isPenetrated;
     private Goddess goddess;
+    [SerializeField]
+    private StatusEdit status;
+    public int Power { get { return status.Power; } }   //勇者の攻撃力
 
     // Use this for initialization
     void Awake()
