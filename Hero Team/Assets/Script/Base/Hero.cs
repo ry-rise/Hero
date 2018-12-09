@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class Hero : MonoBehaviour
 {
-    private GameObject goddess;
     private InputController controller;
     private bool isStarted;
     [SerializeField]
@@ -17,17 +16,17 @@ public class Hero : MonoBehaviour
     private float penetratTime;
     private float penetratTimeCount;
     private bool isPenetrated;
-
-    private Vector2 firstPosition;
+    private Goddess goddess;
 
     // Use this for initialization
-    void Start()
+    void Awake()
     {
-        goddess = GameObject.FindGameObjectWithTag("Player");
+        goddess = GameObject.FindGameObjectWithTag("Player").GetComponent<Goddess>();
+        goddess.Balls.Add(this);
         controller = GameObject.Find("GameManager").GetComponent<InputController>();
         wallHitter = GameObject.Find("GameManager").GetComponent<WallHitter>();
         rb = GetComponent<Rigidbody2D>();
-        Setting(true);
+        Setting();
     }
 
     // Update is called once per frame
@@ -78,20 +77,11 @@ public class Hero : MonoBehaviour
         }
     }
 
-    private void Setting(bool isSettedFirst = false)
+    private void Setting()
     {
         rb.velocity = Vector2.zero;
-        transform.parent = goddess.transform;
         TypeChange(false);
         isStarted = false;
-        if (isSettedFirst)
-        {
-            firstPosition = transform.localPosition;
-        }
-        else
-        {
-            transform.localPosition = firstPosition;
-        }
     }
 
     private void PenetratCounter()
@@ -126,6 +116,7 @@ public class Hero : MonoBehaviour
 
     private void FallOut()
     {
-        Setting();
+        goddess.Balls.Remove(this);
+        Destroy(gameObject);
     }
 }

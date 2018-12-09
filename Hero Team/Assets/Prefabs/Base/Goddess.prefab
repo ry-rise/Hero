@@ -109,6 +109,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d959471c2de1337479d03cf27e6dc357, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  firstPosition: {x: 0, y: -2}
+  Balls: []
+  ballPrefab: {fileID: 1221631954515732, guid: ce99b7ead2dda7b458af785e460ddcfd, type: 2}
 --- !u!114 &114681557288191642
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -121,6 +124,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   scales:
+  - {x: 6, y: 0.6}
+  - {x: 4, y: 0.4}
   - {x: 2, y: 0.2}
 --- !u!212 &212239606250258162
 SpriteRenderer:
