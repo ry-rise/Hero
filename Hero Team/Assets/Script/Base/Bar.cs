@@ -54,9 +54,15 @@ public class Bar : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.gameObject.tag == "Ball")
+        if (collision.transform.root.tag == "Ball")
         {
-            goddess.Smashing(collision.gameObject);
+            if (!goddess.Smashing(collision.transform.root.gameObject))
+            {
+                Hero ball = collision.gameObject.GetComponent<Hero>();
+                Vector2 ver = collision.transform.root.position - transform.position;
+                float angle = Mathf.Atan2(ver.y, ver.x);    //ボールとバーの2点の角度
+                ball.GetComponent<Rigidbody2D>().velocity = ver * ball.Speed;
+            }
         }
     }
 }

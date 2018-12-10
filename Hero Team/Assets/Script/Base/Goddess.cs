@@ -153,12 +153,13 @@ public class Goddess : MonoBehaviour {
         line.transform.rotation = Quaternion.Euler(new Vector3(0, 0, 1) * angle);
     }
 
-    public void Smashing(GameObject ball)
+    public bool Smashing(GameObject ball)
     {
-        if (SmashPercent < 1) return;
+        if (SmashPercent < 1) return false;
         ball.GetComponent<Hero>().TypeChange(true);
         ball.GetComponent<Rigidbody2D>().velocity = smashVector;
         SmashCount = 0;
         BackLightChanged(SmashPercent);
+        return true;
     }
 }
