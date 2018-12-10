@@ -5,13 +5,17 @@ public class EnemyAttack : MonoBehaviour {
     [SerializeField]
     private GameObject EnemyBullet;
     [SerializeField]
+    EnemyMove enemyMove;
+    [SerializeField]
     private float NextTime;
     private float Timer = 0.0f;
     private Vector3 MyPosition;
+    public int ListNumber { get; set; }
 	void Start () {
         
-        GameObject.Find("EnemyManager").GetComponent<EnemyMove>().Enemies.Add(this);
-      
+        enemyMove = GameObject.Find("EnemyManager").GetComponent<EnemyMove>();
+        enemyMove.Enemies.Add(this);
+        ListNumber = enemyMove.Enemies.Count - 1;
 	}
 	
 	void Update () {

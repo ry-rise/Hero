@@ -22,6 +22,7 @@ GameObject:
   - component: {fileID: 212637647257780438}
   - component: {fileID: 61027467694124692}
   - component: {fileID: 114388833693205496}
+  - component: {fileID: 114669951600630106}
   m_Layer: 9
   m_Name: Enemy
   m_TagString: Enemy
@@ -36,7 +37,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1297509800666252}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 3, z: 0}
+  m_LocalPosition: {x: 0, y: 1.96, z: 0}
   m_LocalScale: {x: 4, y: 4, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -80,7 +81,20 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   EnemyBullet: {fileID: 1178651131321100, guid: cdbba7ef1f8b9e44ca4c687bbb0e124f,
     type: 2}
+  enemyMove: {fileID: 0}
   NextTime: 5
+--- !u!114 &114669951600630106
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1297509800666252}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a36b0262d5924194ca1e57d98bf0251f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  HP: 1
 --- !u!212 &212637647257780438
 SpriteRenderer:
   m_ObjectHideFlags: 1
