@@ -11,10 +11,11 @@ public class EnemyAttack : MonoBehaviour {
 	void Start () {
         
         GameObject.Find("EnemyManager").GetComponent<EnemyMove>().Enemies.Add(this);
-        MyPosition = this.transform.position;
+      
 	}
 	
 	void Update () {
+        MyPosition = this.transform.position;
         Timer += Time.deltaTime;
         if (Timer > NextTime) {
             Instantiate(EnemyBullet, MyPosition,new Quaternion(0, 0, 0, 0));
