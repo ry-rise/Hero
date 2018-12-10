@@ -12,7 +12,7 @@ public class Hero : MonoBehaviour
     private float penetratTime;
     private float penetratTimeCount;
     private bool isPenetrated;
-    public Goddess goddess { get; private set; }
+    private Goddess goddess;
     [SerializeField]
     private StatusEdit status;
     public float Speed { get { return status.Speed; } }
@@ -87,7 +87,7 @@ public class Hero : MonoBehaviour
             if (Vector2.zero != rb.velocity)
             {
                 float scalar = Mathf.Sqrt(rb.velocity.x * rb.velocity.x + rb.velocity.y * rb.velocity.y);
-                Vector2 unitVector = new Vector2(rb.velocity.x / scalar, rb.velocity.y / scalar);
+                Vector2 unitVector = new Vector2(rb.velocity.x, rb.velocity.y) / scalar;
                 rb.velocity = unitVector * Speed;
             }
             else

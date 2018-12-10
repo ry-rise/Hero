@@ -54,10 +54,10 @@ public class WallHitter : MonoBehaviour
         walls[(int)HitPointNumber.Left].transform.position = GetScreenLeft();
         walls[(int)HitPointNumber.Right].transform.position = GetScreenRight();
 
-        walls[(int)HitPointNumber.Top].transform.localScale = new Vector2(100, 1);
-        walls[(int)HitPointNumber.Bottom].transform.localScale = new Vector2(100, 1);
-        walls[(int)HitPointNumber.Left].transform.localScale = new Vector2(1, 100);
-        walls[(int)HitPointNumber.Right].transform.localScale = new Vector2(1, 100);
+        walls[(int)HitPointNumber.Top].transform.localScale = new Vector2(100, 0.1f);
+        walls[(int)HitPointNumber.Bottom].transform.localScale = new Vector2(100, 0.1f);
+        walls[(int)HitPointNumber.Left].transform.localScale = new Vector2(0.1f, 100);
+        walls[(int)HitPointNumber.Right].transform.localScale = new Vector2(0.1f, 100);
 
         walls[(int)HitPointNumber.Bottom].GetComponent<BoxCollider2D>().isTrigger = true;
     }

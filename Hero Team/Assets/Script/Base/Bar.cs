@@ -4,7 +4,8 @@ using UnityEngine;
 
 public class Bar : MonoBehaviour
 {
-
+    [SerializeField]
+    private Goddess goddess;
     [SerializeField]
     private List<Vector2> scales;
     private int scaleLevel;
@@ -31,7 +32,7 @@ public class Bar : MonoBehaviour
     // Use this for initialization
     void Start ()
     {
-        transform.localScale = scales[scaleLevel];
+        transform.localScale = scales[scaleLevel] / goddess.transform.lossyScale;
     }
 	
 	// Update is called once per frame
@@ -42,12 +43,20 @@ public class Bar : MonoBehaviour
     public void Damage(int value)
     {
         scaleLevel += value;
-        transform.localScale = scales[scaleLevel];
+        transform.localScale = scales[scaleLevel] / goddess.transform.lossyScale;
     }
 
     public void Heal(int value)
     {
         scaleLevel -= value;
-        transform.localScale = scales[scaleLevel];
+        transform.localScale = scales[scaleLevel] / goddess.transform.lossyScale;
+    }
+
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.gameObject.tag == "Ball")
+        {
+            goddess.Smashing(collision.gameObject);
+        }
     }
 }

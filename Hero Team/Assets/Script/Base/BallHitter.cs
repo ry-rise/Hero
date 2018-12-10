@@ -6,9 +6,9 @@ public class BallHitter : MonoBehaviour {
 
     private Goddess goddess;
     // Use this for initialization
-    void Start ()
+    void Awake ()
     {
-        goddess = transform.parent.GetComponent<Hero>().goddess;
+        goddess = GameObject.FindGameObjectWithTag("Player").GetComponent<Goddess>();
     }
 	
 	// Update is called once per frame
