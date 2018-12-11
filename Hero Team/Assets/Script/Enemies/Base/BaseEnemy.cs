@@ -21,7 +21,7 @@ public abstract class BaseEnemy : MonoBehaviour
 
     public StopStatus stop;
 
-    public void MoveSwitch()
+    private void MoveSwitch()
     {
         if ((stop & StopStatus.MoveStoped) != StopStatus.MoveStoped)
         {
@@ -39,7 +39,7 @@ public abstract class BaseEnemy : MonoBehaviour
         }
     }
 
-    public void AttackSwitch()
+    private void AttackSwitch()
     {
         if ((stop & StopStatus.AttackStoped) != StopStatus.AttackStoped)
         {
@@ -68,6 +68,8 @@ public abstract class BaseEnemy : MonoBehaviour
     // Update is called once per frame
     virtual protected void Update()
     {
+        MoveSwitch();
+        AttackSwitch();
         if (HP < 1)
         {
             manager.Enemies.Remove(this);

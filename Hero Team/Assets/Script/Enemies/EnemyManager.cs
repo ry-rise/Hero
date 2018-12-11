@@ -6,13 +6,35 @@ public class EnemyManager : MonoBehaviour
     private List<BaseEnemy> enemies = new List<BaseEnemy>();
     public List<BaseEnemy> Enemies { get { return enemies; } set { enemies = value; } }
 
+    private InputController controller;
+    private bool gameStart;
+
+    private void Start()
+    {
+        controller = GameObject.Find("GameManager").GetComponent<InputController>();
+        gameStart = false;
+        foreach (BaseEnemy it in Enemies)
+        {
+            it.stop = BaseEnemy.StopStatus.ALL;
+        }
+    }
+
+    private void Update()
+    {
+        if (!gameStart) {
+            if (controller.State == InputController.Status.Pushed)
+            {
+                foreach (BaseEnemy it in Enemies)
+                {
+                    it.stop = BaseEnemy.StopStatus.None;
+                }
+                gameStart = true;
+            }
+        }
+    }
+
     void FixedUpdate()
     {
-        for (int i = 0; i <= Enemies.Count - 1; ++i)
-        {
-            Enemies[i].MoveSwitch();    //移動制御
-            Enemies[i].AttackSwitch();  //攻撃制御
-        }
     }
 
     public int GetEnemiesCount()
