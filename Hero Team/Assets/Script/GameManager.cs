@@ -5,13 +5,14 @@ using UnityEngine;
 //コクブ
 public class GameManager : MonoBehaviour
 {
+    [SerializeField] private bool DebugCLEARE = false; //クリア判定のログがうるさいのでこれで切り替える
+    
     private int EnemyCount = 0; //敵残数
     private int PlayerLife = 3; //プレイヤー残機
 
     private EnemyMove Enemy;
-
-
-    private void Start()
+    
+    private void Awake()
     {
         Enemy = GameObject.Find("EnemyManager").GetComponent<EnemyMove>();
     }
@@ -24,16 +25,32 @@ public class GameManager : MonoBehaviour
         {
             GameClear();
         }
+        //プレイヤーの残機が０以下になったらゲームオーバー
+        if (PlayerLife < 0)
+        {
+            GameOver();
+        }
+
+    }
+
+    //プレイヤーのライフが減る処理
+    public void LostLife()
+    {
+        PlayerLife--;
+        Debug.Log("Player Life : " + PlayerLife);
     }
 
     //ゲームクリア時の挙動
-    void GameClear()
+    private void GameClear()
     {
-        Debug.Log("Game CLEAR!!");
+        if (DebugCLEARE)
+        {
+            Debug.Log("Game CLEAR!!");
+        }
     }
 
     //ゲームオーバー時の挙動
-    void GameOver()
+    private void GameOver()
     {
         Debug.Log("Game Over!!");
     }
