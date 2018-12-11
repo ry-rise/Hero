@@ -19,10 +19,11 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4608213449403532}
-  - component: {fileID: 212101513438830386}
-  - component: {fileID: 61495846633175282}
   - component: {fileID: 114494260285347608}
   - component: {fileID: 114879290039256136}
+  - component: {fileID: 114274566029662506}
+  - component: {fileID: 212101513438830386}
+  - component: {fileID: 61495846633175282}
   m_Layer: 9
   m_Name: Boss
   m_TagString: Enemy
@@ -68,6 +69,17 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.16, y: 0.16}
   m_EdgeRadius: 0
+--- !u!114 &114274566029662506
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1524819136154470}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2429f6c7415225d4fb7688e97db4c7ca, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &114494260285347608
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -79,6 +91,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3ae34523ca556e14190f781ac5fcba96, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  HP: 1
+  stop: 0
 --- !u!114 &114879290039256136
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -90,6 +104,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 356da8bcf2574ca478a4f7ded9247a8e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  status: []
 --- !u!212 &212101513438830386
 SpriteRenderer:
   m_ObjectHideFlags: 1

@@ -19,10 +19,11 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4431630570542612}
+  - component: {fileID: 114669951600630106}
+  - component: {fileID: 114388833693205496}
+  - component: {fileID: 114910611113318090}
   - component: {fileID: 212637647257780438}
   - component: {fileID: 61027467694124692}
-  - component: {fileID: 114388833693205496}
-  - component: {fileID: 114669951600630106}
   m_Layer: 9
   m_Name: Enemy
   m_TagString: Enemy
@@ -79,9 +80,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 868fb788098e25f41bf5328b50f8df0c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  EnemyBullet: {fileID: 1178651131321100, guid: cdbba7ef1f8b9e44ca4c687bbb0e124f,
-    type: 2}
-  NextTime: 5
+  status:
+    enemyBullet: {fileID: 1178651131321100, guid: cdbba7ef1f8b9e44ca4c687bbb0e124f,
+      type: 2}
+    nextTime: 1
 --- !u!114 &114669951600630106
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -94,6 +96,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   HP: 1
+  stop: 0
+--- !u!114 &114910611113318090
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1297509800666252}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0f9fb0b724f8a134ba1a01c4666033df, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!212 &212637647257780438
 SpriteRenderer:
   m_ObjectHideFlags: 1

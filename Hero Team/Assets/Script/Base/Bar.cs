@@ -22,7 +22,7 @@ public class Bar : MonoBehaviour
             {
                 scaleLevel = 0;
             }
-            else if (scaleLevel > scales.Count)
+            else if (scaleLevel >= scales.Count)
             {
                 scaleLevel = scales.Count - 1;
             }
@@ -32,7 +32,7 @@ public class Bar : MonoBehaviour
     // Use this for initialization
     void Start ()
     {
-        transform.localScale = scales[scaleLevel] / goddess.transform.lossyScale;
+        transform.localScale = scales[ScaleLevel] / goddess.transform.lossyScale;
     }
 	
 	// Update is called once per frame
@@ -42,14 +42,14 @@ public class Bar : MonoBehaviour
     
     public void Damage(int value)
     {
-        scaleLevel += value;
-        transform.localScale = scales[scaleLevel] / goddess.transform.lossyScale;
+        ScaleLevel += value;
+        transform.localScale = scales[ScaleLevel] / goddess.transform.lossyScale;
     }
 
     public void Heal(int value)
     {
-        scaleLevel -= value;
-        transform.localScale = scales[scaleLevel] / goddess.transform.lossyScale;
+        ScaleLevel -= value;
+        transform.localScale = scales[ScaleLevel] / goddess.transform.lossyScale;
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
@@ -60,7 +60,6 @@ public class Bar : MonoBehaviour
             {
                 Hero ball = collision.gameObject.GetComponent<Hero>();
                 Vector2 ver = collision.transform.root.position - transform.position;
-                float angle = Mathf.Atan2(ver.y, ver.x);    //ボールとバーの2点の角度
                 ball.GetComponent<Rigidbody2D>().velocity = ver * ball.Speed;
             }
         }

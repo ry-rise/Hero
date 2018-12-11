@@ -145,7 +145,7 @@ MonoBehaviour:
   linePrefab: {fileID: 1454378359782614, guid: 06b9dc173fc8bd542b406005566d0c3f, type: 2}
   tapLinePrefab: {fileID: 1374147327708728, guid: 14070a1ec32e4074bbc24d896156c231,
     type: 2}
-  tapPositionY: 4.5
+  tapPositionY: -3.5
   bar: {fileID: 114681557288191642}
   status: {fileID: 11400000, guid: 3965a05eaf1730d4caab647dda415881, type: 2}
 --- !u!114 &114681557288191642
