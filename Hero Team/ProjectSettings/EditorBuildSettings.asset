@@ -6,6 +6,24 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Scenes/SampleScene.unity
+    path: Assets/Scenes/Title.unity
+    guid: b53a2a7e338dadd4185faf16e5fe18d1
+  - enabled: 1
+    path: Assets/Scenes/LevelSelect.unity
+    guid: b4fabd63fa21e584eb57fa2282b2818c
+  - enabled: 1
+    path: Assets/Scenes/Stage/MainGame.unity
+    guid: df0a5bc9c790f9148a72741cceaa3b45
+  - enabled: 1
+    path: Assets/Scenes/Result.unity
+    guid: 063660093ad3efc44af3360e5ea46310
+  - enabled: 0
+    path: Assets/Scenes/GameClear.unity
+    guid: bc0c3406701ce8c4e8e839c5af1fc5fa
+  - enabled: 0
+    path: Assets/Scenes/GameOver.unity
+    guid: ba2d2e442f411aa4aa7f865cf114af7d
+  - enabled: 0
+    path: "Assets/Scenes/\u4F5C\u696D\u7528Scene/Sato.unity"
     guid: 2cda990e2423bbf4892e6590ba056729
   m_configObjects: {}
