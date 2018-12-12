@@ -7,6 +7,8 @@ public abstract class BaseEnemy : MonoBehaviour
     protected EnemyManager manager;
     protected BaseEnemyMove move;
     protected BaseEnemyAttack attack;
+    protected WallHitter wallHitter;
+    protected GameManager gameManager;
     [SerializeField]
     private int HP = 1;
     // Use this for initialization
@@ -60,6 +62,8 @@ public abstract class BaseEnemy : MonoBehaviour
     virtual protected void Awake()
     {
         manager = GameObject.Find("EnemyManager").GetComponent<EnemyManager>();
+        wallHitter = GameObject.Find("GameManager").GetComponent<WallHitter>();
+        gameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
         manager.Enemies.Add(this);
         move = GetComponent<BaseEnemyMove>();
         attack = GetComponent<BaseEnemyAttack>();
@@ -74,6 +78,11 @@ public abstract class BaseEnemy : MonoBehaviour
         {
             manager.Enemies.Remove(this);
             Destroy(gameObject);
+        }
+        if (wallHitter.IsHit(gameObject, HitPointFlag.Bottom))
+        {
+            //ゲームオーバーを呼ぶ
+            //gameManager;
         }
     }
 

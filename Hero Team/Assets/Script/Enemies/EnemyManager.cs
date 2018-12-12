@@ -7,28 +7,24 @@ public class EnemyManager : MonoBehaviour
     public List<BaseEnemy> Enemies { get { return enemies; } set { enemies = value; } }
 
     private InputController controller;
-    private bool gameStart;
+    public bool GameStart { get; private set; }
 
     private void Start()
     {
         controller = GameObject.Find("GameManager").GetComponent<InputController>();
-        gameStart = false;
-        foreach (BaseEnemy it in Enemies)
-        {
-            it.stop = BaseEnemy.StopStatus.ALL;
-        }
+        AllStop();
     }
 
     private void Update()
     {
-        if (!gameStart) {
+        if (!GameStart) {
             if (controller.State == InputController.Status.Pushed)
             {
                 foreach (BaseEnemy it in Enemies)
                 {
                     it.stop = BaseEnemy.StopStatus.None;
                 }
-                gameStart = true;
+                GameStart = true;
             }
         }
     }
@@ -40,5 +36,19 @@ public class EnemyManager : MonoBehaviour
     public int GetEnemiesCount()
     {
         return Enemies.Count;
+    }
+
+    public void AllStop()
+    {
+        GameStart = false;
+        foreach (BaseEnemy it in Enemies)
+        {
+            it.stop = BaseEnemy.StopStatus.ALL;
+        }
+        GameObject[] gameObjects = GameObject.FindGameObjectsWithTag("EnemyBullet");
+        foreach (GameObject it in gameObjects)
+        {
+            Destroy(it);
+        }
     }
 }

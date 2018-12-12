@@ -4,7 +4,8 @@ using UnityEngine;
 
 public class Goddess : MonoBehaviour {
 
-    private GameManager gamemanager;
+    private GameManager gameManager;
+    private EnemyManager enemyManager;
 
     private InputController controller;
     public List<Hero> Balls;
@@ -52,8 +53,8 @@ public class Goddess : MonoBehaviour {
     // Use this for initialization
     private void Awake()
     {
-        gamemanager = GameObject.Find("GameManager").GetComponent<GameManager>();
-
+        gameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
+        enemyManager = GameObject.Find("EnemyManager").GetComponent<EnemyManager>();
         controller = GameObject.Find("GameManager").GetComponent<InputController>();
         BackLightChanged(SmashPercent);
         smashVector = new Vector2(0, 1);
@@ -122,7 +123,8 @@ public class Goddess : MonoBehaviour {
         if (!isStarted)
         {
             //ライフを減らす処理
-            gamemanager.LostLife();
+            gameManager.LostLife();
+            enemyManager.AllStop();
         }
     }
 
