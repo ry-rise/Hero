@@ -122,9 +122,9 @@ public class Goddess : MonoBehaviour {
         Instantiate(ballPrefab, status.FirstPosition, Quaternion.identity);
         if (!isStarted)
         {
-            //ライフを減らす処理
-            gameManager.LostLife();
-            enemyManager.AllStop();
+            gameManager.LostLife(); //ライフを減らす処理
+            enemyManager.AllStop(); //敵を停止
+            bar.ResetScale();       //バーのサイズをリセット
         }
     }
 

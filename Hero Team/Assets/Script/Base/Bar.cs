@@ -52,6 +52,12 @@ public class Bar : MonoBehaviour
         transform.localScale = scales[ScaleLevel] / goddess.transform.lossyScale;
     }
 
+    public void ResetScale()
+    {
+        ScaleLevel = 0;
+        transform.localScale = scales[ScaleLevel] / goddess.transform.lossyScale;
+    }
+
     private void OnCollisionEnter2D(Collision2D collision)
     {
         if (collision.transform.root.tag == "Ball")
