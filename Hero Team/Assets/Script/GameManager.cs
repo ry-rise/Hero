@@ -7,26 +7,34 @@ public class GameManager : MonoBehaviour
 {
     [SerializeField] private bool DebugCLEARE = false; //クリア判定のログがうるさいのでこれで切り替える
     
-    private int EnemyCount = 0; //敵残数
     private int PlayerLife = 3; //プレイヤー残機
 
     private EnemyManager Enemy;
+    GameStatus gameState;
+
+    public enum GameStatus
+    {
+        Play,
+        Clear,
+        GameOver
+    }
     
     private void Awake()
     {
         Enemy = GameObject.Find("EnemyManager").GetComponent<EnemyManager>();
+        gameState = GameStatus.Play;
     }
 
     private void Update()
     {
-        EnemyCount = Enemy.GetEnemiesCount();
+        Enemy.GetEnemiesCount();
         //敵残数が０になったらクリア
-        if (EnemyCount <= 0)
+        if (gameState == GameStatus.Clear)
         {
             GameClear();
         }
         //プレイヤーの残機が０以下になったらゲームオーバー
-        if (PlayerLife < 0)
+        else if (gameState == GameStatus.GameOver)
         {
             GameOver();
         }
@@ -37,6 +45,10 @@ public class GameManager : MonoBehaviour
     public void LostLife()
     {
         PlayerLife--;
+        if (PlayerLife <= 0)
+        {
+            GameOverOnFlag();
+        }
         Debug.Log("Player Life : " + PlayerLife);
     }
 
@@ -53,5 +65,15 @@ public class GameManager : MonoBehaviour
     private void GameOver()
     {
         Debug.Log("Game Over!!");
+    }
+
+    public void GameClearOnFlag()
+    {
+        gameState = GameStatus.Clear;
+    }
+
+    public void GameOverOnFlag()
+    {
+        gameState = GameStatus.GameOver;
     }
 }

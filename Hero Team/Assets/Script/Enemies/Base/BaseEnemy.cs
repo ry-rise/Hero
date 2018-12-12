@@ -82,7 +82,7 @@ public abstract class BaseEnemy : MonoBehaviour
         if (wallHitter.IsHit(gameObject, HitPointFlag.Bottom))
         {
             //ゲームオーバーを呼ぶ
-            //gameManager;
+            gameManager.GameOverOnFlag();
         }
     }
 

@@ -23,16 +23,12 @@ public class BossMove : BaseEnemyMove
         direction = (int)startDirection;
     }
 
-    private void Update()
+    private void FixedUpdate()
     {
         if (wallhitter.IsHit(gameObject, HitPointFlag.Right | HitPointFlag.Left))
         {
             direction *= -1;
         }
-    }
-
-    private void FixedUpdate()
-    {
         transform.Translate(speed * Time.fixedDeltaTime * direction, 0, 0);
     }
 }

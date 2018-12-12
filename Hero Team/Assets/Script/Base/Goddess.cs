@@ -180,6 +180,7 @@ public class Goddess : MonoBehaviour {
     public bool Smashing(GameObject ball)
     {
         if (SmashPercent < 1) return false;
+        if (OnController() != ControlStatus.Smash) return false;
         ball.GetComponent<Hero>().TypeChange(true);
         ball.GetComponent<Rigidbody2D>().velocity = smashVector;
         SmashCount = 0;
