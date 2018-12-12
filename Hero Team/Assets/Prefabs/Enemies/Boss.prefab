@@ -23,6 +23,7 @@ GameObject:
   - component: {fileID: 114879290039256136}
   - component: {fileID: 114274566029662506}
   - component: {fileID: 212101513438830386}
+  - component: {fileID: 50242453856599820}
   - component: {fileID: 61495846633175282}
   m_Layer: 9
   m_Name: Boss
@@ -44,6 +45,26 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!50 &50242453856599820
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1524819136154470}
+  m_BodyType: 0
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0
+  m_GravityScale: 0
+  m_Material: {fileID: 0}
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 7
 --- !u!61 &61495846633175282
 BoxCollider2D:
   m_ObjectHideFlags: 1
@@ -80,7 +101,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2429f6c7415225d4fb7688e97db4c7ca, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 0
+  speed: 1
+  startDirection: -1
 --- !u!114 &114494260285347608
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -92,7 +114,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3ae34523ca556e14190f781ac5fcba96, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  HP: 1
+  HP: 10
   stop: 0
 --- !u!114 &114879290039256136
 MonoBehaviour:

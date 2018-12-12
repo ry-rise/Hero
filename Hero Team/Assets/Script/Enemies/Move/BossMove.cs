@@ -6,9 +6,33 @@ public class BossMove : BaseEnemyMove
 {
     [SerializeField]
     private float speed;
+    [SerializeField]
+    private Direction startDirection;
+    private int direction;
+    private WallHitter wallhitter;
+
+    enum Direction
+    {
+        Right = -1,
+        Left = 1
+    }
+
+    private void Start()
+    {
+        wallhitter = GameObject.Find("GameManager").GetComponent<WallHitter>();
+        direction = (int)startDirection;
+    }
+
+    private void Update()
+    {
+        if (wallhitter.IsHit(gameObject, HitPointFlag.Right | HitPointFlag.Left))
+        {
+            direction *= -1;
+        }
+    }
 
     private void FixedUpdate()
     {
-        transform.Translate(0, speed * Time.fixedDeltaTime, 0);
+        transform.Translate(speed * Time.fixedDeltaTime * direction, 0, 0);
     }
 }

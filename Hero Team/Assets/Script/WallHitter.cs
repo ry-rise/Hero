@@ -28,7 +28,6 @@ public class WallHitter : MonoBehaviour
     private GameObject wallPrefab;
     private Wall[] walls;
 
-
     // Use this for initialization
     private void Start()
     {

@@ -83,7 +83,7 @@ MonoBehaviour:
   status:
     enemyBullet: {fileID: 1178651131321100, guid: cdbba7ef1f8b9e44ca4c687bbb0e124f,
       type: 2}
-    nextTime: 1
+    nextTime: 2
 --- !u!114 &114669951600630106
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -108,7 +108,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0f9fb0b724f8a134ba1a01c4666033df, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 0
+  speed: -0.2
 --- !u!212 &212637647257780438
 SpriteRenderer:
   m_ObjectHideFlags: 1

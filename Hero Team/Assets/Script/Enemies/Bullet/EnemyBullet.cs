@@ -8,9 +8,12 @@ public class EnemyBullet : MonoBehaviour
     private float Speed;
     private float X;
     private float Y;
+    private WallHitter wallhitter;
+
     // Use this for initialization
     void Start()
     {
+        wallhitter = GameObject.Find("GameManager").GetComponent<WallHitter>();
     }
 
     // Update is called once per frame
@@ -20,7 +23,7 @@ public class EnemyBullet : MonoBehaviour
         Y = this.transform.position.y;
         this.transform.position = new Vector3(X, Y - Speed * Time.deltaTime, 0);
 
-        if (transform.position.y < -7)
+        if (wallhitter.IsHit(gameObject, HitPointFlag.Bottom))
         {
             Destroy(this.gameObject);
         }
