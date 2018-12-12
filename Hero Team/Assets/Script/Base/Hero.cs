@@ -62,6 +62,7 @@ public class Hero : MonoBehaviour
             isStarted = true;
             transform.parent = null;
             SetSpeed(true);
+            TypeChange(false);
         }
     }
 
@@ -100,7 +101,7 @@ public class Hero : MonoBehaviour
     private void Setting()
     {
         rb.velocity = Vector2.zero;
-        TypeChange(false);
+        TypeChange(true);
         isStarted = false;
     }
     //貫通
