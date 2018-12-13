@@ -160,8 +160,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   goddess: {fileID: 114248778263404068}
+  limitAngle: 90
   scales:
   - {x: 4, y: 0.5}
+  - {x: 3, y: 0.375}
   - {x: 2, y: 0.25}
   - {x: 1, y: 0.125}
 --- !u!212 &212239606250258162
