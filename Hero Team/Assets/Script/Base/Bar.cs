@@ -70,7 +70,6 @@ public class Bar : MonoBehaviour
                 Vector2 ver = collision.transform.root.position - transform.position;
 
                 ball.GetComponent<Rigidbody2D>().velocity = new Vector2(ver.x * (limitAngle / 180), ver.y) * ball.Speed;
-                Debug.Log(Mathf.Atan2(ball.GetComponent<Rigidbody2D>().velocity.y, ball.GetComponent<Rigidbody2D>().velocity.x) *Mathf.Rad2Deg);
             }
         }
     }
