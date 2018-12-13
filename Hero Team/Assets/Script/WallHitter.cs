@@ -23,15 +23,11 @@ public enum HitPointFlag
 
 public class WallHitter : MonoBehaviour
 {
-    private Camera mainCamera;
-    [SerializeField]
-    private GameObject wallPrefab;
     private Wall[] walls;
 
     // Use this for initialization
     private void Start()
     {
-        mainCamera = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<Camera>();
         WallSetting();
     }
 
@@ -43,57 +39,13 @@ public class WallHitter : MonoBehaviour
 
     private void WallSetting()
     {
+        GameObject backGround = GameObject.Find("BackGround");
         walls = new Wall[4];
-        for (int n = 0; n < walls.Length; ++n)
-        {
-            walls[n] = Instantiate(wallPrefab).GetComponent<Wall>();
-        }
-        walls[(int)HitPointNumber.Top].transform.position = GetScreenTop();
-        walls[(int)HitPointNumber.Bottom].transform.position = GetScreenBottom();
-        walls[(int)HitPointNumber.Left].transform.position = GetScreenLeft();
-        walls[(int)HitPointNumber.Right].transform.position = GetScreenRight();
-
-        walls[(int)HitPointNumber.Top].transform.localScale = new Vector2(100, 0.1f);
-        walls[(int)HitPointNumber.Bottom].transform.localScale = new Vector2(100, 0.1f);
-        walls[(int)HitPointNumber.Left].transform.localScale = new Vector2(0.1f, 100);
-        walls[(int)HitPointNumber.Right].transform.localScale = new Vector2(0.1f, 100);
-
+        walls[(int)HitPointNumber.Top] = backGround.transform.Find("TopWall").GetComponent<Wall>();
+        walls[(int)HitPointNumber.Bottom] = backGround.transform.Find("BottomWall").GetComponent<Wall>();
+        walls[(int)HitPointNumber.Right] = backGround.transform.Find("RightWall").GetComponent<Wall>();
+        walls[(int)HitPointNumber.Left] = backGround.transform.Find("LeftWall").GetComponent<Wall>();
         walls[(int)HitPointNumber.Bottom].GetComponent<BoxCollider2D>().isTrigger = true;
-    }
-
-    private Vector3 GetScreenTop()
-    {
-        return new Vector2((GetScreenTopLeft().x + GetScreenBottomRight().x) / 2, GetScreenTopLeft().y);
-    }
-    private Vector3 GetScreenBottom()
-    {
-        return new Vector2((GetScreenTopLeft().x + GetScreenBottomRight().x) / 2, GetScreenBottomRight().y);
-    }
-    private Vector3 GetScreenLeft()
-    {
-        return new Vector2(GetScreenTopLeft().x, (GetScreenTopLeft().y + GetScreenBottomRight().y) / 2);
-    }
-    private Vector3 GetScreenRight()
-    {
-        return new Vector2(GetScreenBottomRight().x, (GetScreenTopLeft().y + GetScreenBottomRight().y) / 2);
-    }
-
-    private Vector3 GetScreenTopLeft()
-    {
-        // 画面の左上を取得
-        Vector2 topLeft = mainCamera.ScreenToWorldPoint(Vector2.zero);
-        // 上下反転させる
-        topLeft.Scale(new Vector2(1f, -1f));
-        return topLeft;
-    }
-
-    private Vector3 GetScreenBottomRight()
-    {
-        // 画面の右下を取得
-        Vector2 bottomRight = mainCamera.ScreenToWorldPoint(new Vector2(Screen.width, Screen.height));
-        // 上下反転させる
-        bottomRight.Scale(new Vector2(1f, -1f));
-        return bottomRight;
     }
 
     //この当たり判定、使えるなら使ってみろ
