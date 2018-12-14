@@ -9,6 +9,7 @@ public enum HitPointNumber
     Bottom,
     Left,
     Right,
+    GameIn
 }
 
 [System.Flags]
@@ -19,6 +20,7 @@ public enum HitPointFlag
     Bottom = 1 << HitPointNumber.Bottom,
     Left = 1 << HitPointNumber.Left,
     Right = 1 << HitPointNumber.Right,
+    GameIn = 1 << HitPointNumber.GameIn
 }
 
 public class WallHitter : MonoBehaviour
@@ -26,7 +28,7 @@ public class WallHitter : MonoBehaviour
     private Wall[] walls;
 
     // Use this for initialization
-    private void Start()
+    private void Awake()
     {
         WallSetting();
     }
@@ -40,11 +42,12 @@ public class WallHitter : MonoBehaviour
     private void WallSetting()
     {
         GameObject backGround = GameObject.Find("BackGround");
-        walls = new Wall[4];
+        walls = new Wall[5];
         walls[(int)HitPointNumber.Top] = backGround.transform.Find("TopWall").GetComponent<Wall>();
         walls[(int)HitPointNumber.Bottom] = backGround.transform.Find("BottomWall").GetComponent<Wall>();
         walls[(int)HitPointNumber.Right] = backGround.transform.Find("RightWall").GetComponent<Wall>();
         walls[(int)HitPointNumber.Left] = backGround.transform.Find("LeftWall").GetComponent<Wall>();
+        walls[(int)HitPointNumber.GameIn] = backGround.GetComponent<Wall>();
         walls[(int)HitPointNumber.Bottom].GetComponent<BoxCollider2D>().isTrigger = true;
     }
 
@@ -52,7 +55,7 @@ public class WallHitter : MonoBehaviour
     public bool IsHit(GameObject myObject, HitPointFlag hitPoint = ~HitPointFlag.None, bool andOperation = false)
     {
         HitPointFlag hpf = 0;
-        for (int n = 0; n < 4; ++n)
+        for (int n = 0; n < 5; ++n)
         {
             if (((int)hitPoint & (1 << n)) != (1 << n)) continue;
             if (!walls[n].Search(myObject)) continue;
@@ -62,7 +65,7 @@ public class WallHitter : MonoBehaviour
         //AND演算
         if (andOperation)
         {
-            for (int n = 0; n < 4; ++n)
+            for (int n = 0; n < 5; ++n)
             {
                 if (((int)hitPoint & (1 << n)) != (1 << n)) continue;
                 if (((int)hpf & (1 << n)) == (1 << n)) continue;
@@ -73,7 +76,7 @@ public class WallHitter : MonoBehaviour
         //OR演算
         else
         {
-            for (int n = 0; n < 4; ++n)
+            for (int n = 0; n < 5; ++n)
             {
                 if (((int)hitPoint & (1 << n)) != (1 << n)) continue;
                 if (((int)hpf & (1 << n)) != (1 << n)) continue;

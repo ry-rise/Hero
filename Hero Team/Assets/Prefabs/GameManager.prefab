@@ -53,6 +53,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0b4ba7c74b0927a428d2e6040563a38d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  DebugCLEARE: 0
+  DebugOVER: 0
 --- !u!114 &114939968881881386
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -64,7 +66,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ce74d422a1f9ce84f89e4ae74951b45a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  wallPrefab: {fileID: 1399693481985620, guid: 93ec77afb68dc0d44b3cc29550e2b902, type: 2}
 --- !u!114 &114984091844520100
 MonoBehaviour:
   m_ObjectHideFlags: 1

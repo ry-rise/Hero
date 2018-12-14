@@ -71,6 +71,19 @@ public abstract class BaseEnemy : MonoBehaviour
         attack = GetComponent<BaseEnemyAttack>();
     }
 
+    public bool GameIn()
+    {
+        if (wallHitter.IsHit(gameObject, HitPointFlag.GameIn))
+        {
+            return true;
+        }
+        else
+        {
+            return false;
+        }
+    }
+    
+
     // Update is called once per frame
     virtual protected void Update()
     {

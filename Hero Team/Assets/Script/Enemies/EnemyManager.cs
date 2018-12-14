@@ -17,20 +17,12 @@ public class EnemyManager : MonoBehaviour
 
     private void Update()
     {
-        if (!GameStart) {
-            if (controller.State == InputController.Status.Pushed)
-            {
-                foreach (BaseEnemy it in Enemies)
-                {
-                    it.stop = BaseEnemy.StopStatus.None;
-                }
-                GameStart = true;
-            }
-        }
+        AllStart();
     }
 
     void FixedUpdate()
     {
+        GameInChecker();
     }
 
     public int GetEnemiesCount()
@@ -49,6 +41,43 @@ public class EnemyManager : MonoBehaviour
         foreach (GameObject it in gameObjects)
         {
             Destroy(it);
+        }
+    }
+
+    public void AllStart()
+    {
+        if (!GameStart)
+        {
+            if (controller.State == InputController.Status.Pushed)
+            {
+                foreach (BaseEnemy it in Enemies)
+                {
+                    if (it.GameIn())
+                    {
+                        it.stop = BaseEnemy.StopStatus.None;
+                    }
+                    else
+                    {
+                        it.stop = BaseEnemy.StopStatus.AttackStoped;
+                    }
+                }
+                GameStart = true;
+            }
+        }
+    }
+
+    public void GameInChecker()
+    {
+        if (GameStart)
+        {
+            foreach (BaseEnemy it in Enemies)
+            {
+                if (it.stop == BaseEnemy.StopStatus.None) continue;
+                if (it.GameIn())
+                {
+                    it.stop = BaseEnemy.StopStatus.None;
+                }
+            }
         }
     }
 }
