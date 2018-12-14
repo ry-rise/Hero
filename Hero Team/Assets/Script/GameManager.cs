@@ -6,6 +6,7 @@ using UnityEngine;
 public class GameManager : MonoBehaviour
 {
     [SerializeField] private bool DebugCLEARE = false; //クリア判定のログがうるさいのでこれで切り替える
+    [SerializeField] private bool DebugOVER = false;   //ゲームオーバー用
     
     private int PlayerLife = 3; //プレイヤー残機
 
@@ -64,7 +65,10 @@ public class GameManager : MonoBehaviour
     //ゲームオーバー時の挙動
     private void GameOver()
     {
-        Debug.Log("Game Over!!");
+        if (DebugOVER)
+        {
+            Debug.Log("Game Over!!");
+        }
     }
 
     public void GameClearOnFlag()
