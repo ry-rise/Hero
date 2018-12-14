@@ -25,6 +25,7 @@ public abstract class BaseEnemy : MonoBehaviour
 
     private void MoveSwitch()
     {
+        if (move == null) return;
         if ((stop & StopStatus.MoveStoped) != StopStatus.MoveStoped)
         {
             if (!move.enabled)
@@ -43,6 +44,7 @@ public abstract class BaseEnemy : MonoBehaviour
 
     private void AttackSwitch()
     {
+        if (attack == null) return;
         if ((stop & StopStatus.AttackStoped) != StopStatus.AttackStoped)
         {
             if (!attack.enabled)
