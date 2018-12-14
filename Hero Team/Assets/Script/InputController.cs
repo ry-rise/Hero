@@ -17,8 +17,11 @@ public class InputController : MonoBehaviour
         Free,
         Pushed,
         Pressing,
-        Released
+        PressingMove,
+        Released,
     }
+
+    private GameObject backGoround;
 
     [SerializeField]
     private bool mouseMode;
@@ -28,6 +31,7 @@ public class InputController : MonoBehaviour
     {
         State = Status.Free;
         mainCamera = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<Camera>();
+        backGoround = GameObject.Find("BackGround");
     }
 
     // Update is called once per frame
@@ -38,6 +42,7 @@ public class InputController : MonoBehaviour
             //タップに関する何か
             if (Input.GetMouseButtonDown(0))
             {
+                if (!BackGroundIsTaped(backGoround)) return;
                 State = Status.Pushed;
                 TouchMovePoint = TouchPoint = mainCamera.ScreenToWorldPoint(Input.mousePosition);
             }
@@ -47,8 +52,16 @@ public class InputController : MonoBehaviour
             }
             else if (Input.GetMouseButton(0))
             {
-                State = Status.Pressing;
-                TouchMovePoint = mainCamera.ScreenToWorldPoint(Input.mousePosition);
+                if (TouchMovePoint != (Vector2)Input.mousePosition)
+                {
+                    if (!BackGroundIsTaped(backGoround)) return;
+                    State = Status.PressingMove;
+                    TouchMovePoint = mainCamera.ScreenToWorldPoint(Input.mousePosition);
+                }
+                else
+                {
+                    State = Status.Pressing;
+                }
             }
             else
             {
@@ -62,12 +75,14 @@ public class InputController : MonoBehaviour
                 //タップに関する何か
                 if (Input.touches[0].phase == TouchPhase.Began)
                 {
+                    if (!BackGroundIsTaped(backGoround)) return;
                     State = Status.Pushed;
                     TouchMovePoint = TouchPoint = mainCamera.ScreenToWorldPoint(Input.touches[0].position);
                 }
                 else if (Input.touches[0].phase == TouchPhase.Moved)
                 {
-                    State = Status.Pressing;
+                    if (!BackGroundIsTaped(backGoround)) return;
+                    State = Status.PressingMove;
                     TouchMovePoint = mainCamera.ScreenToWorldPoint(Input.touches[0].position);
                 }
                 else if (Input.touches[0].phase == TouchPhase.Stationary)
@@ -84,5 +99,29 @@ public class InputController : MonoBehaviour
                 State = Status.Free;
             }
         }
+    }
+
+    private bool BackGroundIsTaped(GameObject myObject)
+    {
+        int srcId = myObject.GetInstanceID();
+        Vector3 pos;
+        if (mouseMode)
+        {
+            pos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+        }
+        else
+        {
+            pos = Camera.main.ScreenToWorldPoint(Input.touches[0].position);
+        }
+        Collider2D[] colliders = Physics2D.OverlapPointAll(pos);
+        foreach(Collider2D collider in colliders)
+        {
+            int dstId = collider.gameObject.GetInstanceID();
+            if (srcId == dstId)
+            {
+                return true;
+            }
+        }
+        return false;
     }
 }

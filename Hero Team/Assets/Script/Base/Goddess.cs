@@ -94,7 +94,7 @@ public class Goddess : MonoBehaviour {
 
     private ControlStatus OnController()
     {
-        if (controller.State == InputController.Status.Pressing && controller.TouchPoint.y < tapPositionY)
+        if ((controller.State == InputController.Status.Pressing || controller.State == InputController.Status.PressingMove) && controller.TouchPoint.y < tapPositionY)
         {
             if (controller.TouchMovePoint.y < tapPositionY)
             {
