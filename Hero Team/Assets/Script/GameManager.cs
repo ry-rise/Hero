@@ -40,14 +40,15 @@ public class GameManager : MonoBehaviour
         {
             //画面がタップされるまで
             case GameStatus.Wait:
-                Wait();
+                GameWait();
                 break;
             //ゲーム中
             case GameStatus.Play:
-                Play();
+                GamePlay();
                 break;
             //一時停止
             case GameStatus.Pause:
+                GamePause();
                 break;
             //敵残数が０になったらクリア
             case GameStatus.Clear:
@@ -74,32 +75,42 @@ public class GameManager : MonoBehaviour
     }
 
     //ゲーム開始前
-    private void Wait()
+    private void GameWait()
     {
+        //画面がタップされたら、スタートする
         if (Controller.State == InputController.Status.Pushed)
         {
-            Enemy.AllStart();
-            Player.BallStart();
+            Enemy.AllStart();   //敵が動き出す
+            Player.BallStart(); //勇者が動き出す
             GameState = RequestGameState = GameStatus.Play;
         }
     }
 
     //ゲーム中
-    private void Play()
-    {
+    private void GamePlay()
+    {   
+        //ゲームクリアの指示が来たら※敵マネージャーが指示を出す
         if (RequestGameState == GameStatus.Clear)
         {
             GameState = GameStatus.Clear;
         }
+        //ゲームオーバーの指示が来たら※敵マネージャー、もしくは女神が指示を出す
         else if (RequestGameState == GameStatus.GameOver)
         {
             GameState = GameStatus.GameOver;
         }
+        //仕切り直しの指示が来たら※女神が指示を出す
         else if (RequestGameState == GameStatus.Wait)
         {
-            Enemy.AllStop();
+            Enemy.AllStop();    //敵を止める
             GameState = GameStatus.Wait;
         }
+    }
+
+    //一時停止時の挙動
+    private void GamePause()
+    {
+
     }
 
     //ゲームクリア時の挙動
