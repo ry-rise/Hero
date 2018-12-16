@@ -10,36 +10,54 @@ public class GameManager : MonoBehaviour
     
     private int PlayerLife = 3; //プレイヤー残機
 
-    private EnemyManager Enemy;
-    GameStatus gameState;
+    private EnemyManager Enemy; //エネミーマネージャー
+    private Goddess Player; //プレイヤーマネージャー
+    private InputController Controller; //操作
+
+    private GameStatus gameState;   //状態
+    public GameStatus RequestGameState { get; set; } //外部から状態を変えたい場合、一度ここを通すこと
 
     public enum GameStatus
     {
-        Play,
-        Clear,
-        GameOver
+        Wait,   //ゲーム中（スタート前）
+        Play,   //ゲーム中
+        Pause,  //一時停止
+        Clear,  //クリア
+        GameOver    //ゲームオーバー
     }
     
     private void Awake()
     {
         Enemy = GameObject.Find("EnemyManager").GetComponent<EnemyManager>();
-        gameState = GameStatus.Play;
+        Player = GameObject.Find("Goddess").GetComponent<Goddess>();
+        Controller = GetComponent<InputController>();
+        gameState = RequestGameState = GameStatus.Wait;
     }
 
     private void Update()
     {
-        Enemy.GetEnemiesCount();
-        //敵残数が０になったらクリア
-        if (gameState == GameStatus.Clear)
+        switch (gameState)
         {
-            GameClear();
+            //画面がタップされるまで
+            case GameStatus.Wait:
+                Wait();
+                break;
+            //ゲーム中
+            case GameStatus.Play:
+                Play();
+                break;
+            //一時停止
+            case GameStatus.Pause:
+                break;
+            //敵残数が０になったらクリア
+            case GameStatus.Clear:
+                GameClear();
+                break;
+            //プレイヤーの残機が０以下になったらゲームオーバー
+            case GameStatus.GameOver:
+                GameOver();
+                break;
         }
-        //プレイヤーの残機が０以下になったらゲームオーバー
-        else if (gameState == GameStatus.GameOver)
-        {
-            GameOver();
-        }
-
     }
 
     //プレイヤーのライフが減る処理
@@ -48,9 +66,38 @@ public class GameManager : MonoBehaviour
         PlayerLife--;
         if (PlayerLife <= 0)
         {
-            GameOverOnFlag();
+            RequestGameState = GameStatus.GameOver;
         }
         Debug.Log("Player Life : " + PlayerLife);
+    }
+
+    //ゲーム開始前
+    private void Wait()
+    {
+        if (Controller.State == InputController.Status.Pushed)
+        {
+            Enemy.AllStart();
+            Player.BallStart();
+            gameState = RequestGameState = GameStatus.Play;
+        }
+    }
+
+    //ゲーム中
+    private void Play()
+    {
+        if (RequestGameState == GameStatus.Clear)
+        {
+            gameState = GameStatus.Clear;
+        }
+        else if (RequestGameState == GameStatus.GameOver)
+        {
+            gameState = GameStatus.GameOver;
+        }
+        else if (RequestGameState == GameStatus.Wait)
+        {
+            Enemy.AllStop();
+            gameState = GameStatus.Wait;
+        }
     }
 
     //ゲームクリア時の挙動
@@ -69,15 +116,5 @@ public class GameManager : MonoBehaviour
         {
             Debug.Log("Game Over!!");
         }
-    }
-
-    public void GameClearOnFlag()
-    {
-        gameState = GameStatus.Clear;
-    }
-
-    public void GameOverOnFlag()
-    {
-        gameState = GameStatus.GameOver;
     }
 }

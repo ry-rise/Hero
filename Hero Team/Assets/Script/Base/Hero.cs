@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class Hero : MonoBehaviour
 {
-    private InputController controller;
     private bool isStarted;
     private WallHitter wallHitter;
     private Rigidbody2D rb;
@@ -23,7 +22,6 @@ public class Hero : MonoBehaviour
     {
         goddess = GameObject.FindGameObjectWithTag("Player").GetComponent<Goddess>();
         goddess.Balls.Add(this);
-        controller = GameObject.Find("GameManager").GetComponent<InputController>();
         wallHitter = GameObject.Find("GameManager").GetComponent<WallHitter>();
         rb = GetComponent<Rigidbody2D>();
         Setting();
@@ -40,10 +38,6 @@ public class Hero : MonoBehaviour
 
     private void Update()
     {
-        if (!isStarted)
-        {
-            StartGame();
-        }
         //Debug用
         if (Input.GetKeyDown(KeyCode.Alpha1))
         {
@@ -55,15 +49,12 @@ public class Hero : MonoBehaviour
         }
     }
 
-    private void StartGame()
+    public void StartGame()
     {
-        if (controller.State == InputController.Status.Pushed)
-        {
-            isStarted = true;
-            transform.parent = null;
-            SetSpeed(true);
-            TypeChange(false);
-        }
+        isStarted = true;
+        transform.parent = null;
+        SetSpeed(true);
+        TypeChange(false);
     }
 
     private void Moving()

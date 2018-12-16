@@ -6,33 +6,29 @@ public class EnemyManager : MonoBehaviour
     private List<BaseEnemy> enemies = new List<BaseEnemy>();
     public List<BaseEnemy> Enemies { get { return enemies; } set { enemies = value; } }
 
-    private InputController controller;
-    public bool GameStart { get; private set; }
+    private WallHitter wallHitter;
+    private GameManager gameManager;
 
     private void Start()
     {
-        controller = GameObject.Find("GameManager").GetComponent<InputController>();
+        wallHitter = GameObject.Find("GameManager").GetComponent<WallHitter>();
+        gameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
         AllStop();
     }
 
     private void Update()
     {
-        AllStart();
     }
 
     void FixedUpdate()
     {
         GameInChecker();
-    }
-
-    public int GetEnemiesCount()
-    {
-        return Enemies.Count;
+        LineOutChecker();
+        GameClearChecker();
     }
 
     public void AllStop()
     {
-        GameStart = false;
         foreach (BaseEnemy it in Enemies)
         {
             it.stop = BaseEnemy.StopStatus.ALL;
@@ -46,37 +42,50 @@ public class EnemyManager : MonoBehaviour
 
     public void AllStart()
     {
-        if (!GameStart)
+        foreach (BaseEnemy it in Enemies)
         {
-            if (controller.State == InputController.Status.Pushed)
+            if (wallHitter.IsHit(it.gameObject, HitPointFlag.GameIn))
             {
-                foreach (BaseEnemy it in Enemies)
-                {
-                    if (it.GameIn())
-                    {
-                        it.stop = BaseEnemy.StopStatus.None;
-                    }
-                    else
-                    {
-                        it.stop = BaseEnemy.StopStatus.AttackStoped;
-                    }
-                }
-                GameStart = true;
+                it.stop = BaseEnemy.StopStatus.None;
+            }
+            else
+            {
+                it.stop = BaseEnemy.StopStatus.AttackStoped;
             }
         }
     }
 
-    public void GameInChecker()
+    private void GameClearChecker()
     {
-        if (GameStart)
+        if (gameManager.RequestGameState != GameManager.GameStatus.Play) return;
+        if (Enemies.Count == 0)
         {
-            foreach (BaseEnemy it in Enemies)
+            gameManager.RequestGameState = GameManager.GameStatus.Clear;
+        }
+    }
+
+    private void GameInChecker()
+    {
+        foreach (BaseEnemy it in Enemies)
+        {
+            if (it.stop != BaseEnemy.StopStatus.AttackStoped) continue;
+            if (wallHitter.IsHit(it.gameObject, HitPointFlag.GameIn))
             {
-                if (it.stop == BaseEnemy.StopStatus.None) continue;
-                if (it.GameIn())
-                {
-                    it.stop = BaseEnemy.StopStatus.None;
-                }
+                it.stop = BaseEnemy.StopStatus.None;
+            }
+        }
+    }
+
+    private void LineOutChecker()
+    {
+        foreach (BaseEnemy it in Enemies)
+        {
+            if (it.stop == BaseEnemy.StopStatus.MoveStoped || it.stop == BaseEnemy.StopStatus.ALL) continue;
+            if (wallHitter.IsHit(it.gameObject, HitPointFlag.Bottom))
+            {
+                it.stop = BaseEnemy.StopStatus.None;
+                gameManager.RequestGameState = GameManager.GameStatus.GameOver;
+                break;
             }
         }
     }
