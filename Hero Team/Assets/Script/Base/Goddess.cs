@@ -126,13 +126,15 @@ public class Goddess : MonoBehaviour {
 
     private void BallSet(bool isStarted = false)
     {
-        Instantiate(ballPrefab, status.FirstPosition, Quaternion.identity);
         if (!isStarted)
         {
-            gameManager.LostLife(); //ライフを減らす処理
+            if (gameManager.GameState == GameManager.GameStatus.GameOver || gameManager.RequestGameState == GameManager.GameStatus.GameOver) return;
+            bool flag = gameManager.LostLife(); //ライフを減らす処理
+            if (flag) return;
             gameManager.RequestGameState = GameManager.GameStatus.Wait;
             bar.ResetScale();       //バーのサイズをリセット
         }
+        Instantiate(ballPrefab, status.FirstPosition, Quaternion.identity);
     }
 
     public void SmashCounter(int value)

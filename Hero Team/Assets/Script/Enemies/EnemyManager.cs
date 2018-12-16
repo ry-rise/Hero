@@ -57,7 +57,7 @@ public class EnemyManager : MonoBehaviour
 
     private void GameClearChecker()
     {
-        if (gameManager.RequestGameState != GameManager.GameStatus.Play) return;
+        if (gameManager.GameState != GameManager.GameStatus.Play) return;
         if (Enemies.Count == 0)
         {
             gameManager.RequestGameState = GameManager.GameStatus.Clear;
@@ -78,12 +78,12 @@ public class EnemyManager : MonoBehaviour
 
     private void LineOutChecker()
     {
+        if (gameManager.GameState != GameManager.GameStatus.Play) return;
         foreach (BaseEnemy it in Enemies)
         {
             if (it.stop == BaseEnemy.StopStatus.MoveStoped || it.stop == BaseEnemy.StopStatus.ALL) continue;
             if (wallHitter.IsHit(it.gameObject, HitPointFlag.Bottom))
             {
-                it.stop = BaseEnemy.StopStatus.None;
                 gameManager.RequestGameState = GameManager.GameStatus.GameOver;
                 break;
             }

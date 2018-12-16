@@ -14,7 +14,7 @@ public class GameManager : MonoBehaviour
     private Goddess Player; //プレイヤーマネージャー
     private InputController Controller; //操作
 
-    private GameStatus gameState;   //状態
+    public GameStatus GameState { get; private set; }   //状態
     public GameStatus RequestGameState { get; set; } //外部から状態を変えたい場合、一度ここを通すこと
 
     public enum GameStatus
@@ -31,12 +31,12 @@ public class GameManager : MonoBehaviour
         Enemy = GameObject.Find("EnemyManager").GetComponent<EnemyManager>();
         Player = GameObject.Find("Goddess").GetComponent<Goddess>();
         Controller = GetComponent<InputController>();
-        gameState = RequestGameState = GameStatus.Wait;
+        GameState = RequestGameState = GameStatus.Wait;
     }
 
     private void Update()
     {
-        switch (gameState)
+        switch (GameState)
         {
             //画面がタップされるまで
             case GameStatus.Wait:
@@ -61,14 +61,16 @@ public class GameManager : MonoBehaviour
     }
 
     //プレイヤーのライフが減る処理
-    public void LostLife()
+    public bool LostLife()
     {
         PlayerLife--;
         if (PlayerLife <= 0)
         {
             RequestGameState = GameStatus.GameOver;
+            return true;    //ゲームオーバー
         }
         Debug.Log("Player Life : " + PlayerLife);
+        return false;   //ゲーム続行
     }
 
     //ゲーム開始前
@@ -78,7 +80,7 @@ public class GameManager : MonoBehaviour
         {
             Enemy.AllStart();
             Player.BallStart();
-            gameState = RequestGameState = GameStatus.Play;
+            GameState = RequestGameState = GameStatus.Play;
         }
     }
 
@@ -87,16 +89,16 @@ public class GameManager : MonoBehaviour
     {
         if (RequestGameState == GameStatus.Clear)
         {
-            gameState = GameStatus.Clear;
+            GameState = GameStatus.Clear;
         }
         else if (RequestGameState == GameStatus.GameOver)
         {
-            gameState = GameStatus.GameOver;
+            GameState = GameStatus.GameOver;
         }
         else if (RequestGameState == GameStatus.Wait)
         {
             Enemy.AllStop();
-            gameState = GameStatus.Wait;
+            GameState = GameStatus.Wait;
         }
     }
 
