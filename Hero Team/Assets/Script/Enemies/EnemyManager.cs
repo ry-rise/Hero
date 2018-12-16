@@ -16,11 +16,13 @@ public class EnemyManager : MonoBehaviour
     {
         wallHitter = GameObject.Find("GameManager").GetComponent<WallHitter>();
         gameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
-        foreach (EnemiesSetStatus it in enemiesList.Status)
-        {
-            GameObject prefab = AssetDatabase.LoadAssetAtPath<GameObject>("Assets/Prefabs/Enemies/" + it.EnemyName + ".prefab");
-            GameObject enemy = Instantiate(prefab, it.Position, Quaternion.identity);
-            enemy.GetComponent<BaseEnemy>().stop = BaseEnemy.StopStatus.ALL;
+        if (enemiesList != null) {
+            foreach (EnemiesSetStatus it in enemiesList.Status)
+            {
+                GameObject prefab = AssetDatabase.LoadAssetAtPath<GameObject>("Assets/Prefabs/Enemies/" + it.EnemyName + ".prefab");
+                GameObject enemy = Instantiate(prefab, it.Position, Quaternion.identity);
+                enemy.GetComponent<BaseEnemy>().stop = BaseEnemy.StopStatus.ALL;
+            }
         }
     }
 
