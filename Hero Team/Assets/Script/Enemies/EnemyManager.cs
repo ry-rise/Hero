@@ -1,8 +1,11 @@
 ﻿using System.Collections.Generic;
 using UnityEngine;
+using UnityEditor;
 
 public class EnemyManager : MonoBehaviour
 {
+    [SerializeField]
+    private EnemiesDataTable enemiesList;   //呼び出す敵たち
     private List<BaseEnemy> enemies = new List<BaseEnemy>();
     public List<BaseEnemy> Enemies { get { return enemies; } set { enemies = value; } }
 
@@ -13,7 +16,12 @@ public class EnemyManager : MonoBehaviour
     {
         wallHitter = GameObject.Find("GameManager").GetComponent<WallHitter>();
         gameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
-        AllStop();
+        foreach (EnemiesSetStatus it in enemiesList.Status)
+        {
+            GameObject prefab = AssetDatabase.LoadAssetAtPath<GameObject>("Assets/Prefabs/Enemies/" + it.EnemyName + ".prefab");
+            GameObject enemy = Instantiate(prefab, it.Position, Quaternion.identity);
+            enemy.GetComponent<BaseEnemy>().stop = BaseEnemy.StopStatus.ALL;
+        }
     }
 
     private void Update()
