@@ -6,8 +6,8 @@ using UnityEngine.SceneManagement;
 //コクブ
 public class GameManager : MonoBehaviour
 {
-    [SerializeField] private bool DebugCLEARE = false; //クリア判定のログがうるさいのでこれで切り替える
-    [SerializeField] private bool DebugOVER = false;   //ゲームオーバー用
+    private bool FlagCLEARE = true; 
+    private bool FlagOVER =   true;   
     
     private int PlayerLife = 3; //プレイヤー残機
 
@@ -119,19 +119,21 @@ public class GameManager : MonoBehaviour
     //ゲームクリア時の挙動
     private void GameClear()
     {
-        _BackGroundScroll.ScrollFlag = true;
-        if (DebugCLEARE)
+        if (FlagCLEARE)
         {
+            _BackGroundScroll.ScrollFlag = true;
             Debug.Log("Game CLEAR!!");
+            FlagCLEARE = false;
         }
     }
 
     //ゲームオーバー時の挙動
     private void GameOver()
     {
-        if (DebugOVER)
+        if (FlagOVER)
         {
             Debug.Log("Game Over!!");
+            FlagOVER = false;
         }
     }
 }
