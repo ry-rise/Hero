@@ -119,7 +119,7 @@ public class GameManager : MonoBehaviour
     //ゲームクリア時の挙動
     private void GameClear()
     {
-        _BackGroundScroll.Scroll();
+        _BackGroundScroll.ScrollFlag = true;
         if (DebugCLEARE)
         {
             Debug.Log("Game CLEAR!!");
