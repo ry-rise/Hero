@@ -41,6 +41,7 @@ GameObject:
   - component: {fileID: 114680276903459900}
   - component: {fileID: 114243214818511766}
   - component: {fileID: 61592869344077528}
+  - component: {fileID: 114560901171420914}
   m_Layer: 0
   m_Name: BackGround
   m_TagString: Untagged
@@ -263,7 +264,7 @@ BoxCollider2D:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
     oldSize: {x: 5.6842103, y: 10.105263}
-    newSize: {x: 0.16, y: 0.16}
+    newSize: {x: 5.712, y: 10.2}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
     adaptiveTiling: 0
@@ -327,6 +328,17 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 961dedca7306b69478662cc5d0661797, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &114560901171420914
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1497654932181542}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 457350ccd24b2b9468320ca5a37dabc8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!114 &114680276903459900
@@ -423,7 +435,7 @@ SpriteRenderer:
   m_ReflectionProbeUsage: 1
   m_RenderingLayerMask: 4294967295
   m_Materials:
-  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 10306, guid: 0000000000000000f000000000000000, type: 0}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -444,11 +456,11 @@ SpriteRenderer:
   m_SortingLayer: 1
   m_SortingOrder: 1
   m_Sprite: {fileID: 21300000, guid: e3f87840e05688c47b071a5d6b60462b, type: 3}
-  m_Color: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 0.16, y: 0.16}
+  m_Size: {x: 5.712, y: 10.2}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
