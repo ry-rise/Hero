@@ -6,8 +6,11 @@ using UnityEngine.SceneManagement;
 //コクブ
 public class GameManager : MonoBehaviour
 {
-    private bool FlagCLEARE = true; 
-    private bool FlagOVER =   true;   
+    [SerializeField] bool DebugClear = false;
+    [SerializeField] bool DebugGameOver = false;
+
+    private bool FlagWaveCLEARE = true; //一回しか呼ばせないために
+    private bool FlagGameOVER =   true;
     
     private int PlayerLife = 3; //プレイヤー残機
 
@@ -55,7 +58,7 @@ public class GameManager : MonoBehaviour
                 break;
             //敵残数が０になったらクリア
             case GameStatus.Clear:
-                GameClear();
+                WaveClear();
                 break;
             //プレイヤーの残機が０以下になったらゲームオーバー
             case GameStatus.GameOver:
@@ -116,24 +119,44 @@ public class GameManager : MonoBehaviour
 
     }
 
+    //Waveクリア時の挙動
+    private void WaveClear()
+    {
+        if (FlagWaveCLEARE)
+        {
+            _BackGroundScroll.ScrollFlag = true;
+            Debug.Log("WAVE CLEAR!!");
+            FlagWaveCLEARE = false;
+        }
+    }
+
     //ゲームクリア時の挙動
     private void GameClear()
     {
-        if (FlagCLEARE)
+        if (DebugClear == false)
         {
-            _BackGroundScroll.ScrollFlag = true;
+            SceneManager.LoadScene("GameClear");
+        }
+        else
+        {
             Debug.Log("Game CLEAR!!");
-            FlagCLEARE = false;
         }
     }
 
     //ゲームオーバー時の挙動
     private void GameOver()
     {
-        if (FlagOVER)
+        if (DebugGameOver == false)
         {
-            Debug.Log("Game Over!!");
-            FlagOVER = false;
+            SceneManager.LoadScene("GameOver");
+        }
+        else
+        {
+            if (FlagGameOVER)
+            {
+                Debug.Log("Game Over!!");
+                FlagGameOVER = false;
+            }
         }
     }
 }
