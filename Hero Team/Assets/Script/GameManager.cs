@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 //コクブ
 public class GameManager : MonoBehaviour
@@ -12,6 +13,7 @@ public class GameManager : MonoBehaviour
 
     private EnemyManager Enemy; //エネミーマネージャー
     private Goddess Player; //プレイヤーマネージャー
+    private BackGroundScroll _BackGroundScroll;
     private InputController Controller; //操作
 
     public GameStatus GameState { get; private set; }   //状態
@@ -30,6 +32,7 @@ public class GameManager : MonoBehaviour
     {
         Enemy = GameObject.Find("EnemyManager").GetComponent<EnemyManager>();
         Player = GameObject.Find("Goddess").GetComponent<Goddess>();
+        _BackGroundScroll = GameObject.Find("BackGround").GetComponent<BackGroundScroll>();
         Controller = GetComponent<InputController>();
         GameState = RequestGameState = GameStatus.Wait;
     }
@@ -116,6 +119,7 @@ public class GameManager : MonoBehaviour
     //ゲームクリア時の挙動
     private void GameClear()
     {
+        _BackGroundScroll.Scroll();
         if (DebugCLEARE)
         {
             Debug.Log("Game CLEAR!!");
