@@ -15,7 +15,7 @@ public class GameManager : MonoBehaviour
     private int PlayerLife = 3; //プレイヤー残機
 
     private EnemyManager Enemy; //エネミーマネージャー
-    private Goddess Player; //プレイヤーマネージャー
+    private PlayerManager Player; //プレイヤーマネージャー
     private BackGroundScroll _BackGroundScroll;
     private InputController Controller; //操作
 
@@ -34,7 +34,7 @@ public class GameManager : MonoBehaviour
     private void Awake()
     {
         Enemy = GameObject.Find("EnemyManager").GetComponent<EnemyManager>();
-        Player = GameObject.Find("Goddess").GetComponent<Goddess>();
+        Player = GameObject.Find("PlayerManager").GetComponent<PlayerManager>();
         _BackGroundScroll = GameObject.Find("BackGround").GetComponent<BackGroundScroll>();
         Controller = GetComponent<InputController>();
         GameState = RequestGameState = GameStatus.Wait;

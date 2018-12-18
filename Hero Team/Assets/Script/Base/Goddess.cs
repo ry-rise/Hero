@@ -4,28 +4,20 @@ using UnityEngine;
 
 public class Goddess : MonoBehaviour {
 
-    private GameManager gameManager;
-
-    private InputController controller;
-    public List<Hero> Balls;
-    [SerializeField]
-    private GameObject ballPrefab;
     [SerializeField]
     private SpriteRenderer backLight;
     [SerializeField]
     private GameObject linePrefab;
     private GameObject line;
-    [SerializeField]
-    private GameObject tapLinePrefab;
-    [SerializeField]
-    private float tapPositionY;
-    [SerializeField]
-    private Bar bar;
+    private PlayerManager manager;
+    private InputController controller;
+    private GameObject bar;
 
     private int layerMask = 1 << 9 | 1 << 13;
 
     [SerializeField]
     private Edit status;
+    public Vector2 FirstPosition { get { return status.FirstPosition; } }
     public int StartAngle { get { return status.StartAngle; } }
     public int SmashCountMax { get { return status.SmashCount; } }
     private int smashCount;
@@ -52,20 +44,12 @@ public class Goddess : MonoBehaviour {
     // Use this for initialization
     private void Awake()
     {
-        gameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
+        manager = GameObject.Find("PlayerManager").GetComponent<PlayerManager>();
         controller = GameObject.Find("GameManager").GetComponent<InputController>();
+        bar = transform.Find("Bar").gameObject;
         BackLightChanged(SmashPercent);
         smashVector = new Vector2(0, 1);
         line = Instantiate(linePrefab);
-        Instantiate(tapLinePrefab, new Vector2(0, tapPositionY), Quaternion.identity);
-    }
-
-    private void Start()
-    {
-        if (Balls.Count == 0)
-        {
-            BallSet(true);
-        }
     }
 
     // Update is called once per frame
@@ -75,24 +59,7 @@ public class Goddess : MonoBehaviour {
         SmashWaiting();
     }
 
-    private void FixedUpdate()
-    {
-        if (Balls.Count == 0)
-        {
-            BallSet();
-        }
-    }
-
-    public void BallStart()
-    {
-        if (Balls.Count == 0) return;
-        foreach (Hero it in Balls)
-        {
-            it.StartGame();
-        }
-    }
-
-    private enum ControlStatus
+    public enum ControlStatus
     {
         None,
         Bar,
@@ -101,9 +68,11 @@ public class Goddess : MonoBehaviour {
 
     private ControlStatus OnController()
     {
-        if ((controller.State == InputController.Status.Pressing || controller.State == InputController.Status.PressingMove) && controller.TouchPoint.y < tapPositionY)
+        if ((controller.State == InputController.Status.Pressing || 
+            controller.State == InputController.Status.PressingMove) &&
+            controller.TouchPoint.y < manager.TapPositionY)
         {
-            if (controller.TouchMovePoint.y < tapPositionY)
+            if (controller.TouchMovePoint.y < manager.TapPositionY)
             {
                 return ControlStatus.Bar;
             }
@@ -122,19 +91,6 @@ public class Goddess : MonoBehaviour {
             return;
         }
         transform.position = new Vector2(controller.TouchMovePoint.x, transform.position.y);
-    }
-
-    private void BallSet(bool isStarted = false)
-    {
-        if (!isStarted)
-        {
-            if (gameManager.GameState == GameManager.GameStatus.GameOver || gameManager.RequestGameState == GameManager.GameStatus.GameOver) return;
-            bool flag = gameManager.LostLife(); //ライフを減らす処理
-            if (flag) return;
-            gameManager.RequestGameState = GameManager.GameStatus.Wait;
-            bar.ResetScale();       //バーのサイズをリセット
-        }
-        Instantiate(ballPrefab, status.FirstPosition, Quaternion.identity);
     }
 
     public void SmashCounter(int value)

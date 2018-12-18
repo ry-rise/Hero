@@ -343,6 +343,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ScrollFlag: 0
   EndTime: 10
+  ScrollCanvas: {fileID: 0}
 --- !u!114 &114680276903459900
 MonoBehaviour:
   m_ObjectHideFlags: 1

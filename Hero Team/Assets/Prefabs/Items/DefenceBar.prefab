@@ -23,7 +23,7 @@ GameObject:
   - component: {fileID: 61508329893173858}
   - component: {fileID: 114527161381203672}
   m_Layer: 0
-  m_Name: Item
+  m_Name: DefenceBar
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

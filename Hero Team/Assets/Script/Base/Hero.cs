@@ -11,7 +11,7 @@ public class Hero : MonoBehaviour
     private float penetratTime;
     private float penetratTimeCount;
     private bool isPenetrated;
-    private Goddess goddess;
+    private PlayerManager manager;
     [SerializeField]
     private StatusEdit status;
     public float Speed { get { return status.Speed; } }
@@ -20,8 +20,8 @@ public class Hero : MonoBehaviour
     // Use this for initialization
     void Awake()
     {
-        goddess = GameObject.FindGameObjectWithTag("Player").GetComponent<Goddess>();
-        goddess.Balls.Add(this);
+        manager = GameObject.Find("PlayerManager").GetComponent<PlayerManager>();
+        manager.Balls.Add(this);
         wallHitter = GameObject.Find("GameManager").GetComponent<WallHitter>();
         rb = GetComponent<Rigidbody2D>();
         Setting();
@@ -72,7 +72,7 @@ public class Hero : MonoBehaviour
     {
         if (isFirsted)
         {
-            rb.velocity = new Vector2(Mathf.Cos(goddess.StartAngle * Mathf.Deg2Rad), Mathf.Sin(goddess.StartAngle * Mathf.Deg2Rad)) * Speed;
+            rb.velocity = new Vector2(Mathf.Cos(manager.StartAngle * Mathf.Deg2Rad), Mathf.Sin(manager.StartAngle * Mathf.Deg2Rad)) * Speed;
         }
         else
         {
@@ -84,7 +84,7 @@ public class Hero : MonoBehaviour
             }
             else
             {
-                rb.velocity = new Vector2(Mathf.Cos(goddess.StartAngle * Mathf.Deg2Rad), Mathf.Sin(goddess.StartAngle * Mathf.Deg2Rad)) * Speed;
+                rb.velocity = new Vector2(Mathf.Cos(manager.StartAngle * Mathf.Deg2Rad), Mathf.Sin(manager.StartAngle * Mathf.Deg2Rad)) * Speed;
             }
         }
     }
@@ -128,7 +128,7 @@ public class Hero : MonoBehaviour
 
     private void FallOut()
     {
-        goddess.Balls.Remove(this);
+        manager.Balls.Remove(this);
         Destroy(gameObject);
     }
 }

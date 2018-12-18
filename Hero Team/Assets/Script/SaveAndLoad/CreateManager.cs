@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEditor;
 
 public class CreateManager : MonoBehaviour
 {
@@ -46,5 +47,6 @@ public class CreateManager : MonoBehaviour
             }
         }
         Debug.Log("記録成功");
+        AssetDatabase.SaveAssets();
     }
 }
