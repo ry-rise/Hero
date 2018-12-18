@@ -85,5 +85,10 @@ public abstract class BaseEnemy : MonoBehaviour
         {
             HP -= target.transform.root.GetComponent<Hero>().Power;
         }
+        else if (target.gameObject.transform.root.tag == "PlayerBullet")
+        {
+            Destroy(target.gameObject);
+            HP -= 1;
+        }
     }
 }

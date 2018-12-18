@@ -55,13 +55,3 @@ MonoBehaviour:
   tapLinePrefab: {fileID: 1374147327708728, guid: 14070a1ec32e4074bbc24d896156c231,
     type: 2}
   tapPositionY: -3.5
-  items:
-  - itemObject: {fileID: 1452063299987798, guid: 5c46f480aa578954c9f61d1c1623a52b,
-      type: 2}
-    effect: 0
-  - itemObject: {fileID: 1452063299987798, guid: d33bec36c4cbb7d4fb0e7a15ef62e95b,
-      type: 2}
-    effect: 1
-  - itemObject: {fileID: 1452063299987798, guid: e28be9365fbfc094fbb0b50a0a06dfd9,
-      type: 2}
-    effect: 2

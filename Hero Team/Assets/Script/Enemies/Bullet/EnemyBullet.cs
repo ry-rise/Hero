@@ -6,8 +6,6 @@ public class EnemyBullet : MonoBehaviour
 {
     [SerializeField]
     private float Speed;
-    private float X;
-    private float Y;
     private WallHitter wallhitter;
 
     // Use this for initialization
@@ -15,27 +13,31 @@ public class EnemyBullet : MonoBehaviour
     {
         wallhitter = GameObject.Find("GameManager").GetComponent<WallHitter>();
     }
-
-    // Update is called once per frame
-    void Update()
+    private void FixedUpdate()
     {
-        X = this.transform.position.x;
-        Y = this.transform.position.y;
-        this.transform.position = new Vector3(X, Y - Speed * Time.deltaTime, 0);
+        transform.Translate(new Vector2(0, Speed * Time.fixedDeltaTime));
 
-        if (wallhitter.IsHit(gameObject, HitPointFlag.Bottom))
+        if (wallhitter.IsHit(gameObject, HitPointFlag.Bottom | HitPointFlag.Top))
         {
-            Destroy(this.gameObject);
+            Destroy(gameObject);
         }
-
     }
 
+    public void ReturnMove()
+    {
+        Speed *= -1;
+        gameObject.tag = "PlayerBullet";
+    }
+    
     void OnTriggerEnter2D(Collider2D Target)
     {
-        if (Target.gameObject.tag == "Bar")
+        if (gameObject.tag == "EnemyBullet")
         {
-            Target.GetComponent<Bar>().Damage(1);
-            Destroy(this.gameObject);
+            if (Target.gameObject.tag == "Bar")
+            {
+                bool result = Target.GetComponent<Bar>().Damage(1, this);
+                if (result) Destroy(gameObject);
+            }
         }
     }
 }

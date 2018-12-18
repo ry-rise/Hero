@@ -79,6 +79,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   itemObject: {fileID: 1452063299987798, guid: e28be9365fbfc094fbb0b50a0a06dfd9, type: 2}
+  time: 1000
 --- !u!114 &114713588725688738
 MonoBehaviour:
   m_ObjectHideFlags: 1

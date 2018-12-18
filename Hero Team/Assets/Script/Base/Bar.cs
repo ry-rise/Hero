@@ -31,21 +31,34 @@ public class Bar : MonoBehaviour
         }
     }
 
+    public bool IsCounterAttacked { get; set; }
+
     // Use this for initialization
     void Start ()
     {
+        IsCounterAttacked = false;
         transform.localScale = scales[ScaleLevel] / goddess.transform.lossyScale;
     }
-	
-	// Update is called once per frame
-	void Update () {
-		
-	}
-    
-    public void Damage(int value)
+
+    // Update is called once per frame
+    void Update()
     {
-        ScaleLevel += value;
-        transform.localScale = scales[ScaleLevel] / goddess.transform.lossyScale;
+
+    }
+    
+    public bool Damage(int value, EnemyBullet bullet = null)
+    {
+        if (!IsCounterAttacked)
+        {
+            ScaleLevel += value;
+            transform.localScale = scales[ScaleLevel] / goddess.transform.lossyScale;
+            return true;
+        }
+        else
+        {
+            bullet.ReturnMove();
+            return false;
+        }
     }
 
     public void Heal(int value)
