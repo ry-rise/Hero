@@ -4,9 +4,13 @@ using UnityEngine;
 
 public class BackGroundScroll : MonoBehaviour {
     public bool ScrollFlag = false;
+    private bool CanvasFlag = false;
     private float timer = 0.0f;
+    private float CanvasTimer = 0.0f;
     [SerializeField]
     float EndTime;
+    [SerializeField]
+    GameObject ScrollCanvas;
 	// Use this for initialization
     public void Scroll()
     {
@@ -22,6 +26,7 @@ public class BackGroundScroll : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
+        //ScrollFlagがtrueならEndTime秒間画面をスクロールする
         if(ScrollFlag == true)
         {
             timer += Time.deltaTime;
@@ -30,7 +35,19 @@ public class BackGroundScroll : MonoBehaviour {
             {
                 timer = 0.0f;
                 ScrollFlag = false;
+                CanvasFlag = true;
+                ScrollCanvas.SetActive(true);
                
+            }
+        }
+        //画面のスクロール処理後にWarning演出をする
+        if (CanvasFlag == true){
+            CanvasTimer += Time.deltaTime;
+            if (CanvasTimer > 5)
+            {
+                CanvasTimer = 0.0f;
+                ScrollCanvas.SetActive(false);
+                CanvasFlag = false;
             }
         }
 
