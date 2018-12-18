@@ -18,8 +18,8 @@ public abstract class BaseItemManager : MonoBehaviour
 
     protected void Update()
     {
+        if (isStarted) Debug.Log(this);
         UseItem();
-        if(isStarted)Debug.Log(this);
     }
 
     protected abstract void UseItem();

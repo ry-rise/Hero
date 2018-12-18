@@ -25,12 +25,10 @@ public class ItemMover : MonoBehaviour
         speed = new Vector2(-speed.x, speed.y);
     }
 
-    private void OnTriggerEnter(Collider other)
+    private void OnTriggerEnter2D(Collider2D other)
     {
-        Debug.Log(other.tag);
         if (other.tag == "Bar")
         {
-            Debug.Log("うえい");
             manager.GetItem(this);
         }
     }
