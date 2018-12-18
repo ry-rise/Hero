@@ -5,25 +5,20 @@ using UnityEditor;
 public class EnemyManager : MonoBehaviour
 {
     [SerializeField]
-    private EnemiesDataTable enemiesList;   //呼び出す敵たち
+    private List<EnemiesDataTable> enemiesList;   //呼び出す敵たち
     private List<BaseEnemy> enemies = new List<BaseEnemy>();
     public List<BaseEnemy> Enemies { get { return enemies; } set { enemies = value; } }
 
     private WallHitter wallHitter;
     private GameManager gameManager;
+    [SerializeField]
+    private int waveNumber = 0;
 
     private void Start()
     {
         wallHitter = GameObject.Find("GameManager").GetComponent<WallHitter>();
         gameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
-        if (enemiesList != null) {
-            foreach (EnemiesSetStatus it in enemiesList.Status)
-            {
-                GameObject prefab = AssetDatabase.LoadAssetAtPath<GameObject>("Assets/Prefabs/Enemies/" + it.EnemyName + ".prefab");
-                Instantiate(prefab, it.Position, Quaternion.identity);
-            }
-        }
-        AllStop();
+        SetEnemies(Vector2.zero);
     }
 
     private void Update()
@@ -35,6 +30,37 @@ public class EnemyManager : MonoBehaviour
         GameInChecker();
         LineOutChecker();
         GameClearChecker();
+    }
+
+    public bool LastEnemies()
+    {
+        if (enemiesList != null && waveNumber == enemiesList.Count - 1)
+        {
+            return true;
+        }
+        return false;
+    }
+
+    public void SetEnemies(Vector2 addPosition)
+    {
+        if (enemiesList != null && waveNumber < enemiesList.Count)
+        {
+            foreach (EnemiesSetStatus it in enemiesList[waveNumber].Status)
+            {
+                GameObject prefab = AssetDatabase.LoadAssetAtPath<GameObject>("Assets/Prefabs/Enemies/" + it.EnemyName + ".prefab");
+                Instantiate(prefab, it.Position + addPosition, Quaternion.identity);
+            }
+            AllStop();
+            ++waveNumber;
+        }
+    }
+
+    public void AllEnemiesMove(Vector2 move)
+    {
+        foreach (BaseEnemy it in enemies)
+        {
+            it.transform.Translate(move);
+        }
     }
 
     public void AllStop()
@@ -70,7 +96,14 @@ public class EnemyManager : MonoBehaviour
         if (gameManager.GameState != GameManager.GameStatus.Play) return;
         if (Enemies.Count == 0)
         {
-            gameManager.RequestGameState = GameManager.GameStatus.Clear;
+            if (enemiesList != null && waveNumber < enemiesList.Count)
+            {
+                gameManager.RequestGameState = GameManager.GameStatus.NextWave;
+            }
+            else
+            {
+                gameManager.RequestGameState = GameManager.GameStatus.Complete;
+            }
         }
     }
 

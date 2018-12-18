@@ -8,15 +8,12 @@ public class GameManager : MonoBehaviour
 {
     [SerializeField] bool DebugClear = false;
     [SerializeField] bool DebugGameOver = false;
-
-    private bool FlagWaveCLEARE = true; //一回しか呼ばせないために
-    private bool FlagGameOVER =   true;
     
     private int PlayerLife = 3; //プレイヤー残機
 
     private EnemyManager Enemy; //エネミーマネージャー
     private PlayerManager Player; //プレイヤーマネージャー
-    private BackGroundScroll _BackGroundScroll;
+    private BackGroundScroll BackGroundScroll;
     private InputController Controller; //操作
 
     public GameStatus GameState { get; private set; }   //状態
@@ -27,7 +24,8 @@ public class GameManager : MonoBehaviour
         Wait,   //ゲーム中（スタート前）
         Play,   //ゲーム中
         Pause,  //一時停止
-        Clear,  //クリア
+        NextWave,  //次のウェーブ
+        Complete,   //ゲームクリア
         GameOver    //ゲームオーバー
     }
     
@@ -35,7 +33,7 @@ public class GameManager : MonoBehaviour
     {
         Enemy = GameObject.Find("EnemyManager").GetComponent<EnemyManager>();
         Player = GameObject.Find("PlayerManager").GetComponent<PlayerManager>();
-        _BackGroundScroll = GameObject.Find("BackGround").GetComponent<BackGroundScroll>();
+        BackGroundScroll = GameObject.Find("BackGround").GetComponent<BackGroundScroll>();
         Controller = GetComponent<InputController>();
         GameState = RequestGameState = GameStatus.Wait;
     }
@@ -57,8 +55,11 @@ public class GameManager : MonoBehaviour
                 GamePause();
                 break;
             //敵残数が０になったらクリア
-            case GameStatus.Clear:
-                WaveClear();
+            case GameStatus.NextWave:
+                NextWave();
+                break;
+            case GameStatus.Complete:
+                Complete();
                 break;
             //プレイヤーの残機が０以下になったらゲームオーバー
             case GameStatus.GameOver:
@@ -95,14 +96,24 @@ public class GameManager : MonoBehaviour
     //ゲーム中
     private void GamePlay()
     {   
-        //ゲームクリアの指示が来たら※敵マネージャーが指示を出す
-        if (RequestGameState == GameStatus.Clear)
+        //次のウェーブの指示が来たら※敵マネージャーが指示を出す
+        if (RequestGameState == GameStatus.NextWave)
         {
-            GameState = GameStatus.Clear;
+            Enemy.SetEnemies(new Vector2(0, BackGroundScroll.Distance));
+            Player.ResetPosition();
+            Debug.Log("WAVE CLEAR!!");
+            GameState = GameStatus.NextWave;
+        }
+        //ゲームクリアの指示が来たら※敵マネージャーが指示を出す
+        else if (RequestGameState == GameStatus.Complete)
+        {
+            Debug.Log("Game CLEAR!!");
+            GameState = GameStatus.Complete;
         }
         //ゲームオーバーの指示が来たら※敵マネージャー、もしくは女神が指示を出す
         else if (RequestGameState == GameStatus.GameOver)
         {
+            Debug.Log("Game Over!!");
             GameState = GameStatus.GameOver;
         }
         //仕切り直しの指示が来たら※女神が指示を出す
@@ -120,26 +131,21 @@ public class GameManager : MonoBehaviour
     }
 
     //Waveクリア時の挙動
-    private void WaveClear()
+    private void NextWave()
     {
-        if (FlagWaveCLEARE)
+        Enemy.AllEnemiesMove(new Vector2(0, -BackGroundScroll.DistancePerSecond * Time.deltaTime));
+        if (RequestGameState == GameStatus.Wait)
         {
-            _BackGroundScroll.ScrollFlag = true;
-            Debug.Log("WAVE CLEAR!!");
-            FlagWaveCLEARE = false;
+            GameState = GameStatus.Wait;
         }
     }
 
     //ゲームクリア時の挙動
-    private void GameClear()
+    private void Complete()
     {
         if (DebugClear == false)
         {
             SceneManager.LoadScene("GameClear");
-        }
-        else
-        {
-            Debug.Log("Game CLEAR!!");
         }
     }
 
@@ -149,14 +155,6 @@ public class GameManager : MonoBehaviour
         if (DebugGameOver == false)
         {
             SceneManager.LoadScene("GameOver");
-        }
-        else
-        {
-            if (FlagGameOVER)
-            {
-                Debug.Log("Game Over!!");
-                FlagGameOVER = false;
-            }
         }
     }
 }

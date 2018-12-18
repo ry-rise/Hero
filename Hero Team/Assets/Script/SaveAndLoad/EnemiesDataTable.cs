@@ -5,7 +5,7 @@ using UnityEngine;
 [CreateAssetMenu]
 public class EnemiesDataTable : ScriptableObject
 {
-    public List<EnemiesSetStatus> Status { get; set; }
-
-    public List<EnemiesShowStatus> ShowStatus;   //見た目だけなので、ここを変えても意味がない
+    [SerializeField]
+    private List<EnemiesSetStatus> status;
+    public List<EnemiesSetStatus> Status { get { return status; } set { status = value; } }
 }

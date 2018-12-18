@@ -2,54 +2,112 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class BackGroundScroll : MonoBehaviour {
-    public bool ScrollFlag = false;
-    private bool CanvasFlag = false;
+public class BackGroundScroll : MonoBehaviour
+{
+
     private float timer = 0.0f;
     private float CanvasTimer = 0.0f;
-    [SerializeField]
-    float EndTime;
+    private EnemyManager enemyManager;
+    private GameManager manager;
     [SerializeField]
     GameObject ScrollCanvas;
-	// Use this for initialization
+    //移動距離
+    [SerializeField]
+    private float moveDistance;
+    public float Distance { get { return moveDistance; } }
+    //何秒後に着くか
+    [SerializeField]
+    private float moveEndTime;
+
+    public float DistancePerSecond { get { return moveDistance / moveEndTime; } }
+
+    private Renderer image;
+
+    private Vector2 offset = new Vector2(0, 0);
+
+    [SerializeField]
+    Status state = Status.Stopping;
+    Status State { get { return state; } }
+    public enum Status
+    {
+        Stopping,
+        Moving,
+        Warning
+    }
+    // Use this for initialization
     public void Scroll()
     {
-
-            float scroll = Mathf.Repeat(Time.time * 0.2f, 1);
-            Vector2 offset = new Vector2(0, scroll);
-            GetComponent<Renderer>().sharedMaterial.SetTextureOffset("_MainTex", offset);
+        float scroll = Mathf.Repeat(DistancePerSecond * Time.deltaTime + offset.y, 1);
+        offset = new Vector2(0, scroll);
+        image.sharedMaterial.SetTextureOffset("_MainTex", offset);
     }
 
-	void Start () {
-	
-	}
-	
-	// Update is called once per frame
-	void Update () {
-        //ScrollFlagがtrueならEndTime秒間画面をスクロールする
-        if(ScrollFlag == true)
-        {
-            timer += Time.deltaTime;
-            Scroll();
-            if(timer > EndTime)
-            {
-                timer = 0.0f;
-                ScrollFlag = false;
-                CanvasFlag = true;
-                ScrollCanvas.SetActive(true);
-               
-            }
-        }
-        //画面のスクロール処理後にWarning演出をする
-        if (CanvasFlag == true){
-            CanvasTimer += Time.deltaTime;
-            if (CanvasTimer > 5)
-            {
-                CanvasTimer = 0.0f;
-                ScrollCanvas.SetActive(false);
-                CanvasFlag = false;
-            }
-        }
+    void Start()
+    {
+        enemyManager = GameObject.Find("EnemyManager").GetComponent<EnemyManager>();
+        manager = GameObject.Find("GameManager").GetComponent<GameManager>();
+        image = GetComponent<Renderer>();
+        image.sharedMaterial.SetTextureOffset("_MainTex", offset);
+    }
 
+    // Update is called once per frame
+    void Update()
+    {
+        switch (state)
+        {
+            case Status.Stopping:
+                Stopping();
+                break;
+            case Status.Moving:
+                Moving();
+                break;
+            case Status.Warning:
+                Warning();
+                break;
+        }
+    }
+
+    private void Stopping()
+    {
+        if(manager.GameState != GameManager.GameStatus.Wait)
+        if (enemyManager.Enemies.Count == 0)
+        {
+            state = Status.Moving;
+        }
+    }
+
+    private void Moving()
+    {
+        //EndTime秒間画面をスクロールする
+        timer += Time.deltaTime;
+        Scroll();
+        if (timer > moveEndTime)
+        {
+            timer = 0.0f;
+            if (enemyManager.LastEnemies())
+            {
+                ScrollCanvas.SetActive(true);
+                state = Status.Warning;
+            }
+            else
+            {
+                manager.RequestGameState = GameManager.GameStatus.Wait;
+                state = Status.Stopping;
+            }
+        }
+    }
+
+    private void Warning()
+    {
+        //画面のスクロール処理後にWarning演出をする
+
+        CanvasTimer += Time.deltaTime;
+        if (CanvasTimer > 5)
+        {
+            CanvasTimer = 0.0f;
+            ScrollCanvas.SetActive(false);
+            state = Status.Stopping;
+            manager.RequestGameState = GameManager.GameStatus.Wait;
+        }
     }
 }

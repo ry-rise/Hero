@@ -89,6 +89,12 @@ public class Hero : MonoBehaviour
         }
     }
 
+    public void ResetPosition()
+    {
+        Setting();
+        transform.position = manager.FirstPosition;
+    }
+
     private void Setting()
     {
         rb.velocity = Vector2.zero;

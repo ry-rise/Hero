@@ -11,13 +11,13 @@ public class CreateManager : MonoBehaviour
 
     public void DataSave()
     {
-        dataTable.Status.Clear();   //中身を空にする
-        dataTable.ShowStatus.Clear();   //中身を空にする
         if (dataTable == null)
         {
             Debug.Log("記録先が存在しません");
             return;
         }
+        AssetDatabase.StartAssetEditing();
+        dataTable.Status.Clear();   //中身を空にする
         EnemiesIndex index = Resources.Load("EnemiesIndex") as EnemiesIndex;
         GameObject[] enemies = GameObject.FindGameObjectsWithTag("Enemy");
         foreach (GameObject it in enemies)
@@ -38,15 +38,17 @@ public class CreateManager : MonoBehaviour
             {
                 Debug.Log("検索一覧に存在しない敵を発見");
                 Debug.Log(it.name);
+                AssetDatabase.StopAssetEditing();
                 return;
             }
             else
             {
                 DataTable.Status.Add(new EnemiesSetStatus(topName, it.transform.position));
-                DataTable.ShowStatus.Add(new EnemiesShowStatus(topName, it.transform.position));
             }
         }
         Debug.Log("記録成功");
+        AssetDatabase.StopAssetEditing();
+        EditorUtility.SetDirty(DataTable);
         AssetDatabase.SaveAssets();
     }
 }

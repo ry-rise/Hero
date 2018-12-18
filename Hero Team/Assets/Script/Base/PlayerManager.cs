@@ -19,6 +19,7 @@ public class PlayerManager : MonoBehaviour
 
     public float StartAngle { get { return goddess.StartAngle; } }
 
+    public Vector2 FirstPosition { get { return goddess.FirstPosition; } }
 
 
     private void Awake()
@@ -70,6 +71,15 @@ public class PlayerManager : MonoBehaviour
         foreach (Hero it in Balls)
         {
             it.StartGame();
+        }
+    }
+
+    public void ResetPosition()
+    {
+        if (Balls.Count == 0) return;
+        foreach (Hero it in Balls)
+        {
+            it.ResetPosition();
         }
     }
 }
