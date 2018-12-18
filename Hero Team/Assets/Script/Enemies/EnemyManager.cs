@@ -21,9 +21,9 @@ public class EnemyManager : MonoBehaviour
             {
                 GameObject prefab = AssetDatabase.LoadAssetAtPath<GameObject>("Assets/Prefabs/Enemies/" + it.EnemyName + ".prefab");
                 GameObject enemy = Instantiate(prefab, it.Position, Quaternion.identity);
-                enemy.GetComponent<BaseEnemy>().stop = BaseEnemy.StopStatus.ALL;
             }
         }
+        AllStop();
     }
 
     private void Update()

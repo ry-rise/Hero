@@ -19,6 +19,8 @@ public class PlayerManager : MonoBehaviour
 
     public float StartAngle { get { return goddess.StartAngle; } }
 
+
+
     private void Awake()
     {
         Instantiate(tapLinePrefab, new Vector2(0, TapPositionY), Quaternion.identity);
@@ -38,7 +40,7 @@ public class PlayerManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
+        //アイテムの使用
     }
 
     private void FixedUpdate()

@@ -21,10 +21,11 @@ GameObject:
   - component: {fileID: 4107560414558716}
   - component: {fileID: 212314389214890170}
   - component: {fileID: 61508329893173858}
-  - component: {fileID: 114527161381203672}
+  - component: {fileID: 50590958584468186}
+  - component: {fileID: 114425769572056426}
   m_Layer: 0
-  m_Name: DownBar
-  m_TagString: Untagged
+  m_Name: BarHeal
+  m_TagString: Item
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -42,6 +43,26 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!50 &50590958584468186
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1452063299987798}
+  m_BodyType: 0
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0
+  m_GravityScale: 0
+  m_Material: {fileID: 0}
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 7
 --- !u!61 &61508329893173858
 BoxCollider2D:
   m_ObjectHideFlags: 1
@@ -67,7 +88,7 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.16, y: 0.16}
   m_EdgeRadius: 0
---- !u!114 &114527161381203672
+--- !u!114 &114425769572056426
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
@@ -75,9 +96,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 1452063299987798}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 67c041f0f8d47404e91cc89844b09894, type: 3}
+  m_Script: {fileID: 11500000, guid: 9b9b8990d0a2af34597f439a9ab6fa17, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  speed: {x: 0, y: -1}
 --- !u!212 &212314389214890170
 SpriteRenderer:
   m_ObjectHideFlags: 1

@@ -8,6 +8,7 @@ TagManager:
   - Ball
   - Bar
   - EnemyBullet
+  - Item
   layers:
   - Default
   - TransparentFX
