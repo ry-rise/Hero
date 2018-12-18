@@ -4,9 +4,19 @@ using UnityEngine;
 
 public class HealBar : BaseItemManager
 {
+    private Bar bar;
+    [SerializeField]
+    private int healPoint;
+
+    protected override void Awake()
+    {
+        base.Awake();
+        bar = GameObject.Find("Bar").GetComponent<Bar>();
+    }
 
     protected override bool UseItem()
     {
+        bar.Heal(healPoint);
         return true;
     }
 

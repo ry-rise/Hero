@@ -55,6 +55,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   itemObject: {fileID: 1452063299987798, guid: 5c46f480aa578954c9f61d1c1623a52b, type: 2}
+  healPoint: 1000
 --- !u!114 &114295021042042064
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -67,6 +68,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   itemObject: {fileID: 1452063299987798, guid: d33bec36c4cbb7d4fb0e7a15ef62e95b, type: 2}
+  time: 10
 --- !u!114 &114573168031098194
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -79,7 +81,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   itemObject: {fileID: 1452063299987798, guid: e28be9365fbfc094fbb0b50a0a06dfd9, type: 2}
-  time: 1000
+  time: 10
 --- !u!114 &114713588725688738
 MonoBehaviour:
   m_ObjectHideFlags: 1

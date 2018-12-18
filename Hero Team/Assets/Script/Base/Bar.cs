@@ -28,8 +28,11 @@ public class Bar : MonoBehaviour
             {
                 scaleLevel = scales.Count - 1;
             }
+            transform.localScale = scales[ScaleLevel] / goddess.transform.lossyScale;
         }
     }
+
+    public int MaxScaleLevel { get { return scales.Count - 1; } }
 
     public bool IsCounterAttacked { get; set; }
 
@@ -51,7 +54,6 @@ public class Bar : MonoBehaviour
         if (!IsCounterAttacked)
         {
             ScaleLevel += value;
-            transform.localScale = scales[ScaleLevel] / goddess.transform.lossyScale;
             return true;
         }
         else
@@ -64,13 +66,11 @@ public class Bar : MonoBehaviour
     public void Heal(int value)
     {
         ScaleLevel -= value;
-        transform.localScale = scales[ScaleLevel] / goddess.transform.lossyScale;
     }
 
     public void ResetScale()
     {
         ScaleLevel = 0;
-        transform.localScale = scales[ScaleLevel] / goddess.transform.lossyScale;
     }
 
     private void OnCollisionEnter2D(Collision2D collision)

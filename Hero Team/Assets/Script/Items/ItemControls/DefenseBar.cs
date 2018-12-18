@@ -18,7 +18,6 @@ public class DefenseBar : BaseItemManager
 
     protected override bool UseItem()
     {
-        if (!bar.IsCounterAttacked) return true;    //正直全く意味ない
         if (time <= timeCount)
         {
             bar.IsCounterAttacked = false;
