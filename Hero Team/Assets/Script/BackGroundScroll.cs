@@ -20,6 +20,9 @@ public class BackGroundScroll : MonoBehaviour
     private float moveEndTime;
 
     public float DistancePerSecond { get { return moveDistance / moveEndTime; } }
+    //背景速度
+    [SerializeField]
+    private float moveSpeed;
 
     private Renderer image;
 
@@ -37,7 +40,7 @@ public class BackGroundScroll : MonoBehaviour
     // Use this for initialization
     public void Scroll()
     {
-        float scroll = Mathf.Repeat(DistancePerSecond * Time.deltaTime + offset.y, 1);
+        float scroll = Mathf.Repeat(moveSpeed / moveEndTime * Time.deltaTime + offset.y, 1);
         offset = new Vector2(0, scroll);
         image.sharedMaterial.SetTextureOffset("_MainTex", offset);
     }

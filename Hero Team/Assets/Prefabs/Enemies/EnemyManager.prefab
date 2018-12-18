@@ -53,5 +53,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   enemiesList:
   - {fileID: 11400000, guid: 4ed85d8af8b48c442ad1ee4afb14fe78, type: 2}
-  - {fileID: 11400000, guid: 4ed85d8af8b48c442ad1ee4afb14fe78, type: 2}
+  - {fileID: 11400000, guid: 461195a6a6dc1f742a056df879106cc5, type: 2}
   waveNumber: 0

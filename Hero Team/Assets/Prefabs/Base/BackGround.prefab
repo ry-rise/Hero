@@ -341,8 +341,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ScrollCanvas: {fileID: 0}
-  moveDistance: 3
-  moveEndTime: 6
+  moveDistance: 4
+  moveEndTime: 4
+  moveSpeed: 1
   state: 0
 --- !u!114 &114746501618395552
 MonoBehaviour:
