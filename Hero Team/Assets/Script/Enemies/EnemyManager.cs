@@ -20,7 +20,7 @@ public class EnemyManager : MonoBehaviour
             foreach (EnemiesSetStatus it in enemiesList.Status)
             {
                 GameObject prefab = AssetDatabase.LoadAssetAtPath<GameObject>("Assets/Prefabs/Enemies/" + it.EnemyName + ".prefab");
-                GameObject enemy = Instantiate(prefab, it.Position, Quaternion.identity);
+                Instantiate(prefab, it.Position, Quaternion.identity);
             }
         }
         AllStop();

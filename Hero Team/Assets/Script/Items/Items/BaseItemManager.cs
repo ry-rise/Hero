@@ -9,20 +9,21 @@ public abstract class BaseItemManager : MonoBehaviour
     private GameObject itemObject;
     public string ItemName { get { return itemObject.name; } }
 
-    protected bool isStarted = false;
-
     protected virtual void Awake()
     {
         GetComponent<ItemManager>().ItemManagers.Add(this);
+        enabled = false;
     }
 
     protected void Update()
     {
-        if (isStarted) Debug.Log(this);
-        UseItem();
+        if (UseItem())
+        {
+            enabled = false;
+        }
     }
 
-    protected abstract void UseItem();
+    protected abstract bool UseItem();
 
     //アイテムを取得した
     public abstract void GetItem();

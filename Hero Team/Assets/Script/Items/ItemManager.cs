@@ -47,6 +47,7 @@ public class ItemManager : MonoBehaviour
         foreach (BaseItemManager it in ItemManagers)
         {
             if (it.ItemName != myItem.name) continue;
+            it.enabled = true;
             it.GetItem();
             Items.Remove(myItem);
             Destroy(myItem.gameObject);

@@ -2,17 +2,16 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class HealBar : BaseItemManager
+public class ShortBar : BaseItemManager
 {
 
-    protected override void UseItem()
+    protected override bool UseItem()
     {
-        isStarted = false;
+        return true;
     }
 
     //アイテムを取得した
     public override void GetItem()
     {
-        isStarted = true;
     }
 }
