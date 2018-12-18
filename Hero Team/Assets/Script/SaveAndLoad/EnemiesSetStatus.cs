@@ -6,9 +6,13 @@ using UnityEngine;
 public class EnemiesSetStatus
 {
     //名前
-    public string EnemyName { get; protected set; }
+    [SerializeField]
+    private string enemyName;
+    public string EnemyName { get { return enemyName; } set { enemyName = value; } }
     //座標
-    public Vector2 Position { get; protected set; }
+    [SerializeField]
+    private Vector2 position;
+    public Vector2 Position { get { return position; } set { position = value; } }
 
     public EnemiesSetStatus(string enemyName, Vector2 position)
     {

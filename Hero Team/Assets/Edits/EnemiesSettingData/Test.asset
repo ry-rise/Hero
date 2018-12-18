@@ -11,4 +11,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 481c97f27684b0942b83b96a1b50340b, type: 3}
   m_Name: Test
   m_EditorClassIdentifier: 
-  status: []
+  status:
+  - enemyName: Enemy
+    position: {x: -1.85, y: 4.5}
