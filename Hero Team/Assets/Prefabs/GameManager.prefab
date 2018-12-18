@@ -53,8 +53,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0b4ba7c74b0927a428d2e6040563a38d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  DebugCLEARE: 0
-  DebugOVER: 0
+  DebugClear: 0
+  DebugGameOver: 0
 --- !u!114 &114939968881881386
 MonoBehaviour:
   m_ObjectHideFlags: 1

@@ -27,7 +27,7 @@ public class BackGroundScroll : MonoBehaviour
 
     [SerializeField]
     Status state = Status.Stopping;
-    Status State { get { return state; } }
+    public Status State { get { return state; } }
     public enum Status
     {
         Stopping,
@@ -86,13 +86,14 @@ public class BackGroundScroll : MonoBehaviour
             timer = 0.0f;
             if (enemyManager.LastEnemies())
             {
+                Debug.Log("Test");
                 ScrollCanvas.SetActive(true);
                 state = Status.Warning;
             }
             else
             {
-                manager.RequestGameState = GameManager.GameStatus.Wait;
                 state = Status.Stopping;
+                manager.RequestGameState = GameManager.GameStatus.Wait;
             }
         }
     }

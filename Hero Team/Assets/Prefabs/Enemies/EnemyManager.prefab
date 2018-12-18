@@ -51,4 +51,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 98e6cb19458950345a4e8379b57fbc0b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enemiesList: {fileID: 0}
+  enemiesList:
+  - {fileID: 11400000, guid: 4ed85d8af8b48c442ad1ee4afb14fe78, type: 2}
+  - {fileID: 11400000, guid: 4ed85d8af8b48c442ad1ee4afb14fe78, type: 2}
+  waveNumber: 0

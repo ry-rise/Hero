@@ -133,7 +133,10 @@ public class GameManager : MonoBehaviour
     //Waveクリア時の挙動
     private void NextWave()
     {
-        Enemy.AllEnemiesMove(new Vector2(0, -BackGroundScroll.DistancePerSecond * Time.deltaTime));
+        if (BackGroundScroll.State == BackGroundScroll.Status.Moving)
+        {
+            Enemy.AllEnemiesMove(new Vector2(0, -BackGroundScroll.DistancePerSecond * Time.deltaTime));
+        }
         if (RequestGameState == GameStatus.Wait)
         {
             GameState = GameStatus.Wait;

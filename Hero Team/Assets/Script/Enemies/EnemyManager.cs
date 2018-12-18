@@ -34,7 +34,7 @@ public class EnemyManager : MonoBehaviour
 
     public bool LastEnemies()
     {
-        if (enemiesList != null && waveNumber == enemiesList.Count - 1)
+        if (enemiesList != null && waveNumber == enemiesList.Count)
         {
             return true;
         }
