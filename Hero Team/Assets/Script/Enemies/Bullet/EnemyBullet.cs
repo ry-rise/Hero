@@ -38,6 +38,11 @@ public class EnemyBullet : MonoBehaviour
                 bool result = Target.GetComponent<Bar>().Damage(1, this);
                 if (result) Destroy(gameObject);
             }
+            if (Target.gameObject.name == "Hitter")
+            {
+                
+                Destroy(this.gameObject);
+            }
         }
     }
 }
