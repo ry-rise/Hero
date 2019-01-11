@@ -38,10 +38,9 @@ public class EnemyBullet : MonoBehaviour
                 bool result = Target.GetComponent<Bar>().Damage(1, this);
                 if (result) Destroy(gameObject);
             }
-            if (Target.gameObject.name == "Hitter")
+            if (Target.gameObject.transform.root.tag == "Ball")
             {
-                
-                Destroy(this.gameObject);
+                Destroy(gameObject);
             }
         }
     }
