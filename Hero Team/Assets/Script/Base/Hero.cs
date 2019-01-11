@@ -17,6 +17,27 @@ public class Hero : MonoBehaviour
     public float Speed { get { return status.Speed; } }
     public int Power { get { return status.Power; } }   //勇者の攻撃力
 
+    private Vector2 nowVelocity;
+
+    private bool isStoped;
+    public bool IsStoped
+    {
+        get { return isStarted; }
+        set
+        {
+            if (value)
+            {
+                nowVelocity = rb.velocity;
+                rb.velocity = Vector2.zero;
+            }
+            else
+            {
+                rb.velocity = nowVelocity;
+            }
+            isStarted = value;
+        }
+    }
+
     // Use this for initialization
     void Awake()
     {
@@ -25,14 +46,18 @@ public class Hero : MonoBehaviour
         wallHitter = GameObject.Find("GameManager").GetComponent<WallHitter>();
         rb = GetComponent<Rigidbody2D>();
         Setting();
+        IsStoped = false;
     }
 
     // Update is called once per frame
     void FixedUpdate()
     {
-        if (isStarted)
+        if (!IsStoped)
         {
-            Moving();
+            if (isStarted)
+            {
+                Moving();
+            }
         }
     }
 

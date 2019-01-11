@@ -11,6 +11,7 @@ public class GameManager : MonoBehaviour
     
     private int PlayerLife = 3; //プレイヤー残機
 
+    private ItemManager Item;   //アイテムマネージャー
     private EnemyManager Enemy; //エネミーマネージャー
     private PlayerManager Player; //プレイヤーマネージャー
     private BackGroundScroll BackGroundScroll;
@@ -18,6 +19,7 @@ public class GameManager : MonoBehaviour
 
     public GameStatus GameState { get; private set; }   //状態
     public GameStatus RequestGameState { get; set; } //外部から状態を変えたい場合、一度ここを通すこと
+    public GameStatus PausePastState { get; private set; }
 
     public enum GameStatus
     {
@@ -33,6 +35,7 @@ public class GameManager : MonoBehaviour
     {
         Enemy = GameObject.Find("EnemyManager").GetComponent<EnemyManager>();
         Player = GameObject.Find("PlayerManager").GetComponent<PlayerManager>();
+        Item = GameObject.Find("ItemManager").GetComponent<ItemManager>();
         BackGroundScroll = GameObject.Find("BackGround").GetComponent<BackGroundScroll>();
         Controller = GetComponent<InputController>();
         GameState = RequestGameState = GameStatus.Wait;
@@ -91,6 +94,15 @@ public class GameManager : MonoBehaviour
             Player.BallStart(); //勇者が動き出す
             GameState = RequestGameState = GameStatus.Play;
         }
+        else if (RequestGameState == GameStatus.Pause)
+        {
+            Enemy.AllPause();
+            Item.AllPause();
+            Player.AllPause();
+
+            GameState = GameStatus.Pause;
+            PausePastState = GameStatus.Wait;
+        }
     }
 
     //ゲーム中
@@ -122,12 +134,28 @@ public class GameManager : MonoBehaviour
             Enemy.AllStop();    //敵を止める
             GameState = GameStatus.Wait;
         }
+        else if (RequestGameState == GameStatus.Pause)
+        {
+            Enemy.AllPause();
+            Item.AllPause();
+            Player.AllPause();
+
+            GameState = GameStatus.Pause;
+            PausePastState = GameStatus.Play;
+        }
     }
 
     //一時停止時の挙動
     private void GamePause()
     {
+        if (RequestGameState == GameStatus.Play)
+        {
+            Enemy.AllStart();
+            Item.AllStart();
+            Player.AllStart();
 
+            GameState = RequestGameState = PausePastState;
+        }
     }
 
     //Waveクリア時の挙動

@@ -53,4 +53,28 @@ public class ItemManager : MonoBehaviour
             Destroy(myItem.gameObject);
         }
     }
+
+    public void AllPause()
+    {
+        foreach (ItemMover it in Items)
+        {
+            it.IsStoped = true;
+        }
+        foreach (BaseItemManager it in ItemManagers)
+        {
+            it.IsStoped = true;
+        }
+    }
+
+    public void AllStart()
+    {
+        foreach (ItemMover it in Items)
+        {
+            it.IsStoped = false;
+        }
+        foreach (BaseItemManager it in ItemManagers)
+        {
+            it.IsStoped = false;
+        }
+    }
 }

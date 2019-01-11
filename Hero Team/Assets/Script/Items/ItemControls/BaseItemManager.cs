@@ -8,18 +8,23 @@ public abstract class BaseItemManager : MonoBehaviour
     [SerializeField]
     private GameObject itemObject;
     public string ItemName { get { return itemObject.name; } }
+    public bool IsStoped { get; set; }
 
     protected virtual void Awake()
     {
         GetComponent<ItemManager>().ItemManagers.Add(this);
+        IsStoped = false;
         enabled = false;
     }
 
     protected void Update()
     {
-        if (UseItem())
+        if (!IsStoped)
         {
-            enabled = false;
+            if (UseItem())
+            {
+                enabled = false;
+            }
         }
     }
 

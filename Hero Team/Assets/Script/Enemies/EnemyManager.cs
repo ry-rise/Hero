@@ -8,6 +8,8 @@ public class EnemyManager : MonoBehaviour
     private List<EnemiesDataTable> enemiesList;   //呼び出す敵たち
     private List<BaseEnemy> enemies = new List<BaseEnemy>();
     public List<BaseEnemy> Enemies { get { return enemies; } set { enemies = value; } }
+    private List<EnemyBullet> bullets = new List<EnemyBullet>();
+    public List<EnemyBullet> Bullets { get { return bullets; } set { bullets = value; } }
 
     private WallHitter wallHitter;
     private GameManager gameManager;
@@ -63,17 +65,29 @@ public class EnemyManager : MonoBehaviour
         }
     }
 
+    public void AllPause()
+    {
+        foreach (BaseEnemy it in Enemies)
+        {
+            it.stop = BaseEnemy.StopStatus.ALL;
+        }
+        foreach (EnemyBullet it in Bullets)
+        {
+            it.IsStoped = true;
+        }
+    }
+
     public void AllStop()
     {
         foreach (BaseEnemy it in Enemies)
         {
             it.stop = BaseEnemy.StopStatus.ALL;
         }
-        GameObject[] gameObjects = GameObject.FindGameObjectsWithTag("EnemyBullet");
-        foreach (GameObject it in gameObjects)
+        foreach (EnemyBullet it in Bullets)
         {
-            Destroy(it);
+            Destroy(it.gameObject);
         }
+        Bullets.Clear();
     }
 
     public void AllStart()
@@ -88,6 +102,10 @@ public class EnemyManager : MonoBehaviour
             {
                 it.stop = BaseEnemy.StopStatus.AttackStoped;
             }
+        }
+        foreach (EnemyBullet it in Bullets)
+        {
+            it.IsStoped = false;
         }
     }
 

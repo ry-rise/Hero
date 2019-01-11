@@ -7,17 +7,21 @@ public class ItemMover : MonoBehaviour
     [SerializeField]
     private Vector2 speed;
     private ItemManager manager;
+    public bool IsStoped { get; set; }
 
     // Use this for initialization
     void Start()
     {
         manager = GameObject.Find("ItemManager").GetComponent<ItemManager>();
         manager.Items.Add(this);
+        IsStoped = false;
     }
 
     private void FixedUpdate()
     {
-        transform.Translate(speed * Time.fixedDeltaTime);
+        if (!IsStoped) {
+            transform.Translate(speed * Time.fixedDeltaTime);
+        }
     }
 
     public void SpeedReturn()

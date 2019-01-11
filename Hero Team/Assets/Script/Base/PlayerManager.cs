@@ -82,4 +82,20 @@ public class PlayerManager : MonoBehaviour
             it.ResetPosition();
         }
     }
+
+    public void AllPause()
+    {
+        foreach (Hero it in Balls)
+        {
+            it.IsStoped = true;
+        }
+    }
+
+    public void AllStart()
+    {
+        foreach (Hero it in Balls)
+        {
+            it.IsStoped = false;
+        }
+    }
 }
