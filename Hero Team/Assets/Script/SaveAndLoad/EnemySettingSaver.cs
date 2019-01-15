@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEditor;
 
+#if UNITY_EDITOR
 public static class EnemySettingSaver
 {
     [MenuItem("Tools/Save Enemies")]
@@ -12,3 +13,7 @@ public static class EnemySettingSaver
         cm.DataSave();
     }
 }
+#endif
+
+#if UNITY_ANDROID
+#endif

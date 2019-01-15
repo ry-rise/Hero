@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEditor;
 
+#if UNITY_EDITOR
 public class CreateManager : MonoBehaviour
 {
     [SerializeField]
@@ -52,3 +53,7 @@ public class CreateManager : MonoBehaviour
         AssetDatabase.SaveAssets();
     }
 }
+#endif
+
+#if UNITY_ANDROID
+#endif

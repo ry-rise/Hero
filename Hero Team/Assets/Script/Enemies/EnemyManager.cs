@@ -49,7 +49,7 @@ public class EnemyManager : MonoBehaviour
         {
             foreach (EnemiesSetStatus it in enemiesList[waveNumber].Status)
             {
-                GameObject prefab = AssetDatabase.LoadAssetAtPath<GameObject>("Assets/Prefabs/Enemies/" + it.EnemyName + ".prefab");
+                GameObject prefab = Resources.Load("Enemies/" + it.EnemyName) as GameObject;
                 Instantiate(prefab, it.Position + addPosition, Quaternion.identity);
             }
             AllStop();
