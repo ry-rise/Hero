@@ -89,7 +89,6 @@ public class BackGroundScroll : MonoBehaviour
             timer = 0.0f;
             if (enemyManager.LastEnemies())
             {
-                Debug.Log("Test");
                 ScrollCanvas.SetActive(true);
                 state = Status.Warning;
             }

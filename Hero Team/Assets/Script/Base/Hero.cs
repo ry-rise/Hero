@@ -22,7 +22,7 @@ public class Hero : MonoBehaviour
     private bool isStoped;
     public bool IsStoped
     {
-        get { return isStarted; }
+        get { return isStoped; }
         set
         {
             if (value)
@@ -34,7 +34,7 @@ public class Hero : MonoBehaviour
             {
                 rb.velocity = nowVelocity;
             }
-            isStarted = value;
+            isStoped = value;
         }
     }
 
