@@ -89,6 +89,7 @@ public class PlayerManager : MonoBehaviour
         {
             it.IsStoped = true;
         }
+        goddess.IsStoped = true;
     }
 
     public void AllStart()
@@ -97,5 +98,6 @@ public class PlayerManager : MonoBehaviour
         {
             it.IsStoped = false;
         }
+        goddess.IsStoped = false;
     }
 }

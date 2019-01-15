@@ -2,8 +2,10 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Goddess : MonoBehaviour {
-
+public class Goddess : MonoBehaviour
+{
+    [SerializeField]
+    private float speed;
     [SerializeField]
     private SpriteRenderer backLight;
     [SerializeField]
@@ -41,6 +43,8 @@ public class Goddess : MonoBehaviour {
 
     private Vector2 smashVector;
 
+    public bool IsStoped { get; set; }
+
     // Use this for initialization
     private void Awake()
     {
@@ -50,6 +54,7 @@ public class Goddess : MonoBehaviour {
         BackLightChanged(SmashPercent);
         smashVector = new Vector2(0, 1);
         line = Instantiate(linePrefab);
+        IsStoped = false;
     }
 
     // Update is called once per frame
@@ -68,7 +73,7 @@ public class Goddess : MonoBehaviour {
 
     private ControlStatus OnController()
     {
-        if ((controller.State == InputController.Status.Pressing || 
+        if ((controller.State == InputController.Status.Pressing ||
             controller.State == InputController.Status.PressingMove) &&
             controller.TouchPoint.y < manager.TapPositionY)
         {
@@ -86,11 +91,22 @@ public class Goddess : MonoBehaviour {
 
     private void Moving()
     {
-        if (OnController() != ControlStatus.Bar)
+        if (OnController() != ControlStatus.Bar || IsStoped)
         {
             return;
         }
-        transform.position = new Vector2(controller.TouchMovePoint.x, transform.position.y);
+        if (controller.TouchMovePoint.x + speed * Time.deltaTime < transform.position.x)
+        {
+            transform.Translate(new Vector2(-speed * Time.deltaTime, 0));
+        }
+        else if (controller.TouchMovePoint.x - speed * Time.deltaTime > transform.position.x)
+        {
+            transform.Translate(new Vector2(speed * Time.deltaTime, 0));
+        }
+        else
+        {
+            transform.position = new Vector2(controller.TouchMovePoint.x, transform.position.y);
+        }
     }
 
     public void SmashCounter(int value)
@@ -107,7 +123,7 @@ public class Goddess : MonoBehaviour {
     private void SmashWaiting()
     {
         //フリック待ち
-        if (OnController() != ControlStatus.Smash)
+        if (OnController() != ControlStatus.Smash || IsStoped)
         {
             if (line.gameObject.activeInHierarchy)
             {
