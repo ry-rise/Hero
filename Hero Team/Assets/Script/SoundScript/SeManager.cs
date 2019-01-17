@@ -15,6 +15,20 @@ public class SeManager : MonoBehaviour {
         Se.volume = Volume* volume;
     }
 
+    public void Play()
+    {
+        if (Se.loop)
+        {
+            Se.loop = false;
+        }
+        Se.Play();
+    }
+
+    public void Stop()
+    {
+        Se.Stop();
+    }
+
     // Use this for initialization
     void Start () {
         Se = GetComponent<AudioSource>();
