@@ -88,7 +88,6 @@ public class Bar : MonoBehaviour
                 Hero ball = collision.gameObject.GetComponent<Hero>();
                 Vector2 ver = collision.transform.root.position - transform.position;
                 ball.GetComponent<Rigidbody2D>().velocity = new Vector2(ver.x * (limitAngle / 180), ver.y) * ball.Speed;
-                //Coroutine coroutine = StartCoroutine("DelayMethod", 0.3f);
             }
         }
     }

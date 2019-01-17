@@ -18,11 +18,6 @@ public class Goddess : MonoBehaviour
     private SpriteRenderer sprite;
     [SerializeField]
     private Sprite[] GoddessSprite;
-    private IEnumerator DelayMethod(float waitTime)
-    {
-        yield return new WaitForSeconds(waitTime);
-        sprite.sprite = GoddessSprite[0];
-    }
 
     private int layerMask = 1 << 9 | 1 << 13;
 
@@ -181,5 +176,12 @@ public class Goddess : MonoBehaviour
     public void Swing()
     {
         sprite.sprite = GoddessSprite[1];
+        Coroutine coroutine = StartCoroutine("DelayMethod", 0.3f);
+    }
+
+    private IEnumerator DelayMethod(float waitTime)
+    {
+        yield return new WaitForSeconds(waitTime);
+        sprite.sprite = GoddessSprite[0];
     }
 }
