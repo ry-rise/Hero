@@ -71,15 +71,9 @@ public class BackGroundScroll : MonoBehaviour
                 break;
         }
     }
+
     private void Stopping()
     {
-        if (manager.GameState != GameManager.GameStatus.Wait)
-        {
-            if (enemyManager.Enemies.Count == 0)
-            {
-                state = Status.Moving;
-            }
-        }
     }
 
     private void Moving()
@@ -116,5 +110,10 @@ public class BackGroundScroll : MonoBehaviour
             state = Status.Stopping;
             manager.RequestGameState = GameManager.GameStatus.Wait;
         }
+    }
+
+    public void ScrollStart()
+    {
+        state = Status.Moving;
     }
 }

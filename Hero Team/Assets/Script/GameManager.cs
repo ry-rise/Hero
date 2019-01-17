@@ -11,11 +11,11 @@ public class GameManager : MonoBehaviour
     
     private int PlayerLife = 3; //プレイヤー残機
 
-    private ItemManager Item;   //アイテムマネージャー
-    private EnemyManager Enemy; //エネミーマネージャー
-    private PlayerManager Player; //プレイヤーマネージャー
-    private BackGroundScroll BackGroundScroll;
-    private InputController Controller; //操作
+    private ItemManager item;   //アイテムマネージャー
+    private EnemyManager enemy; //エネミーマネージャー
+    private PlayerManager player; //プレイヤーマネージャー
+    private BackGroundScroll backGroundScroll;
+    private InputController controller; //操作
 
     public GameStatus GameState { get; private set; }   //状態
     public GameStatus RequestGameState { get; set; } //外部から状態を変えたい場合、一度ここを通すこと
@@ -33,11 +33,11 @@ public class GameManager : MonoBehaviour
     
     private void Awake()
     {
-        Enemy = GameObject.Find("EnemyManager").GetComponent<EnemyManager>();
-        Player = GameObject.Find("PlayerManager").GetComponent<PlayerManager>();
-        Item = GameObject.Find("ItemManager").GetComponent<ItemManager>();
-        BackGroundScroll = GameObject.Find("BackGround").GetComponent<BackGroundScroll>();
-        Controller = GetComponent<InputController>();
+        enemy = GameObject.Find("EnemyManager").GetComponent<EnemyManager>();
+        player = GameObject.Find("PlayerManager").GetComponent<PlayerManager>();
+        item = GameObject.Find("ItemManager").GetComponent<ItemManager>();
+        backGroundScroll = GameObject.Find("BackGround").GetComponent<BackGroundScroll>();
+        controller = GetComponent<InputController>();
         GameState = RequestGameState = GameStatus.Wait;
     }
 
@@ -88,17 +88,17 @@ public class GameManager : MonoBehaviour
     private void GameWait()
     {
         //画面がタップされたら、スタートする
-        if (Controller.State == InputController.Status.Pushed)
+        if (controller.State == InputController.Status.Pushed)
         {
-            Enemy.AllStart();   //敵が動き出す
-            Player.BallStart(); //勇者が動き出す
+            enemy.AllStart();   //敵が動き出す
+            player.BallStart(); //勇者が動き出す
             GameState = RequestGameState = GameStatus.Play;
         }
         else if (RequestGameState == GameStatus.Pause)
         {
-            Enemy.AllPause();
-            Item.AllPause();
-            Player.AllPause();
+            enemy.AllPause();
+            item.AllPause();
+            player.AllPause();
 
             GameState = GameStatus.Pause;
             PausePastState = GameStatus.Wait;
@@ -111,8 +111,9 @@ public class GameManager : MonoBehaviour
         //次のウェーブの指示が来たら※敵マネージャーが指示を出す
         if (RequestGameState == GameStatus.NextWave)
         {
-            Enemy.SetEnemies(new Vector2(0, BackGroundScroll.Distance));
-            Player.ResetPosition();
+            enemy.SetEnemies(new Vector2(0, backGroundScroll.Distance));
+            backGroundScroll.ScrollStart();
+            player.ResetPosition();
             Debug.Log("WAVE CLEAR!!");
             GameState = GameStatus.NextWave;
         }
@@ -131,14 +132,14 @@ public class GameManager : MonoBehaviour
         //仕切り直しの指示が来たら※女神が指示を出す
         else if (RequestGameState == GameStatus.Wait)
         {
-            Enemy.AllStop();    //敵を止める
+            enemy.AllStop();    //敵を止める
             GameState = GameStatus.Wait;
         }
         else if (RequestGameState == GameStatus.Pause)
         {
-            Enemy.AllPause();
-            Item.AllPause();
-            Player.AllPause();
+            enemy.AllPause();
+            item.AllPause();
+            player.AllPause();
 
             GameState = GameStatus.Pause;
             PausePastState = GameStatus.Play;
@@ -150,9 +151,9 @@ public class GameManager : MonoBehaviour
     {
         if (RequestGameState == GameStatus.Play)
         {
-            Enemy.AllStart();
-            Item.AllStart();
-            Player.AllStart();
+            enemy.AllStart();
+            item.AllStart();
+            player.AllStart();
 
             GameState = RequestGameState = PausePastState;
         }
@@ -161,9 +162,9 @@ public class GameManager : MonoBehaviour
     //Waveクリア時の挙動
     private void NextWave()
     {
-        if (BackGroundScroll.State == BackGroundScroll.Status.Moving)
+        if (backGroundScroll.State == BackGroundScroll.Status.Moving)
         {
-            Enemy.AllEnemiesMove(new Vector2(0, -BackGroundScroll.DistancePerSecond * Time.deltaTime));
+            enemy.AllEnemiesMove(new Vector2(0, -backGroundScroll.DistancePerSecond * Time.deltaTime));
         }
         if (RequestGameState == GameStatus.Wait)
         {
