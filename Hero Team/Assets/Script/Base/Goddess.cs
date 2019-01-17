@@ -14,6 +14,15 @@ public class Goddess : MonoBehaviour
     private PlayerManager manager;
     private InputController controller;
     private GameObject bar;
+    [SerializeField]
+    private SpriteRenderer sprite;
+    [SerializeField]
+    private Sprite[] GoddessSprite;
+    private IEnumerator DelayMethod(float waitTime)
+    {
+        yield return new WaitForSeconds(waitTime);
+        sprite.sprite = GoddessSprite[0];
+    }
 
     private int layerMask = 1 << 9 | 1 << 13;
 
@@ -167,5 +176,10 @@ public class Goddess : MonoBehaviour
         SmashCount = 0;
         BackLightChanged(SmashPercent);
         return true;
+    }
+
+    public void Swing()
+    {
+        sprite.sprite = GoddessSprite[1];
     }
 }

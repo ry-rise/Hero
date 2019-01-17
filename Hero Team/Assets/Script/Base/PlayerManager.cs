@@ -6,6 +6,8 @@ public class PlayerManager : MonoBehaviour
 {
     private GameManager gameManager;
     [SerializeField]
+    private SeManager se;
+    [SerializeField]
     private GameObject ballPrefab;
     private List<Hero> balls = new List<Hero>();
     public List<Hero> Balls { get { return balls; } set { balls = value; } }
@@ -57,6 +59,7 @@ public class PlayerManager : MonoBehaviour
         if (!isStarted)
         {
             if (gameManager.GameState == GameManager.GameStatus.GameOver || gameManager.RequestGameState == GameManager.GameStatus.GameOver) return;
+            se.Play();
             bool flag = gameManager.LostLife(); //ライフを減らす処理
             if (flag) return;
             gameManager.RequestGameState = GameManager.GameStatus.Wait;

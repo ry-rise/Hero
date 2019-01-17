@@ -100,6 +100,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Speed: -1
+  sePrefab: {fileID: 1866375289627150, guid: 494589b0aab76b24bb3d7dc64c1cf9bf, type: 2}
 --- !u!212 &212888072620821566
 SpriteRenderer:
   m_ObjectHideFlags: 1

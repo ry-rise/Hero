@@ -10,6 +10,8 @@ public class BackGroundScroll : MonoBehaviour
     private EnemyManager enemyManager;
     private GameManager manager;
     [SerializeField]
+    SeManager se;
+    [SerializeField]
     GameObject ScrollCanvas;
     //移動距離
     [SerializeField]
@@ -69,13 +71,14 @@ public class BackGroundScroll : MonoBehaviour
                 break;
         }
     }
-
     private void Stopping()
     {
-        if(manager.GameState != GameManager.GameStatus.Wait)
-        if (enemyManager.Enemies.Count == 0)
+        if (manager.GameState != GameManager.GameStatus.Wait)
         {
-            state = Status.Moving;
+            if (enemyManager.Enemies.Count == 0)
+            {
+                state = Status.Moving;
+            }
         }
     }
 
@@ -90,6 +93,7 @@ public class BackGroundScroll : MonoBehaviour
             if (enemyManager.LastEnemies())
             {
                 ScrollCanvas.SetActive(true);
+                se.Play();
                 state = Status.Warning;
             }
             else

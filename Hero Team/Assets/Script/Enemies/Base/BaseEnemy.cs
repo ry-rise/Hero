@@ -10,6 +10,8 @@ public abstract class BaseEnemy : MonoBehaviour
     [SerializeField]
     private int HP = 1;
     // Use this for initialization
+    [SerializeField]
+    private GameObject sePrefab;
 
     public enum StopStatus
     {
@@ -84,6 +86,7 @@ public abstract class BaseEnemy : MonoBehaviour
         if (target.gameObject.transform.root.tag == "Ball")
         {
             HP -= target.transform.root.GetComponent<Hero>().Power;
+            Instantiate(sePrefab, transform.position, Quaternion.identity);
         }
         else if (target.gameObject.transform.root.tag == "PlayerBullet")
         {

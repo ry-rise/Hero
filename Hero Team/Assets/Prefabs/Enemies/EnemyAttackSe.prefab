@@ -9,34 +9,32 @@ Prefab:
     m_Modifications: []
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 0}
-  m_RootGameObject: {fileID: 1709572113541688}
+  m_RootGameObject: {fileID: 1866375289627150}
   m_IsPrefabAsset: 1
---- !u!1 &1709572113541688
+--- !u!1 &1866375289627150
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 4331009711074978}
-  - component: {fileID: 114707439389438450}
-  - component: {fileID: 114984091844520100}
-  - component: {fileID: 114939968881881386}
-  - component: {fileID: 114370943319975544}
-  - component: {fileID: 82759397687827844}
+  - component: {fileID: 4065406207441582}
+  - component: {fileID: 114987510059270768}
+  - component: {fileID: 114850209395358124}
+  - component: {fileID: 82023105943525196}
   m_Layer: 0
-  m_Name: GameManager
+  m_Name: EnemyAttackSe
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &4331009711074978
+--- !u!4 &4065406207441582
 Transform:
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1709572113541688}
+  m_GameObject: {fileID: 1866375289627150}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
@@ -44,16 +42,16 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!82 &82759397687827844
+--- !u!82 &82023105943525196
 AudioSource:
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1709572113541688}
+  m_GameObject: {fileID: 1866375289627150}
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: 22034a91860f8d64cac486a2738b818f, type: 3}
+  m_audioClip: {fileID: 8300000, guid: e2cafa46b27706348b31aec21c78db45, type: 3}
   m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
@@ -139,53 +137,29 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
---- !u!114 &114370943319975544
+--- !u!114 &114850209395358124
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1709572113541688}
+  m_GameObject: {fileID: 1866375289627150}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: ff2485bede14ae5469f3dce0753ce282, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   controller:
-  - clip: {fileID: 8300000, guid: 22034a91860f8d64cac486a2738b818f, type: 3}
+  - clip: {fileID: 8300000, guid: e2cafa46b27706348b31aec21c78db45, type: 3}
     volume: 1
---- !u!114 &114707439389438450
+--- !u!114 &114987510059270768
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1709572113541688}
+  m_GameObject: {fileID: 1866375289627150}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0b4ba7c74b0927a428d2e6040563a38d, type: 3}
+  m_Script: {fileID: 11500000, guid: f7491bc59a67b9d4aaa2a9efc40cef67, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  DebugClear: 0
-  DebugGameOver: 0
---- !u!114 &114939968881881386
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1709572113541688}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ce74d422a1f9ce84f89e4ae74951b45a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &114984091844520100
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1709572113541688}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 77c4b2708e7eaa34683ed4b79d0046f9, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  se: {fileID: 114370943319975544}
+  se: {fileID: 114850209395358124}

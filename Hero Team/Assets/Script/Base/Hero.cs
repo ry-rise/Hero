@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class Hero : MonoBehaviour
 {
+    [SerializeField]
+    private SeManager se;
     private bool isStarted;
     private WallHitter wallHitter;
     private Rigidbody2D rb;
@@ -90,6 +92,10 @@ public class Hero : MonoBehaviour
         if (wallHitter.IsHit(gameObject, HitPointFlag.Bottom))
         {
             FallOut();
+        }
+        if (wallHitter.IsHit(gameObject, HitPointFlag.Left | HitPointFlag.Right | HitPointFlag.Top))
+        {
+            se.Play();
         }
     }
 

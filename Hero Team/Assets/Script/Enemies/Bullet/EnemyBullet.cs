@@ -8,6 +8,8 @@ public class EnemyBullet : MonoBehaviour
     private float Speed;
     private WallHitter wallhitter;
     public bool IsStoped { get; set; }
+    [SerializeField]
+    private GameObject sePrefab;
 
     // Use this for initialization
     void Start()
@@ -45,6 +47,7 @@ public class EnemyBullet : MonoBehaviour
                 if (result)
                 {
                     GameObject.Find("EnemyManager").GetComponent<EnemyManager>().Bullets.Remove(this);
+                    Instantiate(sePrefab, transform.position, Quaternion.identity);
                     Destroy(gameObject);
                 }
             }

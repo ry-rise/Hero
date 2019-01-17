@@ -5,22 +5,16 @@ using UnityEngine;
 public class Bar : MonoBehaviour
 {
     [SerializeField]
+    private SeManager se;
+    [SerializeField]
     private Goddess goddess;
     [SerializeField]
     private float limitAngle;
-    [SerializeField]
-    private Sprite[] GoddessSprite;
     [SerializeField]
     private SpriteRenderer GoddessImage;
     [SerializeField]
     private List<Vector2> scales;
     private int scaleLevel;
-    private IEnumerator DelayMethod(float waitTime)
-    {
-        yield return new WaitForSeconds(waitTime);
-        GoddessImage.sprite = GoddessSprite[0];
-
-    }
     public int ScaleLevel
     {
         get
@@ -87,13 +81,14 @@ public class Bar : MonoBehaviour
     {
         if (collision.transform.root.tag == "Ball")
         {
+            se.Play();
+            goddess.Swing();
             if (!goddess.Smashing(collision.transform.root.gameObject))
             {
                 Hero ball = collision.gameObject.GetComponent<Hero>();
                 Vector2 ver = collision.transform.root.position - transform.position;
-                GoddessImage.sprite = GoddessSprite[1];
                 ball.GetComponent<Rigidbody2D>().velocity = new Vector2(ver.x * (limitAngle / 180), ver.y) * ball.Speed;
-                Coroutine coroutine = StartCoroutine("DelayMethod", 0.3f);
+                //Coroutine coroutine = StartCoroutine("DelayMethod", 0.3f);
             }
         }
     }

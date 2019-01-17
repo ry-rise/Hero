@@ -13,7 +13,5 @@ public static class EnemySettingSaver
         cm.DataSave();
     }
 }
-#endif
-
-#if UNITY_ANDROID
+#elif UNITY_ANDROID
 #endif

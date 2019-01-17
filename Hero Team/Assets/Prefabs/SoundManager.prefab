@@ -9,48 +9,45 @@ Prefab:
     m_Modifications: []
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 0}
-  m_RootGameObject: {fileID: 1600712989934630}
+  m_RootGameObject: {fileID: 1133450392965500}
   m_IsPrefabAsset: 1
---- !u!1 &1600712989934630
+--- !u!1 &1133450392965500
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 4566727481286552}
-  - component: {fileID: 114487161810543998}
-  m_Layer: 0
-  m_Name: EnemyManager
+  - component: {fileID: 4459485194386704}
+  - component: {fileID: 114235838555320886}
+  m_Layer: 9
+  m_Name: SoundManager
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &4566727481286552
+--- !u!4 &4459485194386704
 Transform:
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1600712989934630}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_GameObject: {fileID: 1133450392965500}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &114487161810543998
+--- !u!114 &114235838555320886
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1600712989934630}
+  m_GameObject: {fileID: 1133450392965500}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 98e6cb19458950345a4e8379b57fbc0b, type: 3}
+  m_Script: {fileID: 11500000, guid: abd41d541ed3c3343a33bdf4f6a989f1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enemiesList:
-  - {fileID: 11400000, guid: 4ed85d8af8b48c442ad1ee4afb14fe78, type: 2}
-  - {fileID: 11400000, guid: 461195a6a6dc1f742a056df879106cc5, type: 2}

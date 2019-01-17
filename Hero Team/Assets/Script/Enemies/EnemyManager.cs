@@ -13,14 +13,14 @@ public class EnemyManager : MonoBehaviour
 
     private WallHitter wallHitter;
     private GameManager gameManager;
-    [SerializeField]
-    private int waveNumber = 0;
+    private int waveNumber;
 
     private void Start()
     {
         wallHitter = GameObject.Find("GameManager").GetComponent<WallHitter>();
         gameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
         SetEnemies(Vector2.zero);
+        waveNumber = 0;
     }
 
     private void Update()
@@ -36,7 +36,7 @@ public class EnemyManager : MonoBehaviour
 
     public bool LastEnemies()
     {
-        if (enemiesList != null && waveNumber == enemiesList.Count)
+        if (enemiesList != null && waveNumber == enemiesList.Count - 1)
         {
             return true;
         }
@@ -53,7 +53,6 @@ public class EnemyManager : MonoBehaviour
                 Instantiate(prefab, it.Position + addPosition, Quaternion.identity);
             }
             AllStop();
-            ++waveNumber;
         }
     }
 
@@ -114,7 +113,8 @@ public class EnemyManager : MonoBehaviour
         if (gameManager.GameState != GameManager.GameStatus.Play) return;
         if (Enemies.Count == 0)
         {
-            if (enemiesList != null && waveNumber < enemiesList.Count)
+            ++waveNumber;
+            if (waveNumber < enemiesList.Count)
             {
                 gameManager.RequestGameState = GameManager.GameStatus.NextWave;
             }

@@ -2,40 +2,62 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class BgmManager : MonoBehaviour {
-
-
-    [SerializeField, Range(0, 1)]
-    float Volume;
-    AudioSource Bgm;
-
-    public void VolumeChanger(float volume)
+public class BgmManager : MonoBehaviour
+{
+    [System.Serializable]
+    private class SoundController
     {
-        Bgm.volume = Volume * volume;
+        [SerializeField]
+        private AudioClip clip;
+        public AudioClip Clip { get { return clip; } }
+        [SerializeField, Range(0f, 1f)]
+        private float volume;
+        public float Volume { get { return volume; } }
+    }
+    [SerializeField]
+    private List<SoundController> controller;
+    private AudioSource bgm;
+
+    private int clipNumber;
+
+    public void BgmChanger(int number)
+    {
+        if (clipNumber == number) return;
+        clipNumber = number;
+        VolumeChanger();
+    }
+
+    private void VolumeChanger()
+    {
+        bgm.volume = controller[clipNumber].Volume * SoundManager.BgmVolume;
     }
 
     public void Play()
     {
-        if (!Bgm.loop)
+        if (!bgm.loop)
         {
-            Bgm.loop = true;
+            bgm.loop = true;
         }
-        Bgm.Play();
+        bgm.Play();
     }
 
     public void Stop()
     {
-        Bgm.Stop();
+        bgm.Stop();
     }
 
     // Use this for initialization
-    void Start () {
+    void Awake()
+    {
         GameObject.Find("SoundManager").GetComponent<SoundManager>().BgmList.Add(this);
-        Bgm = GetComponent<AudioSource>();
+        bgm = GetComponent<AudioSource>();
+        clipNumber = 0;
+        VolumeChanger();
     }
-	
-	// Update is called once per frame
-	void Update () {
-		
-	}
+
+    // Update is called once per frame
+    void Update()
+    {
+
+    }
 }
