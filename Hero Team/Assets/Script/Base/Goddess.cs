@@ -5,8 +5,6 @@ using UnityEngine;
 public class Goddess : MonoBehaviour
 {
     [SerializeField]
-    private float speed;
-    [SerializeField]
     private SpriteRenderer backLight;
     [SerializeField]
     private GameObject linePrefab;
@@ -18,6 +16,8 @@ public class Goddess : MonoBehaviour
     private SpriteRenderer sprite;
     [SerializeField]
     private Sprite[] GoddessSprite;
+
+    private Vector2 pastPosition;
 
     private int layerMask = 1 << 9 | 1 << 13;
 
@@ -77,6 +77,15 @@ public class Goddess : MonoBehaviour
 
     private ControlStatus OnController()
     {
+        if (controller.State == InputController.Status.Pushed &&
+            controller.TouchPoint.y < manager.TapPositionY)
+        {
+            if (controller.TouchMovePoint.y < manager.TapPositionY)
+            {
+                pastPosition = transform.position;
+                return ControlStatus.None;
+            }
+        }
         if ((controller.State == InputController.Status.Pressing ||
             controller.State == InputController.Status.PressingMove) &&
             controller.TouchPoint.y < manager.TapPositionY)
@@ -99,18 +108,7 @@ public class Goddess : MonoBehaviour
         {
             return;
         }
-        if (controller.TouchMovePoint.x + speed * Time.deltaTime < transform.position.x)
-        {
-            transform.Translate(new Vector2(-speed * Time.deltaTime, 0));
-        }
-        else if (controller.TouchMovePoint.x - speed * Time.deltaTime > transform.position.x)
-        {
-            transform.Translate(new Vector2(speed * Time.deltaTime, 0));
-        }
-        else
-        {
-            transform.position = new Vector2(controller.TouchMovePoint.x, transform.position.y);
-        }
+        transform.position = pastPosition + new Vector2(controller.TouchMovePoint.x - controller.TouchPoint.x, 0);
     }
 
     public void SmashCounter(int value)
