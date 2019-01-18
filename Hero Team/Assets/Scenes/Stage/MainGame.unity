@@ -1598,7 +1598,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   controller:
   - clip: {fileID: 8300000, guid: 6f239eabaf34a1f4a915c964feb2b6dd, type: 3}
-    volume: 1
+    volume: 0.25
 --- !u!4 &1235799213
 Transform:
   m_ObjectHideFlags: 0
@@ -1656,21 +1656,6 @@ Prefab:
       propertyPath: ScrollCanvas
       value: 
       objectReference: {fileID: 1205047029}
-    - target: {fileID: 61592869344077528, guid: e2731762887561c43886fe55ea71a4de,
-        type: 2}
-      propertyPath: m_IsTrigger
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 61592869344077528, guid: e2731762887561c43886fe55ea71a4de,
-        type: 2}
-      propertyPath: m_Size.x
-      value: 5.6842103
-      objectReference: {fileID: 0}
-    - target: {fileID: 61592869344077528, guid: e2731762887561c43886fe55ea71a4de,
-        type: 2}
-      propertyPath: m_Size.y
-      value: 10.105263
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e2731762887561c43886fe55ea71a4de, type: 2}
   m_IsPrefabAsset: 0

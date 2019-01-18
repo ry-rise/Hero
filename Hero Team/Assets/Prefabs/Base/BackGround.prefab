@@ -271,7 +271,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 5.712, y: 10.2}
+  m_Size: {x: 5.6842103, y: 10.105263}
   m_EdgeRadius: 0
 --- !u!61 &61963511303054670
 BoxCollider2D:
@@ -417,7 +417,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   controller:
   - clip: {fileID: 8300000, guid: 2a3e4a23c6b09f64aaa02377b6b38e7e, type: 3}
-    volume: 1
+    volume: 0
 --- !u!114 &114423887843297294
 MonoBehaviour:
   m_ObjectHideFlags: 1
