@@ -174,7 +174,8 @@ public class Goddess : MonoBehaviour
     public void Swing()
     {
         sprite.sprite = GoddessSprite[1];
-        Coroutine coroutine = StartCoroutine("DelayMethod", 0.3f);
+        StartCoroutine("DelayMethod", 0.3f);
+        //Coroutine coroutine = StartCoroutine("DelayMethod", 0.3f);
     }
 
     private IEnumerator DelayMethod(float waitTime)

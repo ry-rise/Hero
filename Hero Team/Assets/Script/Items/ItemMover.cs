@@ -34,6 +34,7 @@ public class ItemMover : MonoBehaviour
         if (other.tag == "Bar")
         {
             manager.GetItem(this);
+            Destroy(gameObject);
         }
     }
 }

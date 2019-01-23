@@ -11,7 +11,15 @@ public abstract class BaseEnemy : MonoBehaviour
     private int HP = 1;
     // Use this for initialization
     [SerializeField]
+    private GameObject dropItem;
+    public GameObject DropItem { get { return dropItem; } }
+    [SerializeField]
     private GameObject sePrefab;
+
+    public void FirstSetting(EnemiesSetStatus table)
+    {
+        dropItem = table.DropItem;
+    }
 
     public enum StopStatus
     {
@@ -76,9 +84,18 @@ public abstract class BaseEnemy : MonoBehaviour
         AttackSwitch();
         if (HP < 1)
         {
-            manager.Enemies.Remove(this);
-            Destroy(gameObject);
+            Die();
         }
+    }
+
+    virtual protected void Die()
+    {
+        if (DropItem != null)
+        {
+            Instantiate(DropItem, transform.position, Quaternion.identity);
+        }
+        manager.Enemies.Remove(this);
+        Destroy(gameObject);
     }
 
     virtual protected void OnTriggerExit2D(Collider2D target)

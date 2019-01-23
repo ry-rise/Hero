@@ -91,6 +91,7 @@ public class GameManager : MonoBehaviour
         if (controller.State == InputController.Status.Pushed)
         {
             enemy.AllStart();   //敵が動き出す
+            item.AllStart();    //アイテムが動き出す
             player.BallStart(); //勇者が動き出す
             GameState = RequestGameState = GameStatus.Play;
         }
@@ -133,6 +134,7 @@ public class GameManager : MonoBehaviour
         else if (RequestGameState == GameStatus.Wait)
         {
             enemy.AllStop();    //敵を止める
+            item.AllPause();
             GameState = GameStatus.Wait;
         }
         else if (RequestGameState == GameStatus.Pause)

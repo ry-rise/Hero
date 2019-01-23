@@ -7,5 +7,16 @@ public class EnemiesDataTable : ScriptableObject
 {
     [SerializeField]
     private List<EnemiesSetStatus> status;
-    public List<EnemiesSetStatus> Status { get { return status; } set { status = value; } }
+    public IEnumerable<EnemiesSetStatus> Status { get { return status; } }
+
+    public void Clear()
+    {
+        status.Clear();
+    }
+
+    public void Add(string name, Vector2 position, GameObject dropItem)
+    {
+        status.Add(new EnemiesSetStatus(name, position, dropItem));
+    }
+
 }

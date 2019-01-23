@@ -18,7 +18,7 @@ public class CreateManager : MonoBehaviour
             return;
         }
         AssetDatabase.StartAssetEditing();
-        dataTable.Status.Clear();   //中身を空にする
+        dataTable.Clear();   //中身を空にする
         EnemiesIndex index = Resources.Load("Enemies/EnemiesIndex") as EnemiesIndex;
         GameObject[] enemies = GameObject.FindGameObjectsWithTag("Enemy");
         Debug.Log(index);
@@ -45,7 +45,7 @@ public class CreateManager : MonoBehaviour
             }
             else
             {
-                DataTable.Status.Add(new EnemiesSetStatus(topName, it.transform.position));
+                DataTable.Add(topName, it.transform.position, it.GetComponent<BaseEnemy>().DropItem);
             }
         }
         Debug.Log("記録成功");

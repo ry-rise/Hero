@@ -50,7 +50,8 @@ public class EnemyManager : MonoBehaviour
             foreach (EnemiesSetStatus it in enemiesList[waveNumber].Status)
             {
                 GameObject prefab = Resources.Load("Enemies/" + it.EnemyName) as GameObject;
-                Instantiate(prefab, it.Position + addPosition, Quaternion.identity);
+                GameObject enemy = Instantiate(prefab, it.Position + addPosition, Quaternion.identity);
+                enemy.GetComponent<BaseEnemy>().FirstSetting(it);
             }
             AllStop();
         }
