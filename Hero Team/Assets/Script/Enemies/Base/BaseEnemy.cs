@@ -9,6 +9,8 @@ public abstract class BaseEnemy : MonoBehaviour
     protected BaseEnemyAttack attack;
     [SerializeField]
     private int HP = 1;
+    [SerializeField]
+    private int Score = 1;
     // Use this for initialization
     [SerializeField]
     private GameObject dropItem;
@@ -95,6 +97,7 @@ public abstract class BaseEnemy : MonoBehaviour
             Instantiate(DropItem, transform.position, Quaternion.identity);
         }
         manager.Enemies.Remove(this);
+
         Destroy(gameObject);
     }
 
