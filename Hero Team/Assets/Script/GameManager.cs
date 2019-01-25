@@ -8,7 +8,7 @@ public class GameManager : MonoBehaviour
 {
     [SerializeField] bool DebugClear = false;
     [SerializeField] bool DebugGameOver = false;
-    
+
     private int PlayerLife = 3; //プレイヤー残機
 
     private ItemManager item;   //アイテムマネージャー
@@ -20,6 +20,32 @@ public class GameManager : MonoBehaviour
     public GameStatus GameState { get; private set; }   //状態
     public GameStatus RequestGameState { get; set; } //外部から状態を変えたい場合、一度ここを通すこと
     public GameStatus PausePastState { get; private set; }
+
+    //倍数
+    private const int barHitCountMultiple = 100;
+    private const int getItemCountMultiple = 1200;
+
+    //合計スコア
+    private static int totalScore;
+    public static int TotalScore { get { return totalScore + EnemyScore + ItemScore + BarScore; } private set { totalScore = value; } }
+
+    //個別スコア
+    public static int EnemyScore;   //敵スコア
+    public static int BarScore { get { return barHitCountMultiple * BarHitCount; }  }     //バー反射スコア
+    public static int ItemScore { get { return getItemCountMultiple * GetItemCount; } }    //アイテムゲットスコア
+
+    //スコアに関するカウント
+    public static int BarHitCount;  //バーがボールを反射させた回数
+    public static int GetItemCount; //アイテムを取得した回数
+
+    //計算
+    public static void ScoreResult()
+    {
+        TotalScore += EnemyScore + ItemScore + BarScore;
+        EnemyScore = 0;
+        BarHitCount = 0;
+        GetItemCount = 0;
+    }
 
     public enum GameStatus
     {

@@ -96,6 +96,7 @@ public abstract class BaseEnemy : MonoBehaviour
         {
             Instantiate(DropItem, transform.position, Quaternion.identity);
         }
+        GameManager.EnemyScore += Score;
         manager.Enemies.Remove(this);
 
         Destroy(gameObject);

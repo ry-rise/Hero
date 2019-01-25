@@ -5,6 +5,7 @@ using UnityEngine;
 public class PlayerManager : MonoBehaviour
 {
     private GameManager gameManager;
+
     [SerializeField]
     private SeManager se;
     [SerializeField]

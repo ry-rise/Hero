@@ -83,6 +83,7 @@ public class Bar : MonoBehaviour
         {
             se.Play();
             goddess.Swing();
+            ++GameManager.BarHitCount;
             if (!goddess.Smashing(collision.transform.root.gameObject))
             {
                 Hero ball = collision.gameObject.GetComponent<Hero>();

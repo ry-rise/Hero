@@ -33,6 +33,7 @@ public class ItemMover : MonoBehaviour
     {
         if (other.tag == "Bar")
         {
+            ++GameManager.GetItemCount;
             manager.GetItem(this);
             Destroy(gameObject);
         }
