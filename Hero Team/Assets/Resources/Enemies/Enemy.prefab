@@ -81,7 +81,7 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 1.2, y: 1.22}
+    oldSize: {x: 1.3531818, y: 1.3163637}
     newSize: {x: 0.16, y: 0.16}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
@@ -117,6 +117,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   HP: 1
+  dropItem: {fileID: 0}
   sePrefab: {fileID: 1866375289627150, guid: 33b36a7e0d8bb5c468a2b5ea100e941b, type: 2}
   stop: 0
 --- !u!114 &114910611113318090
@@ -166,7 +167,7 @@ SpriteRenderer:
   m_SortingLayerID: -1135519715
   m_SortingLayer: 2
   m_SortingOrder: 2
-  m_Sprite: {fileID: 21300000, guid: bfe89734416536b4786e202d735f12b6, type: 3}
+  m_Sprite: {fileID: 21300000, guid: d90ded678866e9a4890e45f450aebaea, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
