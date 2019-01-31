@@ -84,12 +84,9 @@ public class Bar : MonoBehaviour
             se.Play();
             goddess.Swing();
             ++GameManager.BarHitCount;
-            if (!goddess.Smashing(collision.transform.root.gameObject))
-            {
-                Hero ball = collision.gameObject.GetComponent<Hero>();
-                Vector2 ver = collision.transform.root.position - transform.position;
-                ball.GetComponent<Rigidbody2D>().velocity = new Vector2(ver.x * (limitAngle / 180), ver.y) * ball.Speed;
-            }
+            Hero ball = collision.gameObject.GetComponent<Hero>();
+            Vector2 ver = collision.transform.root.position - transform.position;
+            ball.GetComponent<Rigidbody2D>().velocity = new Vector2(ver.x * (limitAngle / 180), ver.y) * ball.Speed;
         }
     }
 }

@@ -6,20 +6,14 @@ public class Goddess : MonoBehaviour
 {
     [SerializeField]
     private SpriteRenderer backLight;
-    [SerializeField]
-    private GameObject linePrefab;
-    private GameObject line;
     private PlayerManager manager;
     private InputController controller;
-    private GameObject bar;
     [SerializeField]
     private SpriteRenderer sprite;
     [SerializeField]
     private Sprite[] GoddessSprite;
 
     private Vector2 pastPosition;
-
-    private int layerMask = 1 << 9 | 1 << 13;
 
     [SerializeField]
     private Edit status;
@@ -45,8 +39,6 @@ public class Goddess : MonoBehaviour
 
     public float SmashPercent { get { return (float)smashCount / SmashCountMax; } }
 
-    private Vector2 smashVector;
-
     public bool IsStoped { get; set; }
 
     // Use this for initialization
@@ -54,10 +46,7 @@ public class Goddess : MonoBehaviour
     {
         manager = GameObject.Find("PlayerManager").GetComponent<PlayerManager>();
         controller = GameObject.Find("GameManager").GetComponent<InputController>();
-        bar = transform.Find("Bar").gameObject;
         BackLightChanged(SmashPercent);
-        smashVector = new Vector2(0, 1);
-        line = Instantiate(linePrefab);
         IsStoped = false;
     }
 
@@ -77,27 +66,25 @@ public class Goddess : MonoBehaviour
 
     private ControlStatus OnController()
     {
+        //指の初期位置
         if (controller.State == InputController.Status.Pushed &&
             controller.TouchPoint.y < manager.TapPositionY)
         {
-            if (controller.TouchMovePoint.y < manager.TapPositionY)
-            {
-                pastPosition = transform.position;
-                return ControlStatus.None;
-            }
+            pastPosition = transform.position;
+            return ControlStatus.None;
         }
+        //バーの操作
         if ((controller.State == InputController.Status.Pressing ||
             controller.State == InputController.Status.PressingMove) &&
             controller.TouchPoint.y < manager.TapPositionY)
         {
-            if (controller.TouchMovePoint.y < manager.TapPositionY)
-            {
-                return ControlStatus.Bar;
-            }
-            else
-            {
-                return ControlStatus.Smash;
-            }
+            return ControlStatus.Bar;
+        }
+        //スマッシュ
+        if (controller.State == InputController.Status.Pushed && 
+            controller.TouchPoint.y > manager.TapPositionY)
+        {
+            return ControlStatus.Smash;
         }
         return ControlStatus.None;
     }
@@ -124,51 +111,18 @@ public class Goddess : MonoBehaviour
 
     private void SmashWaiting()
     {
-        //フリック待ち
-        if (OnController() != ControlStatus.Smash || IsStoped)
+        if (SmashPercent < 1 || OnController() != ControlStatus.Smash || IsStoped)
         {
-            if (line.gameObject.activeInHierarchy)
-            {
-                line.gameObject.SetActive(false);
-            }
             return;
         }
-        //ここで線の描画処理を入れる
-        LineDraw();
+        Smashing();
     }
 
-    private void LineDraw()
+    public void Smashing()
     {
-        if (!line.gameObject.activeInHierarchy)
-        {
-            line.gameObject.SetActive(true);
-        }
-        //始点を決める
-        Vector2 sPoint = bar.transform.position;
-        //方向ベクトルを求める
-        Vector2 dVector = controller.TouchMovePoint - (Vector2)bar.transform.position;
-        float scalar = Mathf.Sqrt(dVector.x * dVector.x + dVector.y * dVector.y);
-        smashVector = dVector / scalar;
-        if (smashVector.y < 0 || scalar == 0) smashVector = new Vector2(0, 1);
-        //レイキャスト飛ばします
-        RaycastHit2D hit = Physics2D.Raycast(bar.transform.position, smashVector, Mathf.Infinity, layerMask);
-        //終点を決める
-        Vector2 ePoint = hit.point;
-        float angle = Mathf.Atan2(smashVector.y, smashVector.x) * Mathf.Rad2Deg - 90;
-        line.transform.position = (sPoint + ePoint) / 2;
-        line.transform.localScale = new Vector2(0.1f, Vector2.Distance(sPoint, ePoint) * 1.5f);
-        line.transform.rotation = Quaternion.Euler(new Vector3(0, 0, 1) * angle);
-    }
-
-    public bool Smashing(GameObject ball)
-    {
-        if (SmashPercent < 1) return false;
-        if (OnController() != ControlStatus.Smash) return false;
-        ball.GetComponent<Hero>().TypeChange(true);
-        ball.GetComponent<Rigidbody2D>().velocity = smashVector;
+        manager.AllSmashing(controller.TouchPoint);
         SmashCount = 0;
         BackLightChanged(SmashPercent);
-        return true;
     }
 
     public void Swing()

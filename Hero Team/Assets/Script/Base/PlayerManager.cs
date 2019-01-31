@@ -104,4 +104,17 @@ public class PlayerManager : MonoBehaviour
         }
         goddess.IsStoped = false;
     }
+
+    public void AllSmashing(Vector2 point)
+    {
+        foreach (Hero it in balls)
+        {
+            it.GetComponent<Hero>().TypeChange(true);
+            //方向ベクトルを求める
+            Vector2 dVector = point - (Vector2)it.transform.position;
+            float scalar = Mathf.Sqrt(dVector.x * dVector.x + dVector.y * dVector.y);
+            Vector2 smashVector = dVector / scalar;
+            it.GetComponent<Rigidbody2D>().velocity = smashVector * it.Speed;
+        }
+    }
 }
