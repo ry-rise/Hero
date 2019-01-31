@@ -16,6 +16,10 @@ public class Goddess : MonoBehaviour
     private Vector2 pastPosition;
 
     [SerializeField]
+    private GameObject fallStopperPrefab;
+    private GameObject fallStopper;
+
+    [SerializeField]
     private Edit status;
     public Vector2 FirstPosition { get { return status.FirstPosition; } }
     public int StartAngle { get { return status.StartAngle; } }
@@ -41,6 +45,8 @@ public class Goddess : MonoBehaviour
 
     public bool IsStoped { get; set; }
 
+    private bool IsSmashStarted { get; set; }
+
     // Use this for initialization
     private void Awake()
     {
@@ -48,6 +54,8 @@ public class Goddess : MonoBehaviour
         controller = GameObject.Find("GameManager").GetComponent<InputController>();
         BackLightChanged(SmashPercent);
         IsStoped = false;
+        IsSmashStarted = false;
+        fallStopper = Instantiate(fallStopperPrefab, new Vector2(0, manager.TapPositionY), Quaternion.identity);
     }
 
     // Update is called once per frame
@@ -100,6 +108,7 @@ public class Goddess : MonoBehaviour
 
     public void SmashCounter(int value)
     {
+        if (manager.IsPenetrated) return;
         SmashCount += value;
         BackLightChanged(SmashPercent);
     }
@@ -111,8 +120,9 @@ public class Goddess : MonoBehaviour
 
     private void SmashWaiting()
     {
-        if (SmashPercent < 1 || OnController() != ControlStatus.Smash || IsStoped)
+        if (SmashPercent < 1 || IsStoped)
         {
+            IsSmashStarted = false;
             return;
         }
         Smashing();
@@ -120,9 +130,24 @@ public class Goddess : MonoBehaviour
 
     public void Smashing()
     {
-        manager.AllSmashing(controller.TouchPoint);
-        SmashCount = 0;
-        BackLightChanged(SmashPercent);
+        if (!IsSmashStarted)
+        {
+            IsSmashStarted = true;
+            return;
+        }
+        if (OnController() == ControlStatus.Smash)
+        {
+            manager.AllSmashing(controller.TouchPoint);
+            SmashCount = 0;
+            BackLightChanged(SmashPercent);
+            fallStopper.SetActive(true);
+            IsSmashStarted = false;
+        }
+    }
+
+    public void SmashEnd()
+    {
+        fallStopper.SetActive(false);
     }
 
     public void Swing()

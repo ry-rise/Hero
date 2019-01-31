@@ -24,6 +24,10 @@ public class PlayerManager : MonoBehaviour
 
     public Vector2 FirstPosition { get { return goddess.FirstPosition; } }
 
+    public bool IsPenetrated { get; private set; }
+    [SerializeField]
+    private float penetratTime;
+    private float penetratTimeCount;
 
     private void Awake()
     {
@@ -35,6 +39,8 @@ public class PlayerManager : MonoBehaviour
         gameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
         goddess = GameObject.FindGameObjectWithTag("Player").GetComponent<Goddess>();
         bar = goddess.transform.Find("Bar").GetComponent<Bar>();
+        penetratTimeCount = 0;
+        IsPenetrated = false;
         if (Balls.Count == 0)
         {
             BallSet(true);
@@ -44,7 +50,6 @@ public class PlayerManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        //アイテムの使用
     }
 
     private void FixedUpdate()
@@ -52,6 +57,31 @@ public class PlayerManager : MonoBehaviour
         if (Balls.Count == 0)
         {
             BallSet();
+        }
+        if (IsPenetrated)
+        {
+            SmashTime();
+        }
+    }
+
+    private void SmashTime()
+    {
+        if (IsPenetrated)
+        {
+            if (penetratTimeCount < penetratTime)
+            {
+                penetratTimeCount += Time.fixedDeltaTime;
+            }
+            else
+            {
+                foreach (Hero it in Balls)
+                {
+                    it.TypeChange(false);
+                }
+                IsPenetrated = false;
+                penetratTimeCount = 0;
+                goddess.SmashEnd();
+            }
         }
     }
 
@@ -65,6 +95,8 @@ public class PlayerManager : MonoBehaviour
             if (flag) return;
             gameManager.RequestGameState = GameManager.GameStatus.Wait;
             bar.ResetScale();       //バーのサイズをリセット
+            goddess.transform.position = new Vector2(0, goddess.transform.position.y);
+            goddess.IsStoped = true;
         }
         Instantiate(ballPrefab, goddess.FirstPosition, Quaternion.identity);
     }
@@ -76,6 +108,7 @@ public class PlayerManager : MonoBehaviour
         {
             it.StartGame();
         }
+        goddess.IsStoped = false;
     }
 
     public void ResetPosition()
@@ -85,6 +118,8 @@ public class PlayerManager : MonoBehaviour
         {
             it.ResetPosition();
         }
+        goddess.IsStoped = true;
+        goddess.transform.position = new Vector2(0, goddess.transform.position.y);
     }
 
     public void AllPause()
@@ -116,5 +151,6 @@ public class PlayerManager : MonoBehaviour
             Vector2 smashVector = dVector / scalar;
             it.GetComponent<Rigidbody2D>().velocity = smashVector * it.Speed;
         }
+        IsPenetrated = true;
     }
 }

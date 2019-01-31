@@ -9,10 +9,6 @@ public class Hero : MonoBehaviour
     private bool isStarted;
     private WallHitter wallHitter;
     private Rigidbody2D rb;
-    [SerializeField]
-    private float penetratTime;
-    private float penetratTimeCount;
-    private bool isPenetrated;
     private PlayerManager manager;
     [SerializeField]
     private StatusEdit status;
@@ -87,7 +83,6 @@ public class Hero : MonoBehaviour
     private void Moving()
     {
         SetSpeed();
-        PenetratCounter();
         //落下したら
         if (wallHitter.IsHit(gameObject, HitPointFlag.Bottom))
         {
@@ -132,29 +127,12 @@ public class Hero : MonoBehaviour
         TypeChange(true);
         isStarted = false;
     }
-    //貫通
-    private void PenetratCounter()
-    {
-        if (isPenetrated)
-        {
-            if (penetratTimeCount < penetratTime)
-            {
-                penetratTimeCount += Time.fixedDeltaTime;
-            }
-            else
-            {
-                TypeChange(false);
-            }
-        }
-    }
 
     //貫通弾に変える
     public void TypeChange(bool IsPenetrated)
     {
-        isPenetrated = IsPenetrated;
         if (IsPenetrated)
         {
-            penetratTimeCount = 0;
             gameObject.layer = LayerMask.NameToLayer("PenetratBall");
         }
         else

@@ -167,3 +167,4 @@ MonoBehaviour:
   tapLinePrefab: {fileID: 1374147327708728, guid: 14070a1ec32e4074bbc24d896156c231,
     type: 2}
   tapPositionY: -3.5
+  penetratTime: 10

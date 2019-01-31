@@ -54,6 +54,7 @@ GameObject:
   - component: {fileID: 4222245332303112}
   - component: {fileID: 212235376098050376}
   - component: {fileID: 61730596487268946}
+  - component: {fileID: 61107346599039420}
   - component: {fileID: 114312310665948788}
   - component: {fileID: 114445117844069552}
   - component: {fileID: 82629285757315410}
@@ -84,7 +85,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1840809660535226}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.14, z: 0}
+  m_LocalPosition: {x: 0, y: 0.5, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 4463587963828752}
@@ -105,6 +106,31 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!61 &61107346599039420
+BoxCollider2D:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1840809660535226}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 2.053, y: 1}
+    newSize: {x: 0.16, y: 0.16}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 1.9, y: 0.35}
+  m_EdgeRadius: 0
 --- !u!61 &61730596487268946
 BoxCollider2D:
   m_ObjectHideFlags: 1
@@ -270,13 +296,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d959471c2de1337479d03cf27e6dc357, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 3
   backLight: {fileID: 212406925369615032}
-  linePrefab: {fileID: 1454378359782614, guid: 06b9dc173fc8bd542b406005566d0c3f, type: 2}
   sprite: {fileID: 212265188140610596}
   GoddessSprite:
   - {fileID: 21300000, guid: 986501da71329d34f9dc2306c7ccaab4, type: 3}
   - {fileID: 21300000, guid: da9d4918c46dde94582ba20162f3354c, type: 3}
+  fallStopperPrefab: {fileID: 1699678783250468, guid: 36bd0f9ece7b826428121eeaf2bd072e,
+    type: 2}
   status: {fileID: 11400000, guid: 3965a05eaf1730d4caab647dda415881, type: 2}
 --- !u!212 &212235376098050376
 SpriteRenderer:
@@ -405,7 +431,7 @@ SpriteRenderer:
   m_SortingLayerID: -1135519715
   m_SortingLayer: 2
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 00930d28ddc8fa2488b490ce2a65158a, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 72a0848a22636bc4d84b04ab87a30408, type: 3}
   m_Color: {r: 0.9846988, g: 1, b: 0, a: 1}
   m_FlipX: 0
   m_FlipY: 0
