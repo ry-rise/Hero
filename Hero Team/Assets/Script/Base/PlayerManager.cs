@@ -66,6 +66,7 @@ public class PlayerManager : MonoBehaviour
 
     private void SmashTime()
     {
+        if (goddess.IsStoped) return;
         if (IsPenetrated)
         {
             if (penetratTimeCount < penetratTime)
@@ -74,15 +75,20 @@ public class PlayerManager : MonoBehaviour
             }
             else
             {
-                foreach (Hero it in Balls)
-                {
-                    it.TypeChange(false);
-                }
-                IsPenetrated = false;
-                penetratTimeCount = 0;
-                goddess.SmashEnd();
+                SmashReset();
             }
         }
+    }
+
+    private void SmashReset()
+    {
+        foreach (Hero it in Balls)
+        {
+            it.TypeChange(false);
+        }
+        IsPenetrated = false;
+        penetratTimeCount = 0;
+        goddess.SmashEnd();
     }
 
     private void BallSet(bool isStarted = false)
@@ -118,8 +124,9 @@ public class PlayerManager : MonoBehaviour
         {
             it.ResetPosition();
         }
-        goddess.IsStoped = true;
         goddess.transform.position = new Vector2(0, goddess.transform.position.y);
+        SmashReset();
+        goddess.IsStoped = true;
     }
 
     public void AllPause()
