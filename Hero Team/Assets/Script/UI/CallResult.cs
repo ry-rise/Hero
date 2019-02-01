@@ -5,7 +5,7 @@ using UnityEngine.UI;
 
 public class CallResult : MonoBehaviour {
     [SerializeField]
-    private Text YPText;
+    private Text HeroPointText;
     [SerializeField]
     private Text EnemyText;
     [SerializeField]
@@ -16,6 +16,7 @@ public class CallResult : MonoBehaviour {
     private Text TotalText;
 	// Use this for initialization
 	void Start () {
+        HeroPointText.text = "勇者ポイント" + GameManager.HeroPointScore;
         EnemyText.text = "倒した敵   " + GameManager.EnemyScore;
         RefectionText.text = "ぶっとばし   " + GameManager.BarScore;
         ItemText.text = "アイテム   " + GameManager.ItemScore;

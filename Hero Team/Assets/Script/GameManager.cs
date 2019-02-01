@@ -24,6 +24,7 @@ public class GameManager : MonoBehaviour
     //倍数
     private const int barHitCountMultiple = 100;
     private const int getItemCountMultiple = 1200;
+    private const int HeroPointCountMultiple = 2000;
 
     //合計スコア
     private static int totalScore;
@@ -33,10 +34,12 @@ public class GameManager : MonoBehaviour
     public static int EnemyScore;   //敵スコア
     public static int BarScore { get { return barHitCountMultiple * BarHitCount; }  }     //バー反射スコア
     public static int ItemScore { get { return getItemCountMultiple * GetItemCount; } }    //アイテムゲットスコア
+    public static int HeroPointScore { get { return HeroPointCountMultiple * HeroPoint; } } //勇者ポイントスコア
 
     //スコアに関するカウント
     public static int BarHitCount;  //バーがボールを反射させた回数
     public static int GetItemCount; //アイテムを取得した回数
+    public static int HeroPoint; //勇者ポイント
 
     //計算
     public static void ScoreResult()

@@ -277,7 +277,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4b47ec614f899e64cbc4aeb65654221a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  YPText: {fileID: 529872966}
+  HeroPointText: {fileID: 529872966}
   EnemyText: {fileID: 2104153852}
   RefectionText: {fileID: 760156637}
   ItemText: {fileID: 656246057}
@@ -381,7 +381,7 @@ GameObject:
   - component: {fileID: 529872965}
   - component: {fileID: 529872966}
   m_Layer: 5
-  m_Name: YP
+  m_Name: HeroPoint
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
