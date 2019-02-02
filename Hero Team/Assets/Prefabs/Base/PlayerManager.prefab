@@ -168,3 +168,7 @@ MonoBehaviour:
     type: 2}
   tapPositionY: -3.5
   penetratTime: 10
+  statuses:
+  - {fileID: 11400000, guid: b7707a47203446a428ccb719d0bfbe48, type: 2}
+  - {fileID: 11400000, guid: f1516e3b9274e074ba69125b4897fb7e, type: 2}
+  - {fileID: 11400000, guid: b2356c9e8471d7244bce83394ebaa338, type: 2}

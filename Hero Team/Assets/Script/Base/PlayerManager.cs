@@ -25,9 +25,10 @@ public class PlayerManager : MonoBehaviour
     public Vector2 FirstPosition { get { return goddess.FirstPosition; } }
 
     public bool IsPenetrated { get; private set; }
-    [SerializeField]
-    private float penetratTime;
     private float penetratTimeCount;
+    [SerializeField]
+    private List<StatusEdit> statuses;
+    public List<StatusEdit> Statuses { get { return statuses; } }
 
     private void Awake()
     {
@@ -69,7 +70,7 @@ public class PlayerManager : MonoBehaviour
         if (goddess.IsStoped) return;
         if (IsPenetrated)
         {
-            if (penetratTimeCount < penetratTime)
+            if (penetratTimeCount < statuses[GameManager.SmashLevel].LimitTime)
             {
                 penetratTimeCount += Time.fixedDeltaTime;
             }

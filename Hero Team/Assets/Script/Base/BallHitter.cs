@@ -5,10 +5,12 @@ using UnityEngine;
 public class BallHitter : MonoBehaviour {
 
     private Goddess goddess;
+    private Hero hero;
     // Use this for initialization
     void Awake ()
     {
         goddess = GameObject.FindGameObjectWithTag("Player").GetComponent<Goddess>();
+        hero = transform.root.GetComponent<Hero>();
     }
 	
 	// Update is called once per frame
@@ -20,7 +22,7 @@ public class BallHitter : MonoBehaviour {
     {
         if (collision.tag == "Enemy")
         {
-            goddess.SmashCounter(1);
+            goddess.SmashCounter(hero.ChargeAmount);
         }
     }
 

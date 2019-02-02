@@ -9,8 +9,8 @@ public class GameManager : MonoBehaviour
     [SerializeField] bool DebugClear = false;
     [SerializeField] bool DebugGameOver = false;
 
-    private static int PlayerLife = 3; //プレイヤー残機
-    private static int SmashLevel = 0;  //スマッシュレベル
+    public static int PlayerLife = 3; //プレイヤー残機
+    public static int SmashLevel = 0;  //スマッシュレベル
 
     private ItemManager item;   //アイテムマネージャー
     private EnemyManager enemy; //エネミーマネージャー

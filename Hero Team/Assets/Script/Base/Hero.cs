@@ -10,8 +10,9 @@ public class Hero : MonoBehaviour
     private WallHitter wallHitter;
     private Rigidbody2D rb;
     private PlayerManager manager;
-    [SerializeField]
     private StatusEdit status;
+    public float HitSize { get { return status.HitSize; } }
+    public int ChargeAmount { get { return status.ChargeAmount; } }
     public float Speed { get { return status.Speed; } }
     public int Power { get { return status.Power; } }   //勇者の攻撃力
 
@@ -40,6 +41,8 @@ public class Hero : MonoBehaviour
     void Awake()
     {
         manager = GameObject.Find("PlayerManager").GetComponent<PlayerManager>();
+        status = manager.Statuses[GameManager.SmashLevel];
+        transform.localScale = new Vector2(HitSize, HitSize);
         manager.Balls.Add(this);
         wallHitter = GameObject.Find("GameManager").GetComponent<WallHitter>();
         rb = GetComponent<Rigidbody2D>();
