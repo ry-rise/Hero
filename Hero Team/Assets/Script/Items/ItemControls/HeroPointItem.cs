@@ -12,13 +12,12 @@ public class HeroPointItem : BaseItemManager
 
     protected override bool UseItem()
     {
-
-        return false;
+        ++GameManager.HeroPoint;
+        return true;
     }
 
     //アイテムを取得した
     public override void GetItem()
     {
-        GameManager.HeroPoint++;
     }
 }
