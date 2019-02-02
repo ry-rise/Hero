@@ -11,14 +11,16 @@ public class Goddess : MonoBehaviour
     [SerializeField]
     private SpriteRenderer sprite;
     [SerializeField]
-    private Sprite[] GoddessSprite;
+    private Sprite[] goddessSprite;
 
     private Vector2 pastPosition;
 
     [SerializeField]
     private GameObject fallStopperPrefab;
     private GameObject fallStopper;
-    private Sprite barSprite;
+    private SpriteRenderer fallStopperSprite;
+    private float stopperTimeCount;
+    private bool stopperUpper;
 
     [SerializeField]
     private Edit status;
@@ -57,6 +59,9 @@ public class Goddess : MonoBehaviour
         IsStoped = false;
         IsSmashStarted = false;
         fallStopper = Instantiate(fallStopperPrefab, new Vector2(0, manager.TapPositionY), Quaternion.identity);
+        fallStopperSprite = fallStopper.GetComponent<SpriteRenderer>();
+        stopperTimeCount = 0;
+        stopperUpper = true;
     }
 
     // Update is called once per frame
@@ -129,6 +134,29 @@ public class Goddess : MonoBehaviour
         Smashing();
     }
 
+    public void SmashAlpha()
+    {
+        if (stopperUpper)
+        {
+            stopperTimeCount += Time.deltaTime;
+            if (stopperTimeCount >= 1)
+            {
+                stopperTimeCount = 1;
+                stopperUpper = false;
+            }
+        }
+        else
+        {
+            stopperTimeCount -= Time.deltaTime;
+            if (stopperTimeCount <= 0)
+            {
+                stopperTimeCount = 0;
+                stopperUpper = true;
+            }
+        }
+        fallStopperSprite.color = new Color(1, 1, 1, stopperTimeCount);
+    }
+
     public void Smashing()
     {
         if (!IsSmashStarted)
@@ -148,12 +176,15 @@ public class Goddess : MonoBehaviour
 
     public void SmashEnd()
     {
+        stopperTimeCount = 0;
+        stopperUpper = true;
+        fallStopperSprite.color = Color.white;
         fallStopper.SetActive(false);
     }
 
     public void Swing()
     {
-        sprite.sprite = GoddessSprite[1];
+        sprite.sprite = goddessSprite[1];
         StartCoroutine("DelayMethod", 0.3f);
         //Coroutine coroutine = StartCoroutine("DelayMethod", 0.3f);
     }
@@ -161,6 +192,6 @@ public class Goddess : MonoBehaviour
     private IEnumerator DelayMethod(float waitTime)
     {
         yield return new WaitForSeconds(waitTime);
-        sprite.sprite = GoddessSprite[0];
+        sprite.sprite = goddessSprite[0];
     }
 }

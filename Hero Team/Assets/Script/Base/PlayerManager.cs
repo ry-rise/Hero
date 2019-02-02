@@ -74,6 +74,10 @@ public class PlayerManager : MonoBehaviour
         if (goddess.IsStoped) return;
         if (IsPenetrated)
         {
+            if (penetratTimeCount >= 2f)
+            {
+                goddess.SmashAlpha();
+            }
             if (penetratTimeCount < statuses[GameManager.SmashLevel].LimitTime)
             {
                 penetratTimeCount += Time.fixedDeltaTime;

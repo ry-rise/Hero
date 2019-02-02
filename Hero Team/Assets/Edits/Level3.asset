@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Name: Level3
   m_EditorClassIdentifier: 
   hitSize: 2
-  limitTime: 10
+  limitTime: 15
   chargeAmount: 3
   power: 1
   speed: 5
