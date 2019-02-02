@@ -62,25 +62,11 @@ public class Hero : MonoBehaviour
         }
     }
 
-    private void Update()
-    {
-        //Debug用
-        if (Input.GetKeyDown(KeyCode.Alpha1))
-        {
-            TypeChange(false);
-        }
-        if (Input.GetKeyDown(KeyCode.Alpha2))
-        {
-            TypeChange(true);
-        }
-    }
-
     public void StartGame()
     {
         isStarted = true;
         transform.parent = null;
         SetSpeed(true);
-        TypeChange(false);
     }
 
     private void Moving()
@@ -127,26 +113,20 @@ public class Hero : MonoBehaviour
     private void Setting()
     {
         rb.velocity = Vector2.zero;
-        TypeChange(true);
         isStarted = false;
-    }
-
-    //貫通弾に変える
-    public void TypeChange(bool IsPenetrated)
-    {
-        if (IsPenetrated)
-        {
-            gameObject.layer = LayerMask.NameToLayer("PenetratBall");
-        }
-        else
-        {
-            gameObject.layer = LayerMask.NameToLayer("Ball");
-        }
     }
 
     private void FallOut()
     {
         manager.Balls.Remove(this);
         Destroy(gameObject);
+    }
+
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.gameObject.tag == "Enemy")
+        {
+            manager.SmashCounter(ChargeAmount);
+        }
     }
 }

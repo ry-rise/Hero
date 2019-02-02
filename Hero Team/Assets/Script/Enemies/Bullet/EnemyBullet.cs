@@ -37,13 +37,13 @@ public class EnemyBullet : MonoBehaviour
         gameObject.tag = "PlayerBullet";
     }
 
-    void OnTriggerEnter2D(Collider2D Target)
+    private void OnTriggerEnter2D(Collider2D collision)
     {
         if (gameObject.tag == "EnemyBullet")
         {
-            if (Target.gameObject.tag == "Bar")
+            if (collision.tag == "Bar")
             {
-                bool result = Target.GetComponent<Bar>().Damage(1, this);
+                bool result = collision.GetComponent<Bar>().Damage(1, this);
                 if (result)
                 {
                     GameObject.Find("EnemyManager").GetComponent<EnemyManager>().Bullets.Remove(this);
@@ -51,7 +51,7 @@ public class EnemyBullet : MonoBehaviour
                     Destroy(gameObject);
                 }
             }
-            if (Target.gameObject.transform.root.tag == "Ball")
+            if (collision.tag == "Ball")
             {
                 GameObject.Find("EnemyManager").GetComponent<EnemyManager>().Bullets.Remove(this);
                 Destroy(gameObject);

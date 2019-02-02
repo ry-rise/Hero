@@ -14,8 +14,8 @@ public class Enemy : BaseEnemy
         base.Update();
     }
 
-    protected override void OnTriggerExit2D(Collider2D target)
+    protected override void OnCollisionEnter2D(Collision2D collision)
     {
-        base.OnTriggerExit2D(target);
+        base.OnCollisionEnter2D(collision);
     }
 }

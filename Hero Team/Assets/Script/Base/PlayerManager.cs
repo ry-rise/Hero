@@ -64,6 +64,10 @@ public class PlayerManager : MonoBehaviour
             SmashTime();
         }
     }
+    public void SmashCounter(int value)
+    {
+        goddess.SmashCounter(value);
+    }
 
     private void SmashTime()
     {
@@ -83,10 +87,6 @@ public class PlayerManager : MonoBehaviour
 
     private void SmashReset()
     {
-        foreach (Hero it in Balls)
-        {
-            it.TypeChange(false);
-        }
         IsPenetrated = false;
         penetratTimeCount = 0;
         goddess.SmashEnd();
@@ -152,7 +152,6 @@ public class PlayerManager : MonoBehaviour
     {
         foreach (Hero it in balls)
         {
-            it.GetComponent<Hero>().TypeChange(true);
             //方向ベクトルを求める
             Vector2 dVector = point - (Vector2)it.transform.position;
             float scalar = Mathf.Sqrt(dVector.x * dVector.x + dVector.y * dVector.y);

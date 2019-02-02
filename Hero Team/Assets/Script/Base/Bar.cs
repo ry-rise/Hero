@@ -79,7 +79,7 @@ public class Bar : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.transform.root.tag == "Ball")
+        if (collision.gameObject.tag == "Ball")
         {
             se.Play();
             goddess.Swing();

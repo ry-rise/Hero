@@ -101,17 +101,16 @@ public abstract class BaseEnemy : MonoBehaviour
 
         Destroy(gameObject);
     }
-
-    virtual protected void OnTriggerExit2D(Collider2D target)
+    virtual protected void OnCollisionEnter2D(Collision2D collision)
     {
-        if (target.gameObject.transform.root.tag == "Ball")
+        if (collision.gameObject.tag == "Ball")
         {
-            HP -= target.transform.root.GetComponent<Hero>().Power;
+            HP -= collision.transform.root.GetComponent<Hero>().Power;
             Instantiate(sePrefab, transform.position, Quaternion.identity);
         }
-        else if (target.gameObject.transform.root.tag == "PlayerBullet")
+        else if (collision.gameObject.transform.root.tag == "PlayerBullet")
         {
-            Destroy(target.gameObject);
+            Destroy(collision.gameObject);
             HP -= 1;
         }
     }

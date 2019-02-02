@@ -18,6 +18,7 @@ public class Goddess : MonoBehaviour
     [SerializeField]
     private GameObject fallStopperPrefab;
     private GameObject fallStopper;
+    private Sprite barSprite;
 
     [SerializeField]
     private Edit status;
