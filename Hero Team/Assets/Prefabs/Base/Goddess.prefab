@@ -298,7 +298,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   backLight: {fileID: 212406925369615032}
   sprite: {fileID: 212265188140610596}
-  GoddessSprite:
+  goddessSprite:
   - {fileID: 21300000, guid: 986501da71329d34f9dc2306c7ccaab4, type: 3}
   - {fileID: 21300000, guid: da9d4918c46dde94582ba20162f3354c, type: 3}
   fallStopperPrefab: {fileID: 1699678783250468, guid: 36bd0f9ece7b826428121eeaf2bd072e,
