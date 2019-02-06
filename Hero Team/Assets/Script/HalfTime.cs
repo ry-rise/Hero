@@ -13,6 +13,7 @@ public class HalfTime : MonoBehaviour {
     private string powerTelop = "「勇者パワーを押しました」";
     private string lifeTelop = "「勇者生命力を押しました」";
     private string decideTelop = "「決定を押しました」";
+
     private void Awake()
     {
         heroPoint = GameObject.Find("HeroPointText").GetComponent<Text>();
@@ -30,6 +31,8 @@ public class HalfTime : MonoBehaviour {
         if (GameManager.SmashLevel == 2)
         {
             GameObject.Find("ButtonPower").GetComponent<Button>().interactable = false;
+            GameObject.Find("ButtonLife").GetComponent<Button>().interactable = true;
+
         }
     }
     private void Update()
@@ -40,11 +43,11 @@ public class HalfTime : MonoBehaviour {
             GameObject.Find("ButtonLife").GetComponent<Button>().interactable = false;
             GameObject.Find("ButtonNext").GetComponent<Button>().interactable = true;
         }
-        else if(GameManager.SmashLevel>=2)
-        {
-            GameObject.Find("ButtonPower").GetComponent<Button>().interactable = false;
-            GameObject.Find("ButtonLife").GetComponent<Button>().interactable = true;
-        }
+        //else if(GameManager.SmashLevel>=2)
+        //{
+        //    GameObject.Find("ButtonPower").GetComponent<Button>().interactable = false;
+        //    GameObject.Find("ButtonLife").GetComponent<Button>().interactable = true;
+        //}
         else
         {
             GameObject.Find("ButtonPower").GetComponent<Button>().interactable = true;
@@ -62,6 +65,7 @@ public class HalfTime : MonoBehaviour {
             heroPoint.text = GameManager.HeroPoint.ToString();
             GameObject.Find("ButtonStop").GetComponent<Button>().interactable = true;
             Telop.text = powerTelop;
+            Telop.rectTransform.sizeDelta = new Vector2(Telop.rectTransform.sizeDelta.x, Telop.preferredHeight);
             if (GameObject.Find("ButtonDecide").GetComponent<Button>().interactable == false)
             {
                 GameObject.Find("ButtonDecide").GetComponent<Button>().interactable = true;
@@ -76,6 +80,7 @@ public class HalfTime : MonoBehaviour {
             heroPoint.text = GameManager.HeroPoint.ToString();
             GameObject.Find("ButtonStop").GetComponent<Button>().interactable = true;
             Telop.text = lifeTelop;
+            Telop.rectTransform.sizeDelta = new Vector2(Telop.rectTransform.sizeDelta.x, Telop.preferredHeight);
             if (GameObject.Find("ButtonDecide").GetComponent<Button>().interactable == false)
             {
                 GameObject.Find("ButtonDecide").GetComponent<Button>().interactable = true;
@@ -86,6 +91,8 @@ public class HalfTime : MonoBehaviour {
         {
             GameObject.Find("ButtonNext").GetComponent<Button>().interactable = true;
             Telop.text = decideTelop;
+            Telop.rectTransform.sizeDelta = new Vector2(Telop.rectTransform.sizeDelta.x, Telop.preferredHeight);
+            buttonObject.GetComponent<Button>().interactable = false;
         }
         //やめるボタン
         if (buttonObject.name == "ButtonStop")
@@ -111,7 +118,7 @@ public class HalfTime : MonoBehaviour {
             GameManager.SmashLevel += devidePower;
             GameManager.PlayerLife += life;
             GameManager.HeroPoint -= (power + life);
-            SceneManager.LoadScene("Stage");
+            SceneManager.LoadScene("MainGame 1");
         }
         //「いいえ」を押すと前の画面に戻る
         if (buttonObject.name == "ButtonNo")
