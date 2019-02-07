@@ -4,11 +4,11 @@ using UnityEngine;
 
 public class DragonBullet : EnemyBullet
 {
-    public int BulletHp = 2;
     [SerializeField]
-    private GameObject sePrefab;
+    private int hp = 2;
+    private bool hit;
 
-    private void OnTriggerExit2D (Collider2D collision)
+    override protected void OnTriggerEnter2D(Collider2D collision)
     {
         if (gameObject.tag == "EnemyBullet")
         {
@@ -22,20 +22,24 @@ public class DragonBullet : EnemyBullet
                     Destroy(gameObject);
                 }
             }
-            if (collision.tag == "Ball")
+            if (!hit && collision.tag == "Ball")
             {
-                BulletHp--;
-                if (BulletHp < 1)
+                --hp;
+                if (hp < 1)
                 {
                     GameObject.Find("EnemyManager").GetComponent<EnemyManager>().Bullets.Remove(this);
                     Destroy(gameObject);
                 }
+                hit = true;
             }
         }
     }
 
-    private void OnTriggerEnter2D(Collider2D collision)
+    protected void OnTriggerExit2D(Collider2D collision)
     {
-        
+        if (collision.tag == "Ball")
+        {
+            hit = false;
+        }
     }
 }

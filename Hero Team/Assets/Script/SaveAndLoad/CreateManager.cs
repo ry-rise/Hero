@@ -21,6 +21,8 @@ public class CreateManager : MonoBehaviour
         dataTable.Clear();   //中身を空にする
         EnemiesIndex index = Resources.Load("Enemies/EnemiesIndex") as EnemiesIndex;
         GameObject[] enemies = GameObject.FindGameObjectsWithTag("Enemy");
+        Debug.Log("Test");
+        return;
         foreach (GameObject it in enemies)
         {
             //検索

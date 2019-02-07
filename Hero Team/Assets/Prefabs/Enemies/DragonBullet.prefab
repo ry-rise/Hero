@@ -72,7 +72,7 @@ BoxCollider2D:
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0.00506258, y: -0.048843384}
@@ -100,9 +100,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Speed: -1
-  sePrefab: {fileID: 0}
-  BulletHp: 2
   sePrefab: {fileID: 1866375289627150, guid: 494589b0aab76b24bb3d7dc64c1cf9bf, type: 2}
+  hp: 2
 --- !u!212 &212476222449803334
 SpriteRenderer:
   m_ObjectHideFlags: 1

@@ -5,11 +5,11 @@ using UnityEngine;
 public class EnemyBullet : MonoBehaviour
 {
     [SerializeField]
-    private float Speed;
-    private WallHitter wallhitter;
+    protected float Speed;
+    protected WallHitter wallhitter;
     public bool IsStoped { get; set; }
     [SerializeField]
-    private GameObject sePrefab;
+    protected GameObject sePrefab;
 
     // Use this for initialization
     void Start()
@@ -18,7 +18,7 @@ public class EnemyBullet : MonoBehaviour
         GameObject.Find("EnemyManager").GetComponent<EnemyManager>().Bullets.Add(this);
         IsStoped = false;
     }
-    private void FixedUpdate()
+    protected void FixedUpdate()
     {
         if (!IsStoped) {
             transform.Translate(new Vector2(0, Speed * Time.fixedDeltaTime));
@@ -37,7 +37,7 @@ public class EnemyBullet : MonoBehaviour
         gameObject.tag = "PlayerBullet";
     }
 
-    private void OnTriggerEnter2D(Collider2D collision)
+    virtual protected void OnTriggerEnter2D(Collider2D collision)
     {
         if (gameObject.tag == "EnemyBullet")
         {
