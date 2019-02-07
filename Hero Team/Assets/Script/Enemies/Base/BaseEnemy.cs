@@ -33,7 +33,7 @@ public abstract class BaseEnemy : MonoBehaviour
 
     public StopStatus stop;
 
-    private void MoveSwitch()
+    virtual protected void MoveSwitch()
     {
         if (move == null) return;
         if ((stop & StopStatus.MoveStoped) != StopStatus.MoveStoped)
@@ -52,7 +52,7 @@ public abstract class BaseEnemy : MonoBehaviour
         }
     }
 
-    private void AttackSwitch()
+    virtual protected void AttackSwitch()
     {
         if (attack == null) return;
         if ((stop & StopStatus.AttackStoped) != StopStatus.AttackStoped)
@@ -106,7 +106,10 @@ public abstract class BaseEnemy : MonoBehaviour
         if (collision.gameObject.tag == "Ball")
         {
             HP -= collision.transform.root.GetComponent<Hero>().Power;
-            Instantiate(sePrefab, transform.position, Quaternion.identity);
+            if (sePrefab != null)
+            {
+                Instantiate(sePrefab, transform.position, Quaternion.identity);
+            }
         }
         else if (collision.gameObject.transform.root.tag == "PlayerBullet")
         {

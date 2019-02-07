@@ -21,7 +21,6 @@ public class CreateManager : MonoBehaviour
         dataTable.Clear();   //中身を空にする
         EnemiesIndex index = Resources.Load("Enemies/EnemiesIndex") as EnemiesIndex;
         GameObject[] enemies = GameObject.FindGameObjectsWithTag("Enemy");
-        Debug.Log(index);
         foreach (GameObject it in enemies)
         {
             //検索
@@ -29,13 +28,18 @@ public class CreateManager : MonoBehaviour
             string topName = "";
             foreach (GameObject indexIt in index.Enemies)
             {
-                int matchSize = it.name.IndexOf(indexIt.name);
+                int matchSize = -1;
+                if (it.name.IndexOf(indexIt.name) != -1)
+                {
+                    matchSize = indexIt.name.Length;
+                }
                 if (topMatchSize < matchSize)
                 {
                     topMatchSize = matchSize;
                     topName = indexIt.name;
                 }
             }
+            Debug.Log(topMatchSize);
             if (topMatchSize == -1)
             {
                 Debug.Log("検索一覧に存在しない敵を発見");

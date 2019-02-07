@@ -4,44 +4,50 @@ using UnityEngine;
 
 public class ShieldMove : BaseEnemyMove
 {
-    public float speed = 1f;
-    public float width = 2f;
-    public float height = 2f;
-    public GameObject target;
-    Vector3 pos;
-    public float pointx;
-    public float pointy;
-    public Directionofrotation Direction;
-   public enum Directionofrotation
-    {
-        上,下
-    }
-    private int startDirection;
-        private void Start()
-    {
-        pos = target.transform.position;
-        pos.x += pointx ;//中心
-        pos.y += pointy;
-        startDirection = (int)Direction;
+    [SerializeField]
+    private GameObject target;
+    public Vector2 CenterPoint { get { return target.transform.position; } }    //円周の中心
+    [SerializeField]
+    private float aroundTime; //一周する時間
+    private float currentAngle; //現在の角度（-180～180で取る）
+    [SerializeField]
+    private float firstAngle;    //初期位置
+    [SerializeField]
+    private Vector2 radius = new Vector2(1, 1); //円周の距離
+    [SerializeField]
+    private bool clockwise; //時計回りか？
 
+    private void Start()
+    {
+        transform.position = CenterPoint + new Vector2(Mathf.Cos(firstAngle) * radius.x, Mathf.Sin(firstAngle) * radius.y);
+        currentAngle = firstAngle;
     }
     void Update()
     {
-
-
-        if (startDirection == (int)Directionofrotation.上)
+        if (clockwise)
         {
-            pos.x += Mathf.Sin(Time.time * speed) * width;
-            pos.y += Mathf.Cos(Time.time * speed) * height;
-            this.transform.position = pos;
+            currentAngle -= 360 / aroundTime * Time.deltaTime;
         }
-        if (startDirection == (int)Directionofrotation.下)
+        else
         {
-            pos.x += Mathf.Sin(Time.time * speed) * width;
-            pos.y -= Mathf.Cos(Time.time * speed) * height;
-            this.transform.position = pos;
+            currentAngle += 360 / aroundTime * Time.deltaTime;
         }
+        currentAngle = AngleCorrect(currentAngle);
+        transform.position = CenterPoint + new Vector2(Mathf.Cos(currentAngle * Mathf.Deg2Rad) * radius.x, Mathf.Sin(currentAngle * Mathf.Deg2Rad) * radius.y);
+    }
 
+    private float AngleCorrect(float a)
+    {
+        a += 180;
+        a %= 360;
+        if (a < 0)
+        {
+            a += 180;
+        }
+        else
+        {
+            a -= 180;
+        }
+        return a;
     }
 }
-
