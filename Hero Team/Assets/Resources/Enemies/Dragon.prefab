@@ -22,7 +22,7 @@ GameObject:
   - component: {fileID: 212208531070615266}
   m_Layer: 9
   m_Name: DragonNeck
-  m_TagString: Enemy
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -38,7 +38,7 @@ GameObject:
   - component: {fileID: 212580230390221572}
   m_Layer: 9
   m_Name: DragonNeck
-  m_TagString: Enemy
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -54,7 +54,7 @@ GameObject:
   - component: {fileID: 212393871954153852}
   m_Layer: 9
   m_Name: DragonLeftWing
-  m_TagString: Enemy
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -74,7 +74,7 @@ GameObject:
   - component: {fileID: 95301579836262448}
   m_Layer: 9
   m_Name: DragonTail
-  m_TagString: Enemy
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -90,7 +90,7 @@ GameObject:
   - component: {fileID: 212696042040169368}
   m_Layer: 9
   m_Name: DragonRightWing
-  m_TagString: Enemy
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -106,7 +106,7 @@ GameObject:
   - component: {fileID: 212254119518294932}
   m_Layer: 9
   m_Name: DragonNeck
-  m_TagString: Enemy
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -120,6 +120,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4229840595657564}
   - component: {fileID: 212143030199672812}
+  - component: {fileID: 114558152561851446}
   - component: {fileID: 114157773986827606}
   - component: {fileID: 114466200677605090}
   - component: {fileID: 61845144544117884}
@@ -144,7 +145,7 @@ GameObject:
   - component: {fileID: 114920433376172048}
   m_Layer: 9
   m_Name: DagonWings
-  m_TagString: Enemy
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -424,11 +425,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 115a1f3e351b0944cb50b9063576c7b7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  HP: 30
-  Score: 10000
-  dropItem: {fileID: 0}
-  sePrefab: {fileID: 1866375289627150, guid: 33b36a7e0d8bb5c468a2b5ea100e941b, type: 2}
-  stop: 0
   isFirstDefensed: 0
   tail: {fileID: 95301579836262448}
   revivalTime: 3
@@ -461,7 +457,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3bb99e9e1b0f2b24e9ee37ced7cf009a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  dragon: {fileID: 114157773986827606}
+--- !u!114 &114558152561851446
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1706482983814094}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3ae34523ca556e14190f781ac5fcba96, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  HP: 30
+  Score: 10000
+  dropItem: {fileID: 0}
+  sePrefab: {fileID: 1866375289627150, guid: 33b36a7e0d8bb5c468a2b5ea100e941b, type: 2}
+  stop: 0
 --- !u!114 &114920433376172048
 MonoBehaviour:
   m_ObjectHideFlags: 1

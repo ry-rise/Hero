@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Dragon : BaseEnemy
+public class DragonMove : BaseEnemyMove
 {
     [SerializeField]
     private bool isFirstDefensed;
@@ -11,9 +11,8 @@ public class Dragon : BaseEnemy
     [SerializeField]
     private float revivalTime = 0.0f;
     private float revivalCountTime;
-    protected override void Awake()
+    private void Awake()
     {
-        base.Awake();
         revivalCountTime = 0;
         if (isFirstDefensed)
         {
@@ -22,9 +21,8 @@ public class Dragon : BaseEnemy
         }
     }
 
-    protected override void Update()
+    private void Update()
     {
-        base.Update();
         TailIn();
     }
 

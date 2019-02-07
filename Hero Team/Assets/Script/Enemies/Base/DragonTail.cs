@@ -4,11 +4,11 @@ using UnityEngine;
 
 public class DragonTail : MonoBehaviour
 {
-    [SerializeField]
-    private Dragon dragon;
+    private DragonMove dragon;
     // Use this for initialization
     void Start()
     {
+        dragon = transform.root.GetComponent<DragonMove>();
     }
 
     // Update is called once per frame

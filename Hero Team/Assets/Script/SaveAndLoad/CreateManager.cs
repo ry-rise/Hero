@@ -21,8 +21,6 @@ public class CreateManager : MonoBehaviour
         dataTable.Clear();   //中身を空にする
         EnemiesIndex index = Resources.Load("Enemies/EnemiesIndex") as EnemiesIndex;
         GameObject[] enemies = GameObject.FindGameObjectsWithTag("Enemy");
-        Debug.Log("Test");
-        return;
         foreach (GameObject it in enemies)
         {
             //検索
@@ -55,9 +53,9 @@ public class CreateManager : MonoBehaviour
             }
         }
         Debug.Log("記録成功");
-        AssetDatabase.StopAssetEditing();
         EditorUtility.SetDirty(DataTable);
         AssetDatabase.SaveAssets();
+        AssetDatabase.StopAssetEditing();
     }
 }
 #elif UNITY_ANDROID
