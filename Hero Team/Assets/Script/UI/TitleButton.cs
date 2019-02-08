@@ -4,7 +4,8 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 
 public class TitleButton : MonoBehaviour {
-
+    [SerializeField]
+    AudioSource Tap;
 	// Use this for initialization
 	void Start () {
 		
@@ -17,6 +18,7 @@ public class TitleButton : MonoBehaviour {
 
     public void OnClick()
     {
+        Tap.Play();
         SceneManager.LoadScene("MainGame");
     }
 }
