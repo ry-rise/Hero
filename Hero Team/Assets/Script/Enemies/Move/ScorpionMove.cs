@@ -6,6 +6,8 @@ public class ScorpionMove : BaseEnemyMove {
     [SerializeField] private Animator scopionAnimation;
     [SerializeField] private GameObject cactus;
     private float time;
+    [SerializeField]
+    private Scorpion scorpion;
 
     public void Update()
     {
@@ -15,9 +17,9 @@ public class ScorpionMove : BaseEnemyMove {
             GameObject CactusInstance = Instantiate(cactus,
                                         new Vector3(Random.Range(-2.0f, 2.0f), Random.Range(0.0f, -2.0f), 0),
                                         Quaternion.identity);
-            CactusObjects.Add(CactusInstance.GetComponent<ObjectEnemy>());
+            scorpion.CactusObjects.Add(CactusInstance.GetComponent<ObjectEnemy>());
+            time = 0;
         }
-        time = 0;
     }
 
     public void AnimationFlagChanger(bool flag)
