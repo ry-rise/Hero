@@ -120,7 +120,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4229840595657564}
   - component: {fileID: 212143030199672812}
-  - component: {fileID: 114558152561851446}
+  - component: {fileID: 114901181520006658}
   - component: {fileID: 114157773986827606}
   - component: {fileID: 114466200677605090}
   - component: {fileID: 61845144544117884}
@@ -457,7 +457,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3bb99e9e1b0f2b24e9ee37ced7cf009a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &114558152561851446
+--- !u!114 &114901181520006658
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
@@ -465,7 +465,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1706482983814094}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3ae34523ca556e14190f781ac5fcba96, type: 3}
+  m_Script: {fileID: 11500000, guid: b94b7ac8c455fd94c9d0fc651019017d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   HP: 30

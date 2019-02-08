@@ -26,6 +26,18 @@ public class DragonMove : BaseEnemyMove
         TailIn();
     }
 
+    public void AnimationFlagChanger(bool flag)
+    {
+        if (flag)
+        {
+            tail.SetFloat("MoveSpeed", 1.0f);
+        }
+        else
+        {
+            tail.SetFloat("MoveSpeed", 0.0f);
+        }
+    }
+
     private void TailIn()
     {
         AnimatorStateInfo stateInfo = tail.GetCurrentAnimatorStateInfo(0);

@@ -20,7 +20,10 @@ public class DragonTail : MonoBehaviour
     {
         if (collision.gameObject.tag == "Ball")
         {
-            dragon.TailOut();
+            if (dragon.enabled)
+            {
+                dragon.TailOut();
+            }
         }
     }
 }
