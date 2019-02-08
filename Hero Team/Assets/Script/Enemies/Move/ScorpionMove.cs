@@ -15,7 +15,7 @@ public class ScorpionMove : BaseEnemyMove {
         if (timeCount >= time)
         {
             GameObject CactusInstance = Instantiate(cactus,
-                                        new Vector3(Random.Range(-2.0f, 2.0f), Random.Range(0.0f, -2.0f), 0),
+                                        transform.position + new Vector3(Random.Range(-2.0f, 2.0f), Random.Range(0.0f, -2.0f), 0),
                                         Quaternion.identity);
             scorpion.CactusObjects.Add(CactusInstance.GetComponent<ObjectEnemy>());
             timeCount = 0;
