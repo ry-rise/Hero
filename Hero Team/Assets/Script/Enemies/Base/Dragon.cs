@@ -4,6 +4,9 @@ using UnityEngine;
 
 public class Dragon : BaseEnemy
 {
+    [SerializeField]
+    private ObjectEnemy[] parts;
+
     protected override void Awake()
     {
         base.Awake();
@@ -33,6 +36,18 @@ public class Dragon : BaseEnemy
                 move.enabled = false;
             }
         }
+    }
+
+    protected override void Die()
+    {
+        foreach (ObjectEnemy it in parts)
+        {
+            if (it != null)
+            {
+                it.IsDead();
+            }
+        }
+        base.Die();
     }
 
     protected override void OnCollisionEnter2D(Collision2D collision)

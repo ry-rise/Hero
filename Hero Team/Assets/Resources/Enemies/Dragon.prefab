@@ -473,6 +473,8 @@ MonoBehaviour:
   dropItem: {fileID: 0}
   sePrefab: {fileID: 1866375289627150, guid: 33b36a7e0d8bb5c468a2b5ea100e941b, type: 2}
   stop: 0
+  parts:
+  - {fileID: 114920433376172048}
 --- !u!114 &114920433376172048
 MonoBehaviour:
   m_ObjectHideFlags: 1

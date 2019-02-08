@@ -5,7 +5,9 @@ using UnityEngine;
 public class LastBoss : BaseEnemy
 {
     [SerializeField]
-    private BaseEnemyAttack[] attacks; 
+    private BaseEnemyAttack[] attacks;
+    [SerializeField]
+    private ObjectEnemy[] parts;
     protected override void Awake()
     {
         base.Awake();
@@ -41,6 +43,18 @@ public class LastBoss : BaseEnemy
                 }
             }
         }
+    }
+
+    protected override void Die()
+    {
+        foreach (ObjectEnemy it in parts)
+        {
+            if (it != null)
+            {
+                it.IsDead();
+            }
+        }
+        base.Die();
     }
 
     protected override void OnCollisionEnter2D(Collision2D collision)

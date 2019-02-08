@@ -7,7 +7,7 @@ public class ObjectEnemy : BaseEnemy
     protected override void Awake()
     {
         manager = GameObject.Find("EnemyManager").GetComponent<EnemyManager>();
-        //manager.Enemies.Add(this);  //要らない
+        manager.Enemies.Add(this);
         move = GetComponent<BaseEnemyMove>();
         attack = GetComponent<BaseEnemyAttack>();
     }
@@ -15,6 +15,11 @@ public class ObjectEnemy : BaseEnemy
     protected override void Update()
     {
         base.Update();
+    }
+
+    public void IsDead()
+    {
+        Die();
     }
 
     protected override void OnCollisionEnter2D(Collision2D collision)
