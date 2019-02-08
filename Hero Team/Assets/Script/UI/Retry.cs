@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class ResultButton : MonoBehaviour {
+public class Retry : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
@@ -15,8 +15,8 @@ public class ResultButton : MonoBehaviour {
 		
 	}
 
-    public void OnClick()
+   public void OnClick()
     {
-        SceneManager.LoadScene("Result");
+        SceneManager.LoadScene("MainGame");
     }
 }

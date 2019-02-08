@@ -14,15 +14,29 @@ public class CallResult : MonoBehaviour {
     private Text ItemText;
     [SerializeField]
     private Text TotalText;
-	// Use this for initialization
-	void Start () {
+    [SerializeField]
+    private Text GoddessText;
+    public int[] StandardScore;
+    // Use this for initialization
+    void Start () {
         HeroPointText.text = "勇者ポイント" + GameManager.HeroPointScore;
         EnemyText.text = "倒した敵   " + GameManager.EnemyScore;
         RefectionText.text = "ぶっとばし   " + GameManager.BarScore;
         ItemText.text = "アイテム   " + GameManager.ItemScore;
         TotalText.text = "合計スコア   " + GameManager.TotalScore;
-       
-	}
+       if (GameManager.TotalScore < StandardScore[0])
+        {
+
+        }
+       else if (GameManager.TotalScore < StandardScore[1])
+        {
+
+        }
+        else if (GameManager.TotalScore < StandardScore[2])
+        {
+
+        }
+    }
 	
 	// Update is called once per frame
 	void Update () {

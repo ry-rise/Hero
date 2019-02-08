@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class ResultButton : MonoBehaviour {
+public class ReturnTitle : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
@@ -17,6 +17,6 @@ public class ResultButton : MonoBehaviour {
 
     public void OnClick()
     {
-        SceneManager.LoadScene("Result");
+        SceneManager.LoadScene("Title");
     }
 }
