@@ -3,8 +3,6 @@ using UnityEngine;
 
 public class Scorpion : BaseEnemy
 {
-    [SerializeField] private GameObject Cactus;
-    private float time;
     public List<ObjectEnemy> CactusObjects;
 
     protected override void Awake()
@@ -15,15 +13,6 @@ public class Scorpion : BaseEnemy
     protected override void Update()
     {
         base.Update();
-        time += Time.deltaTime;
-        if (time >= 3.0f)
-        {
-            GameObject CactusInstance = Instantiate(Cactus, 
-                                        new Vector3(Random.Range(-2.0f, 2.0f), Random.Range(0.0f, -2.0f), 0), 
-                                        Quaternion.identity);
-            CactusObjects.Add(CactusInstance.GetComponent<ObjectEnemy>());
-        }
-        time = 0;
     }
 
     protected override void MoveSwitch()

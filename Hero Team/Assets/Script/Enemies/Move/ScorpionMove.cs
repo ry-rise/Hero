@@ -3,17 +3,32 @@ using UnityEngine;
 
 public class ScorpionMove : BaseEnemyMove {
 
-    [SerializeField] private Animator ScopionAnimation;
-    private List<ObjectEnemy> objectEnemies;
+    [SerializeField] private Animator scopionAnimation;
+    [SerializeField] private GameObject cactus;
+    private float time;
+
+    public void Update()
+    {
+        time += Time.deltaTime;
+        if (time >= 3.0f)
+        {
+            GameObject CactusInstance = Instantiate(cactus,
+                                        new Vector3(Random.Range(-2.0f, 2.0f), Random.Range(0.0f, -2.0f), 0),
+                                        Quaternion.identity);
+            CactusObjects.Add(CactusInstance.GetComponent<ObjectEnemy>());
+        }
+        time = 0;
+    }
+
     public void AnimationFlagChanger(bool flag)
     {
         if (flag)
         {
-            ScopionAnimation.SetFloat("MoveSpeed", 1.0f);
+            scopionAnimation.SetFloat("MoveSpeed", 1.0f);
         }
         else
         {
-            ScopionAnimation.SetFloat("MoveSpeed", 0.0f);
+            scopionAnimation.SetFloat("MoveSpeed", 0.0f);
         }
     }
 }
