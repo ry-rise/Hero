@@ -139,6 +139,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   scopionAnimation: {fileID: 95283332837234390}
   cactus: {fileID: 1929331195131528, guid: a23361b32aad77840b449e6481ac942b, type: 2}
+  time: 10
   scorpion: {fileID: 114348799709216368}
 --- !u!114 &114789168325623484
 MonoBehaviour:
