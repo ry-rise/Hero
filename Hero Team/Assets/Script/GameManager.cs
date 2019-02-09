@@ -18,6 +18,11 @@ public class GameManager : MonoBehaviour
     private BackGroundScroll backGroundScroll;
     private InputController controller; //操作
 
+    [SerializeField]
+    private GameObject pauseButton;
+    [SerializeField]
+    private GameObject pauseScreen;
+
     public GameStatus GameState { get; private set; }   //状態
     public GameStatus RequestGameState { get; set; } //外部から状態を変えたい場合、一度ここを通すこと
     public GameStatus PausePastState { get; private set; }
@@ -46,6 +51,14 @@ public class GameManager : MonoBehaviour
     public static void ScoreResult()
     {
         TotalScore += EnemyScore + ItemScore + BarScore;
+        EnemyScore = 0;
+        BarHitCount = 0;
+        GetItemCount = 0;
+    }
+
+    public static void ScoreReset()
+    {
+        TotalScore = 0;
         EnemyScore = 0;
         BarHitCount = 0;
         GetItemCount = 0;
@@ -131,6 +144,8 @@ public class GameManager : MonoBehaviour
             item.AllPause();
             player.AllPause();
 
+            pauseScreen.SetActive(true);
+            pauseButton.SetActive(false);
             GameState = GameStatus.Pause;
             PausePastState = GameStatus.Wait;
         }
@@ -173,6 +188,8 @@ public class GameManager : MonoBehaviour
             item.AllPause();
             player.AllPause();
 
+            pauseScreen.SetActive(true);
+            pauseButton.SetActive(false);
             GameState = GameStatus.Pause;
             PausePastState = GameStatus.Play;
         }
@@ -186,7 +203,8 @@ public class GameManager : MonoBehaviour
             enemy.AllStart();
             item.AllStart();
             player.AllStart();
-
+            pauseScreen.SetActive(false);
+            pauseButton.SetActive(true);
             GameState = RequestGameState = PausePastState;
         }
     }
