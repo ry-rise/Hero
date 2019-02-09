@@ -16,3 +16,4 @@ MonoBehaviour:
   chargeAmount: 2
   power: 1
   speed: 5
+  smashSpeed: 20

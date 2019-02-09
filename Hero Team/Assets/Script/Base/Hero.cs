@@ -14,6 +14,7 @@ public class Hero : MonoBehaviour
     public float HitSize { get { return status.HitSize; } }
     public int ChargeAmount { get { return status.ChargeAmount; } }
     public float Speed { get { return status.Speed; } }
+    public float SmashSpeed { get { return status.SmashSpeed; } }
     public int Power { get { return status.Power; } }   //勇者の攻撃力
 
     private Vector2 nowVelocity;
@@ -95,7 +96,15 @@ public class Hero : MonoBehaviour
             {
                 float scalar = Mathf.Sqrt(rb.velocity.x * rb.velocity.x + rb.velocity.y * rb.velocity.y);
                 Vector2 unitVector = new Vector2(rb.velocity.x, rb.velocity.y) / scalar;
-                rb.velocity = unitVector * Speed;
+                if (0.9f < unitVector.x)
+                {
+                    unitVector = new Vector2(0.5f, 0.5f);
+                }
+                else if (-0.9f > unitVector.x)
+                {
+                    unitVector = new Vector2(-0.5f, 0.5f);
+                }
+                rb.velocity = unitVector * (manager.IsPenetrated ? SmashSpeed : Speed);
             }
             else
             {

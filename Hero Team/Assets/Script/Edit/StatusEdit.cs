@@ -22,4 +22,7 @@ public class StatusEdit : ScriptableObject
     [SerializeField, Tooltip("速度")]
     private int speed;
     public int Speed { get { return speed; } }
+    [SerializeField, Tooltip("スマッシュ速度")]
+    private int smashSpeed;
+    public int SmashSpeed { get { return smashSpeed; } }
 }
