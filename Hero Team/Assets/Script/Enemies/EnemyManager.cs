@@ -143,6 +143,7 @@ public class EnemyManager : MonoBehaviour
         if (gameManager.GameState != GameManager.GameStatus.Play) return;
         foreach (BaseEnemy it in Enemies)
         {
+            if (it == null) continue;
             if (it.stop == BaseEnemy.StopStatus.MoveStoped || it.stop == BaseEnemy.StopStatus.ALL) continue;
             if (wallHitter.IsHit(it.gameObject, HitPointFlag.Bottom))
             {
