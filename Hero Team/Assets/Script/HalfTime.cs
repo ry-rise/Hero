@@ -26,9 +26,6 @@ public class HalfTime : MonoBehaviour {
         hearts[2] = GameObject.Find("Heart3");
         buttonRecovery = GameObject.Find("ButtonRecovery");
         goddessImage = GameObject.Find("GoddessImage");
-        //デバッグ
-        GameManager.PlayerLife = 1;
-        GameManager.HeroPoint = 10;
         //勇者ポイント、テロップのTextを取得
         HeroPointText = GameObject.Find("HeroPointText").GetComponent<Text>();
         HeroPointText.text = GameManager.HeroPoint.ToString();

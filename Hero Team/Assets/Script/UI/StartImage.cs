@@ -6,12 +6,8 @@ using UnityEngine.UI;
 public class StartImage : MonoBehaviour
 {
     private InputController controller;
-
     Status state;
     private Image image;
-    //private Text text;
-    //private string waitText;
-
     enum Status
     {
         Waiting,
