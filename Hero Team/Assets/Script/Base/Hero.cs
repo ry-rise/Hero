@@ -141,15 +141,15 @@ public class Hero : MonoBehaviour
         if (collision.gameObject.transform.root.tag == "Enemy")
         {
             Vector2 a = transform.position;
-            Vector2 b = collision.gameObject.transform.position;
+            Vector2 b = collision.GetContact(0).point;//collision.gameObject.transform.position;
             Vector2 position = new Vector2(b.x - a.x, b.y - a.y) / Mathf.Sqrt((b.x - a.x) * (b.x - a.x) + (b.y - a.y) * (b.y - a.y));
             if (IsPenetrated)
             {
-                Instantiate(slashPrefab2, a + position * 1f, Quaternion.identity);
+                Instantiate(slashPrefab2, a + position * 1.5f, Quaternion.identity);
             }
             else
             {
-                Instantiate(slashPrefab, a + position * 1f, Quaternion.identity);
+                Instantiate(slashPrefab, a + position * 1.5f, Quaternion.identity);
             }
             manager.SmashCounter(ChargeAmount);
         }
