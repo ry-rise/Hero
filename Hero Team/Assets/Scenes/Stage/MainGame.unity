@@ -254,13 +254,13 @@ Prefab:
         type: 2}
       propertyPath: enemiesList.Array.data[0]
       value: 
-      objectReference: {fileID: 11400000, guid: 4ed85d8af8b48c442ad1ee4afb14fe78,
+      objectReference: {fileID: 11400000, guid: dd17d66724669ac47b40a3ece60205ab,
         type: 2}
     - target: {fileID: 114487161810543998, guid: b5e94e22beef7e24fa912cfa904d753c,
         type: 2}
       propertyPath: enemiesList.Array.data[1]
       value: 
-      objectReference: {fileID: 11400000, guid: 55fc15fdacc76a24ca3ebebcf75915cc,
+      objectReference: {fileID: 11400000, guid: 461195a6a6dc1f742a056df879106cc5,
         type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b5e94e22beef7e24fa912cfa904d753c, type: 2}
@@ -362,17 +362,18 @@ Prefab:
       propertyPath: m_Pivot.y
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 114112600218745804, guid: 9927a559fb2f3024b9463713421a82a6,
+    - target: {fileID: 114358533839525152, guid: 9927a559fb2f3024b9463713421a82a6,
         type: 2}
-      propertyPath: m_FontData.m_Font
+      propertyPath: m_Sprite
       value: 
-      objectReference: {fileID: 12800000, guid: 97cac3fa6882f6447b91ba82ff90a99c,
+      objectReference: {fileID: 21300000, guid: 811407df65c091e44b00b24f7e7e0c64,
         type: 3}
-    - target: {fileID: 114112600218745804, guid: 9927a559fb2f3024b9463713421a82a6,
+    - target: {fileID: 114111305684200744, guid: 9927a559fb2f3024b9463713421a82a6,
         type: 2}
-      propertyPath: m_Text
-      value: -Tap Start-
-      objectReference: {fileID: 0}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 3bd4c31a859e3554188bbe304863f5cd,
+        type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9927a559fb2f3024b9463713421a82a6, type: 2}
   m_IsPrefabAsset: 0
