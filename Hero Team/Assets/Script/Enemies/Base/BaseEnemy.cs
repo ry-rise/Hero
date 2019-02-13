@@ -15,8 +15,6 @@ public abstract class BaseEnemy : MonoBehaviour
     [SerializeField]
     private GameObject dropItem;
     public GameObject DropItem { get { return dropItem; } }
-    [SerializeField]
-    private GameObject sePrefab;
 
     public void FirstSetting(EnemiesSetStatus table)
     {
@@ -105,11 +103,8 @@ public abstract class BaseEnemy : MonoBehaviour
     {
         if (collision.gameObject.tag == "Ball")
         {
-            HP -= collision.transform.root.GetComponent<Hero>().Power;
-            if (sePrefab != null)
-            {
-                Instantiate(sePrefab, transform.position, Quaternion.identity);
-            }
+            Hero hero = collision.transform.root.GetComponent<Hero>();
+            HP -= hero.Power;
         }
         else if (collision.gameObject.transform.root.tag == "PlayerBullet")
         {

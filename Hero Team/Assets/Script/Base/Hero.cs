@@ -8,6 +8,8 @@ public class Hero : MonoBehaviour
     private SeManager se;
     [SerializeField]
     private GameObject slashPrefab;
+    [SerializeField]
+    private GameObject slashPrefab2;
     private bool isStarted;
     private WallHitter wallHitter;
     private Rigidbody2D rb;
@@ -18,6 +20,7 @@ public class Hero : MonoBehaviour
     public float Speed { get { return status.Speed; } }
     public float SmashSpeed { get { return status.SmashSpeed; } }
     public int Power { get { return status.Power; } }   //勇者の攻撃力
+    public bool IsPenetrated { get { return manager.IsPenetrated; } }
 
     private Vector2 nowVelocity;
 
@@ -106,7 +109,7 @@ public class Hero : MonoBehaviour
                 {
                     unitVector = new Vector2(-0.5f, 0.5f);
                 }
-                rb.velocity = unitVector * (manager.IsPenetrated ? SmashSpeed : Speed);
+                rb.velocity = unitVector * (IsPenetrated ? SmashSpeed : Speed);
             }
             else
             {
@@ -140,8 +143,14 @@ public class Hero : MonoBehaviour
             Vector2 a = transform.position;
             Vector2 b = collision.gameObject.transform.position;
             Vector2 position = new Vector2(b.x - a.x, b.y - a.y) / Mathf.Sqrt((b.x - a.x) * (b.x - a.x) + (b.y - a.y) * (b.y - a.y));
-            Debug.Log(position);
-            Destroy(Instantiate(slashPrefab, a + position * 1f, Quaternion.identity), 1);
+            if (IsPenetrated)
+            {
+                Instantiate(slashPrefab2, a + position * 1f, Quaternion.identity);
+            }
+            else
+            {
+                Instantiate(slashPrefab, a + position * 1f, Quaternion.identity);
+            }
             manager.SmashCounter(ChargeAmount);
         }
     }

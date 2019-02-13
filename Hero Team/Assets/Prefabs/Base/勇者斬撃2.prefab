@@ -20,10 +20,10 @@ GameObject:
   m_Component:
   - component: {fileID: 4985003671637110}
   - component: {fileID: 212409931506089134}
-  - component: {fileID: 114286103557660612}
-  - component: {fileID: 82704991586701804}
+  - component: {fileID: 114557173302728924}
+  - component: {fileID: 82902348615922708}
   m_Layer: 0
-  m_Name: "\u52C7\u8005\u65AC\u6483"
+  m_Name: "\u52C7\u8005\u65AC\u64832"
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -42,7 +42,7 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!82 &82704991586701804
+--- !u!82 &82902348615922708
 AudioSource:
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
@@ -51,7 +51,7 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: 0e91d35375ed635418045049a9ca0a9a, type: 3}
+  m_audioClip: {fileID: 8300000, guid: 69a3f477e69ef364bb3a34311d7edfe7, type: 3}
   m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
@@ -137,7 +137,7 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
---- !u!114 &114286103557660612
+--- !u!114 &114557173302728924
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
@@ -149,7 +149,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   controller:
-  - clip: {fileID: 8300000, guid: 0e91d35375ed635418045049a9ca0a9a, type: 3}
+  - clip: {fileID: 8300000, guid: 69a3f477e69ef364bb3a34311d7edfe7, type: 3}
     volume: 1
 --- !u!212 &212409931506089134
 SpriteRenderer:
