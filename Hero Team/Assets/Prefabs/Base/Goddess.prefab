@@ -85,7 +85,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1840809660535226}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.5, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 4463587963828752}
@@ -115,21 +115,21 @@ BoxCollider2D:
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 1
+  m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 2.053, y: 1}
+    oldSize: {x: 2.9, y: 1.3542857}
     newSize: {x: 0.16, y: 0.16}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1.9, y: 0.35}
+  m_Size: {x: 2.9, y: 1}
   m_EdgeRadius: 0
 --- !u!61 &61730596487268946
 BoxCollider2D:
@@ -147,14 +147,14 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 2.053, y: 1}
+    oldSize: {x: 2.9, y: 1.3542857}
     newSize: {x: 0.16, y: 0.16}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1.9, y: 0.35}
+  m_Size: {x: 2.9, y: 1}
   m_EdgeRadius: 0
 --- !u!82 &82629285757315410
 AudioSource:
@@ -357,8 +357,8 @@ SpriteRenderer:
   m_SortingLayerID: -1135519715
   m_SortingLayer: 2
   m_SortingOrder: 1
-  m_Sprite: {fileID: 21300000, guid: ead43a19f82a3c24590cd4bf8cceef1a, type: 3}
-  m_Color: {r: 1, g: 0.8144701, b: 0, a: 1}
+  m_Sprite: {fileID: 21300000, guid: db24393c3e6d8fb40bd5a63aa0771548, type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -449,7 +449,7 @@ SpriteRenderer:
   m_SortingLayerID: -1135519715
   m_SortingLayer: 2
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 72a0848a22636bc4d84b04ab87a30408, type: 3}
+  m_Sprite: {fileID: 0}
   m_Color: {r: 0.9846988, g: 1, b: 0, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -457,6 +457,6 @@ SpriteRenderer:
   m_Size: {x: 0.16, y: 0.16}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
+  m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0

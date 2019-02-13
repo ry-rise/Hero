@@ -6,8 +6,8 @@ using UnityEngine.SceneManagement;
 //コクブ
 public class GameManager : MonoBehaviour
 {
-    [SerializeField] bool DebugClear = false;
-    [SerializeField] bool DebugGameOver = false;
+    [SerializeField]
+    private string nextScene;
 
     public static int PlayerLife = 3; //プレイヤー残機
     public static int SmashLevel = 0;  //スマッシュレベル
@@ -38,7 +38,7 @@ public class GameManager : MonoBehaviour
 
     //個別スコア
     public static int EnemyScore;   //敵スコア
-    public static int BarScore { get { return barHitCountMultiple * BarHitCount; }  }     //バー反射スコア
+    public static int BarScore { get { return barHitCountMultiple * BarHitCount; } }     //バー反射スコア
     public static int ItemScore { get { return getItemCountMultiple * GetItemCount; } }    //アイテムゲットスコア
     public static int HeroPointScore { get { return HeroPointCountMultiple * HeroPoint; } } //勇者ポイントスコア
 
@@ -73,7 +73,7 @@ public class GameManager : MonoBehaviour
         Complete,   //ゲームクリア
         GameOver    //ゲームオーバー
     }
-    
+
     private void Awake()
     {
         enemy = GameObject.Find("EnemyManager").GetComponent<EnemyManager>();
@@ -153,7 +153,7 @@ public class GameManager : MonoBehaviour
 
     //ゲーム中
     private void GamePlay()
-    {   
+    {
         //次のウェーブの指示が来たら※敵マネージャーが指示を出す
         if (RequestGameState == GameStatus.NextWave)
         {
@@ -225,18 +225,13 @@ public class GameManager : MonoBehaviour
     //ゲームクリア時の挙動
     private void Complete()
     {
-        if (DebugClear == false)
-        {
-            SceneManager.LoadScene("GameClear");
-        }
+        SceneManager.LoadScene(nextScene);
     }
 
     //ゲームオーバー時の挙動
     private void GameOver()
     {
-        if (DebugGameOver == false)
-        {
-            SceneManager.LoadScene("GameOver");
-        }
+        SceneManager.LoadScene("GameOver");
+
     }
 }
