@@ -15,7 +15,7 @@ public class EnemyManager : MonoBehaviour
     private GameManager gameManager;
     private int waveNumber;
 
-    private void Start()
+    private void Awake()
     {
         wallHitter = GameObject.Find("GameManager").GetComponent<WallHitter>();
         gameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
