@@ -13,5 +13,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   status:
   - enemyName: Scorpion
-    position: {x: 0, y: 3.34}
+    position: {x: 0, y: 5}
     dropItem: {fileID: 0}
