@@ -3,14 +3,14 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class StartText : MonoBehaviour
+public class StartImage : MonoBehaviour
 {
     private InputController controller;
 
     Status state;
-    private Text text;
-    [SerializeField]
-    private string waitText;
+    private Image image;
+    //private Text text;
+    //private string waitText;
 
     enum Status
     {
@@ -18,16 +18,13 @@ public class StartText : MonoBehaviour
         Starting
     }
 
-    // Use this for initialization
     void Start()
     {
-        text = GetComponent<Text>();
+        image = GetComponent<Image>();
         controller = GameObject.Find("GameManager").GetComponent<InputController>();
         state = Status.Waiting;
-        text.text = waitText;
     }
 
-    // Update is called once per frame
     void Update()
     {
         switch (state)
@@ -45,7 +42,6 @@ public class StartText : MonoBehaviour
     {
         if (controller.State == InputController.Status.Pushed)
         {
-            text.text = waitText;
             state = Status.Starting;
         }
     }
