@@ -14,4 +14,4 @@ MonoBehaviour:
   status:
   - enemyName: Scorpion
     position: {x: 0, y: 3.34}
-    dropItem: {fileID: 1384076846247454, guid: 1310e0213df307b4fbe30a249c55e509, type: 2}
+    dropItem: {fileID: 0}
