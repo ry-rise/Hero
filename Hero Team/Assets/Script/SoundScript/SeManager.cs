@@ -24,6 +24,7 @@ public class SeManager : MonoBehaviour
     {
         if (clipNumber == number) return;
         clipNumber = number;
+        se.clip = controller[clipNumber].Clip;
         VolumeChanger();
     }
 

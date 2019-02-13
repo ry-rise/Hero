@@ -5,6 +5,8 @@ using UnityEngine;
 public class Goddess : MonoBehaviour
 {
     private PlayerManager manager;
+    [SerializeField]
+    private SeManager se;
     private InputController controller;
     [SerializeField]
     private SpriteRenderer goddessImage;
@@ -221,6 +223,16 @@ public class Goddess : MonoBehaviour
 
     public void Swing()
     {
+        Debug.Log(manager.IsPenetrated);
+        if (manager.IsPenetrated)
+        {
+            se.SeChanger(1);
+        }
+        else
+        {
+            se.SeChanger(0);
+        }
+        se.Play();
         isSwungen = true;
         ImageChanged();
         StartCoroutine("DelayMethod", 0.3f);

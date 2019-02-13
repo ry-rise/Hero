@@ -21,6 +21,8 @@ GameObject:
   - component: {fileID: 4463587963828752}
   - component: {fileID: 212265188140610596}
   - component: {fileID: 114916290631621970}
+  - component: {fileID: 114686403894946586}
+  - component: {fileID: 82666941306477074}
   m_Layer: 10
   m_Name: Goddess
   m_TagString: Player
@@ -56,8 +58,6 @@ GameObject:
   - component: {fileID: 61730596487268946}
   - component: {fileID: 61107346599039420}
   - component: {fileID: 114312310665948788}
-  - component: {fileID: 114445117844069552}
-  - component: {fileID: 82629285757315410}
   m_Layer: 10
   m_Name: Bar
   m_TagString: Bar
@@ -156,12 +156,12 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 2.9, y: 1}
   m_EdgeRadius: 0
---- !u!82 &82629285757315410
+--- !u!82 &82666941306477074
 AudioSource:
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1840809660535226}
+  m_GameObject: {fileID: 1000807511226146}
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
@@ -262,7 +262,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e012ef41e68b1d840b8cc4229a3675d9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  se: {fileID: 114445117844069552}
   goddess: {fileID: 114916290631621970}
   limitAngle: 90
   GoddessImage: {fileID: 212265188140610596}
@@ -271,12 +270,12 @@ MonoBehaviour:
   - {x: 0.8, y: 0.8}
   - {x: 0.6, y: 0.6}
   - {x: 0.4, y: 0.4}
---- !u!114 &114445117844069552
+--- !u!114 &114686403894946586
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1840809660535226}
+  m_GameObject: {fileID: 1000807511226146}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: ff2485bede14ae5469f3dce0753ce282, type: 3}
@@ -284,6 +283,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   controller:
   - clip: {fileID: 8300000, guid: 5233d8c8c96d4504c91b29091783efa2, type: 3}
+    volume: 1
+  - clip: {fileID: 8300000, guid: 60423ab5735efc548bdce1ff9afff052, type: 3}
     volume: 1
 --- !u!114 &114916290631621970
 MonoBehaviour:
@@ -296,6 +297,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d959471c2de1337479d03cf27e6dc357, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  se: {fileID: 114686403894946586}
   goddessImage: {fileID: 212265188140610596}
   backLightImage: {fileID: 212406925369615032}
   imageStatuses:

@@ -5,8 +5,6 @@ using UnityEngine;
 public class Bar : MonoBehaviour
 {
     [SerializeField]
-    private SeManager se;
-    [SerializeField]
     private Goddess goddess;
     [SerializeField]
     private float limitAngle;
@@ -81,7 +79,6 @@ public class Bar : MonoBehaviour
     {
         if (collision.gameObject.tag == "Ball")
         {
-            se.Play();
             goddess.Swing();
             ++GameManager.BarHitCount;
             Hero ball = collision.gameObject.GetComponent<Hero>();

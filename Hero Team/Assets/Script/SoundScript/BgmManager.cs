@@ -24,6 +24,7 @@ public class BgmManager : MonoBehaviour
     {
         if (clipNumber == number) return;
         clipNumber = number;
+        bgm.clip = controller[clipNumber].Clip;
         VolumeChanger();
     }
 
