@@ -162,6 +162,10 @@ Prefab:
       propertyPath: m_audioClip
       value: 
       objectReference: {fileID: 8300000, guid: 5233d8c8c96d4504c91b29091783efa2, type: 3}
+    - target: {fileID: 4463587963828752, guid: e40f96609722c4d47ab7a5a0f2e44867, type: 2}
+      propertyPath: m_LocalScale.x
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e40f96609722c4d47ab7a5a0f2e44867, type: 2}
   m_IsPrefabAsset: 0
@@ -246,6 +250,12 @@ Prefab:
       propertyPath: m_RootOrder
       value: 3
       objectReference: {fileID: 0}
+    - target: {fileID: 114487161810543998, guid: b5e94e22beef7e24fa912cfa904d753c,
+        type: 2}
+      propertyPath: enemiesList.Array.data[0]
+      value: 
+      objectReference: {fileID: 11400000, guid: dd17d66724669ac47b40a3ece60205ab,
+        type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b5e94e22beef7e24fa912cfa904d753c, type: 2}
   m_IsPrefabAsset: 0
