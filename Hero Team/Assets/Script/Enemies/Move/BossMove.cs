@@ -10,6 +10,10 @@ public class BossMove : BaseEnemyMove
     private Direction startDirection;
     private int direction;
     private WallHitter wallhitter;
+    [SerializeField]
+    Sprite[] BossSprite;
+    [SerializeField]
+    SpriteRenderer BossImage;
 
     enum Direction
     {
@@ -28,6 +32,15 @@ public class BossMove : BaseEnemyMove
         if (wallhitter.IsHit(gameObject, HitPointFlag.Right | HitPointFlag.Left))
         {
             direction *= -1;
+            if(BossImage.sprite == BossSprite[0])
+            {
+                BossImage.sprite = BossSprite[1];
+            }
+            else
+            {
+                BossImage.sprite = BossSprite[0];
+            }
+         
         }
         transform.Translate(speed * Time.fixedDeltaTime * direction, 0, 0);
     }
