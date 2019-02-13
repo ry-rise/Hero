@@ -15,6 +15,18 @@ EditorBuildSettings:
     path: Assets/Scenes/Stage/MainGame.unity
     guid: df0a5bc9c790f9148a72741cceaa3b45
   - enabled: 1
+    path: Assets/Scenes/Stage/Stage2.unity
+    guid: 3b16c5f46f61e824c8cff98bb8a177db
+  - enabled: 1
+    path: Assets/Scenes/Stage/Stage3.unity
+    guid: 313e6418d142c1d48afb29a82593fb5a
+  - enabled: 1
+    path: Assets/Scenes/Stage/Stage4.unity
+    guid: e514706b5bec4494a91059e01f4f93b0
+  - enabled: 1
+    path: Assets/Scenes/HalfTime.unity
+    guid: 71ab1a5beb604ac4fba6de046db96ec6
+  - enabled: 1
     path: Assets/Scenes/Result.unity
     guid: 063660093ad3efc44af3360e5ea46310
   - enabled: 1
