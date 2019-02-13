@@ -61,7 +61,10 @@ public class EnemyManager : MonoBehaviour
     {
         foreach (BaseEnemy it in enemies)
         {
-            it.transform.Translate(move);
+            if (it.GetType() != typeof(ObjectEnemy))
+            {
+                it.transform.Translate(move);
+            }
         }
     }
 

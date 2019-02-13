@@ -233,6 +233,7 @@ public class Goddess : MonoBehaviour
         yield return new WaitForSeconds(waitTime);
         isSwungen = false;
         ImageChanged();
+        Debug.Log("??");
         transform.localScale = new Vector2(transform.localScale.x * -1, transform.localScale.y);
     }
 }
