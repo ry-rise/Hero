@@ -296,11 +296,29 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d959471c2de1337479d03cf27e6dc357, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  backLight: {fileID: 212406925369615032}
-  sprite: {fileID: 212265188140610596}
-  goddessSprite:
-  - {fileID: 21300000, guid: 986501da71329d34f9dc2306c7ccaab4, type: 3}
-  - {fileID: 21300000, guid: da9d4918c46dde94582ba20162f3354c, type: 3}
+  goddessImage: {fileID: 212265188140610596}
+  backLightImage: {fileID: 212406925369615032}
+  imageStatuses:
+  - percent: 0
+    goddessNormal: {fileID: 21300000, guid: 986501da71329d34f9dc2306c7ccaab4, type: 3}
+    goddessSwing: {fileID: 21300000, guid: da9d4918c46dde94582ba20162f3354c, type: 3}
+    backLight: {fileID: 0}
+  - percent: 0.25
+    goddessNormal: {fileID: 21300000, guid: 7a7a220365c7d2847abd3111e560b66f, type: 3}
+    goddessSwing: {fileID: 21300000, guid: 7e9698da322a50044bc149d70811603c, type: 3}
+    backLight: {fileID: 0}
+  - percent: 0.5
+    goddessNormal: {fileID: 21300000, guid: 7a7a220365c7d2847abd3111e560b66f, type: 3}
+    goddessSwing: {fileID: 21300000, guid: 7e9698da322a50044bc149d70811603c, type: 3}
+    backLight: {fileID: 21300000, guid: 82c5310c6b267b447bdcf95041f36a83, type: 3}
+  - percent: 0.75
+    goddessNormal: {fileID: 21300000, guid: 7a7a220365c7d2847abd3111e560b66f, type: 3}
+    goddessSwing: {fileID: 21300000, guid: 7e9698da322a50044bc149d70811603c, type: 3}
+    backLight: {fileID: 21300000, guid: d890b20863574cf42965e62631de8e1b, type: 3}
+  - percent: 1
+    goddessNormal: {fileID: 21300000, guid: 01c0dfda3332ce748a463b71ed53e2e9, type: 3}
+    goddessSwing: {fileID: 21300000, guid: 98dabd831f65eb049a1e1d4db9d1c3e3, type: 3}
+    backLight: {fileID: 21300000, guid: 9eea25e4aa5959647b78e576c7a7e38a, type: 3}
   fallStopperPrefab: {fileID: 1699678783250468, guid: 36bd0f9ece7b826428121eeaf2bd072e,
     type: 2}
   status: {fileID: 11400000, guid: 3965a05eaf1730d4caab647dda415881, type: 2}

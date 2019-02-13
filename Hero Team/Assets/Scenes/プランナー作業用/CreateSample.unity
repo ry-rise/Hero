@@ -343,11 +343,6 @@ Prefab:
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9927a559fb2f3024b9463713421a82a6, type: 2}
   m_IsPrefabAsset: 0
---- !u!212 &564177310 stripped
-SpriteRenderer:
-  m_CorrespondingSourceObject: {fileID: 212265188140610596, guid: e40f96609722c4d47ab7a5a0f2e44867,
-    type: 2}
-  m_PrefabInternal: {fileID: 1526284691}
 --- !u!1001 &638870855
 Prefab:
   m_ObjectHideFlags: 0
@@ -452,11 +447,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!212 &941370576 stripped
-SpriteRenderer:
-  m_CorrespondingSourceObject: {fileID: 212406925369615032, guid: e40f96609722c4d47ab7a5a0f2e44867,
-    type: 2}
-  m_PrefabInternal: {fileID: 1526284691}
 --- !u!1 &993763431
 GameObject:
   m_ObjectHideFlags: 0
@@ -712,11 +702,6 @@ Prefab:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 114916290631621970, guid: e40f96609722c4d47ab7a5a0f2e44867,
-        type: 2}
-      propertyPath: imageStatuses.Array.size
-      value: 5
-      objectReference: {fileID: 0}
     - target: {fileID: 4463587963828752, guid: e40f96609722c4d47ab7a5a0f2e44867, type: 2}
       propertyPath: m_LocalPosition.x
       value: -0.13
@@ -748,114 +733,6 @@ Prefab:
     - target: {fileID: 4463587963828752, guid: e40f96609722c4d47ab7a5a0f2e44867, type: 2}
       propertyPath: m_RootOrder
       value: 7
-      objectReference: {fileID: 0}
-    - target: {fileID: 114916290631621970, guid: e40f96609722c4d47ab7a5a0f2e44867,
-        type: 2}
-      propertyPath: imageStatuses.Array.data[0].goddessNormal
-      value: 
-      objectReference: {fileID: 21300000, guid: 986501da71329d34f9dc2306c7ccaab4,
-        type: 3}
-    - target: {fileID: 114916290631621970, guid: e40f96609722c4d47ab7a5a0f2e44867,
-        type: 2}
-      propertyPath: imageStatuses.Array.data[0].goddessSwing
-      value: 
-      objectReference: {fileID: 21300000, guid: da9d4918c46dde94582ba20162f3354c,
-        type: 3}
-    - target: {fileID: 114916290631621970, guid: e40f96609722c4d47ab7a5a0f2e44867,
-        type: 2}
-      propertyPath: backLightImage
-      value: 
-      objectReference: {fileID: 941370576}
-    - target: {fileID: 114916290631621970, guid: e40f96609722c4d47ab7a5a0f2e44867,
-        type: 2}
-      propertyPath: goddessImage
-      value: 
-      objectReference: {fileID: 564177310}
-    - target: {fileID: 114916290631621970, guid: e40f96609722c4d47ab7a5a0f2e44867,
-        type: 2}
-      propertyPath: imageStatuses.Array.data[1].goddessNormal
-      value: 
-      objectReference: {fileID: 21300000, guid: 7a7a220365c7d2847abd3111e560b66f,
-        type: 3}
-    - target: {fileID: 114916290631621970, guid: e40f96609722c4d47ab7a5a0f2e44867,
-        type: 2}
-      propertyPath: imageStatuses.Array.data[1].goddessSwing
-      value: 
-      objectReference: {fileID: 21300000, guid: 7e9698da322a50044bc149d70811603c,
-        type: 3}
-    - target: {fileID: 114916290631621970, guid: e40f96609722c4d47ab7a5a0f2e44867,
-        type: 2}
-      propertyPath: imageStatuses.Array.data[2].goddessNormal
-      value: 
-      objectReference: {fileID: 21300000, guid: 7a7a220365c7d2847abd3111e560b66f,
-        type: 3}
-    - target: {fileID: 114916290631621970, guid: e40f96609722c4d47ab7a5a0f2e44867,
-        type: 2}
-      propertyPath: imageStatuses.Array.data[4].goddessSwing
-      value: 
-      objectReference: {fileID: 21300000, guid: 98dabd831f65eb049a1e1d4db9d1c3e3,
-        type: 3}
-    - target: {fileID: 114916290631621970, guid: e40f96609722c4d47ab7a5a0f2e44867,
-        type: 2}
-      propertyPath: imageStatuses.Array.data[4].goddessNormal
-      value: 
-      objectReference: {fileID: 21300000, guid: 01c0dfda3332ce748a463b71ed53e2e9,
-        type: 3}
-    - target: {fileID: 114916290631621970, guid: e40f96609722c4d47ab7a5a0f2e44867,
-        type: 2}
-      propertyPath: imageStatuses.Array.data[2].goddessSwing
-      value: 
-      objectReference: {fileID: 21300000, guid: 7e9698da322a50044bc149d70811603c,
-        type: 3}
-    - target: {fileID: 114916290631621970, guid: e40f96609722c4d47ab7a5a0f2e44867,
-        type: 2}
-      propertyPath: imageStatuses.Array.data[2].backLight
-      value: 
-      objectReference: {fileID: 21300000, guid: 82c5310c6b267b447bdcf95041f36a83,
-        type: 3}
-    - target: {fileID: 114916290631621970, guid: e40f96609722c4d47ab7a5a0f2e44867,
-        type: 2}
-      propertyPath: imageStatuses.Array.data[3].backLight
-      value: 
-      objectReference: {fileID: 21300000, guid: d890b20863574cf42965e62631de8e1b,
-        type: 3}
-    - target: {fileID: 114916290631621970, guid: e40f96609722c4d47ab7a5a0f2e44867,
-        type: 2}
-      propertyPath: imageStatuses.Array.data[4].backLight
-      value: 
-      objectReference: {fileID: 21300000, guid: 9eea25e4aa5959647b78e576c7a7e38a,
-        type: 3}
-    - target: {fileID: 114916290631621970, guid: e40f96609722c4d47ab7a5a0f2e44867,
-        type: 2}
-      propertyPath: imageStatuses.Array.data[3].goddessNormal
-      value: 
-      objectReference: {fileID: 21300000, guid: 7a7a220365c7d2847abd3111e560b66f,
-        type: 3}
-    - target: {fileID: 114916290631621970, guid: e40f96609722c4d47ab7a5a0f2e44867,
-        type: 2}
-      propertyPath: imageStatuses.Array.data[3].goddessSwing
-      value: 
-      objectReference: {fileID: 21300000, guid: 7e9698da322a50044bc149d70811603c,
-        type: 3}
-    - target: {fileID: 114916290631621970, guid: e40f96609722c4d47ab7a5a0f2e44867,
-        type: 2}
-      propertyPath: imageStatuses.Array.data[4].percent
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 114916290631621970, guid: e40f96609722c4d47ab7a5a0f2e44867,
-        type: 2}
-      propertyPath: imageStatuses.Array.data[1].percent
-      value: 0.25
-      objectReference: {fileID: 0}
-    - target: {fileID: 114916290631621970, guid: e40f96609722c4d47ab7a5a0f2e44867,
-        type: 2}
-      propertyPath: imageStatuses.Array.data[2].percent
-      value: 0.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 114916290631621970, guid: e40f96609722c4d47ab7a5a0f2e44867,
-        type: 2}
-      propertyPath: imageStatuses.Array.data[3].percent
-      value: 0.75
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e40f96609722c4d47ab7a5a0f2e44867, type: 2}
