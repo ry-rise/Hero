@@ -6,6 +6,8 @@ public class ItemMover : MonoBehaviour
 {
     [SerializeField]
     private Vector2 speed;
+    [SerializeField]
+    private GameObject sePrefab;
     private ItemManager manager;
     public bool IsStoped { get; set; }
 
@@ -35,6 +37,10 @@ public class ItemMover : MonoBehaviour
         {
             ++GameManager.GetItemCount;
             manager.GetItem(this);
+            if (sePrefab != null)
+            {
+                Instantiate(sePrefab, transform.position, Quaternion.identity);
+            }
             Destroy(gameObject);
         }
     }

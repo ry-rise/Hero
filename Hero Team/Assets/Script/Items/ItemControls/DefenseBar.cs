@@ -29,7 +29,8 @@ public class DefenseBar : BaseItemManager
 
     //アイテムを取得した
     public override void GetItem()
-    {
+    {      
+        
         timeCount = 0;
         bar.IsCounterAttacked = true;
     }

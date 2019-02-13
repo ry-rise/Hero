@@ -19,5 +19,6 @@ public class HeroPointItem : BaseItemManager
     //アイテムを取得した
     public override void GetItem()
     {
+       
     }
 }

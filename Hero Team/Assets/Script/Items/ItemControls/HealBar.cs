@@ -23,5 +23,6 @@ public class HealBar : BaseItemManager
     //アイテムを取得した
     public override void GetItem()
     {
+
     }
 }
