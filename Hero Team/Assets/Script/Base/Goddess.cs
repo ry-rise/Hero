@@ -142,7 +142,7 @@ public class Goddess : MonoBehaviour
 
     private void ImageChanged()
     {
-        Debug.Log(isSwungen);
+        Debug.Log(SmashPercent);
         for (int n = 0; n < imageStatuses.Length; ++n)
         {
             if (imageStatuses[n].Percent <= SmashPercent)
