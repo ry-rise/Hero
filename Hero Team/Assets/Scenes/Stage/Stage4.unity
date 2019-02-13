@@ -665,6 +665,18 @@ Prefab:
       propertyPath: m_Text
       value: -Tap Start-
       objectReference: {fileID: 0}
+    - target: {fileID: 114358533839525152, guid: 9927a559fb2f3024b9463713421a82a6,
+        type: 2}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 3692c6d35dfb8d9438ae2e796788107c,
+        type: 3}
+    - target: {fileID: 114111305684200744, guid: 9927a559fb2f3024b9463713421a82a6,
+        type: 2}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 566b504d52cef294aba103c38cbf5402,
+        type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9927a559fb2f3024b9463713421a82a6, type: 2}
   m_IsPrefabAsset: 0
