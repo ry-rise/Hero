@@ -206,6 +206,8 @@ public class Goddess : MonoBehaviour
         if (OnController() == ControlStatus.Smash)
         {
             manager.AllSmashing(controller.TouchPoint);
+            se.SeChanger(2);
+            se.Play();
             SmashCount = 0;
             ImageChanged();
             fallStopper.SetActive(true);
@@ -223,7 +225,6 @@ public class Goddess : MonoBehaviour
 
     public void Swing()
     {
-        Debug.Log(manager.IsPenetrated);
         if (manager.IsPenetrated)
         {
             se.SeChanger(1);
