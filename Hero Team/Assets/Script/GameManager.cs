@@ -6,8 +6,7 @@ using UnityEngine.SceneManagement;
 //コクブ
 public class GameManager : MonoBehaviour
 {
-    [SerializeField]
-    private string nextScene;
+    public static int StageNumber = 1;
 
     public static int PlayerLife = 3; //プレイヤー残機
     public static int SmashLevel = 0;  //スマッシュレベル
@@ -225,7 +224,14 @@ public class GameManager : MonoBehaviour
     //ゲームクリア時の挙動
     private void Complete()
     {
-        SceneManager.LoadScene(nextScene);
+        if (SceneManager.GetActiveScene().name == "Stage4")
+        {
+            SceneManager.LoadScene("GameClear");
+        }
+        else
+        {
+            SceneManager.LoadScene("HalfTime");
+        }
     }
 
     //ゲームオーバー時の挙動

@@ -110,7 +110,20 @@ public class HalfTime : MonoBehaviour {
         //「はい」を押すとステージに移動
         if (buttonObject.name == "ButtonYes")
         {
-            SceneManager.LoadScene("");
+            switch (GameManager.StageNumber)
+            {
+                case 1:
+                    SceneManager.LoadScene("Stage2");
+                    GameManager.StageNumber += 1;
+                    break;
+                case 2:
+                    SceneManager.LoadScene("Stage3");
+                    GameManager.StageNumber += 1;
+                    break;
+                case 3:
+                    SceneManager.LoadScene("Stage4");
+                    break;
+            }
         }
         //「いいえ」を押すと前の画面に戻る
         if (buttonObject.name == "ButtonNo")
