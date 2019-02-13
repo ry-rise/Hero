@@ -3,7 +3,7 @@ using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 
 public class HalfTime : MonoBehaviour {
-    private static int life;
+    private int life;
     private Text HeroPointText;
     private Text TelopText;
     private string TelopInit = "次の戦いに備えましょう";
@@ -19,14 +19,17 @@ public class HalfTime : MonoBehaviour {
 
     private void Awake()
     {
+        //ハート、HP回復、女神を取得
         hearts = new GameObject[3];
         hearts[0] = GameObject.Find("Heart1");
         hearts[1] = GameObject.Find("Heart2");
         hearts[2] = GameObject.Find("Heart3");
         buttonRecovery = GameObject.Find("ButtonRecovery");
         goddessImage = GameObject.Find("GoddessImage");
+        //デバッグ
         GameManager.PlayerLife = 1;
         GameManager.HeroPoint = 10;
+        //勇者ポイント、テロップのTextを取得
         HeroPointText = GameObject.Find("HeroPointText").GetComponent<Text>();
         HeroPointText.text = GameManager.HeroPoint.ToString();
         TelopText = GameObject.Find("TelopText").GetComponent<Text>();
@@ -35,12 +38,16 @@ public class HalfTime : MonoBehaviour {
     }
     private void Update()
     {
+        //勇者ポイントが0になると「HP回復」ボタンが押せなくなる
         if (GameManager.HeroPoint <= 0)
         {
             buttonRecovery.GetComponent<Image>().sprite = recoveryOff;
             buttonRecovery.GetComponent<Button>().interactable = false;
         }
     }
+    /// <summary>
+    /// プレイヤー残機の数によってハートの画像を差し替え
+    /// </summary>
     private void HeartSpriteChange()
     {
         switch (GameManager.PlayerLife)
@@ -76,6 +83,7 @@ public class HalfTime : MonoBehaviour {
             HeartSpriteChange();
             GameObject.Find("ButtonRestore").GetComponent<Button>().interactable = true;
             TelopText.text = TelopRecovery;
+            TelopText.fontSize = 160;
         }
         //「元に戻す」ボタン
         if (buttonObject.name == "ButtonRestore")
@@ -89,6 +97,7 @@ public class HalfTime : MonoBehaviour {
             buttonRecovery.GetComponent<Button>().interactable = true;
             buttonObject.GetComponent<Button>().interactable = false;
             TelopText.text = TelopInit;
+            TelopText.fontSize = 200;
         }
         //「つぎへ」を押すと確認画面に
         if (buttonObject.name == "ButtonNext")
@@ -110,6 +119,7 @@ public class HalfTime : MonoBehaviour {
             checkPanel.gameObject.SetActive(false);
             goddessImage.transform.SetParent(transform);
             TelopText.text = TelopInit;
+            TelopText.fontSize = 200;
         }
     }
 }
