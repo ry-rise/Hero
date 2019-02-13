@@ -353,7 +353,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &194896735
 RectTransform:
   m_ObjectHideFlags: 0
@@ -845,8 +845,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 712.7, y: 468}
-  m_SizeDelta: {x: 1487, y: 300}
+  m_AnchoredPosition: {x: 696.3, y: 451.7}
+  m_SizeDelta: {x: 1571.8, y: 332.6}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &842342378
 MonoBehaviour:
@@ -868,19 +868,19 @@ MonoBehaviour:
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   m_FontData:
-    m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
-    m_FontSize: 30
+    m_Font: {fileID: 12800000, guid: 97cac3fa6882f6447b91ba82ff90a99c, type: 3}
+    m_FontSize: 200
     m_FontStyle: 0
     m_BestFit: 0
-    m_MinSize: 3
-    m_MaxSize: 40
+    m_MinSize: 0
+    m_MaxSize: 300
     m_Alignment: 4
     m_AlignByGeometry: 0
     m_RichText: 1
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: New Text
+  m_Text: 
 --- !u!222 &842342379
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -1207,6 +1207,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   heartDark: {fileID: 21300000, guid: 91ae8e1ae490dca4e88b143785ad56e9, type: 3}
   heartLight: {fileID: 21300000, guid: 8253ba63711143444897eef369122091, type: 3}
+  recoveryOn: {fileID: 21300000, guid: 8a289ee2676bb954d84fe0d816e52d9f, type: 3}
+  recoveryOff: {fileID: 21300000, guid: 0b51b8e7d2b4bcf4cbb9166908ce5a8c, type: 3}
 --- !u!1 &1084865156
 GameObject:
   m_ObjectHideFlags: 0
@@ -1653,6 +1655,7 @@ GameObject:
   - component: {fileID: 1553738633}
   - component: {fileID: 1553738632}
   - component: {fileID: 1553738631}
+  - component: {fileID: 1553738634}
   m_Layer: 5
   m_Name: ButtonRecovery
   m_TagString: Untagged
@@ -1717,7 +1720,18 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1553738632}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1553738634}
+        m_MethodName: OnClick
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
 --- !u!114 &1553738632
@@ -1754,6 +1768,17 @@ CanvasRenderer:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1553738629}
   m_CullTransparentMesh: 0
+--- !u!114 &1553738634
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1553738629}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9ae6ea0bbf899d340b4c9cdebe257b80, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1657421208
 GameObject:
   m_ObjectHideFlags: 0
