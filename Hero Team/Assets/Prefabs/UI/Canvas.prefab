@@ -901,8 +901,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   lifePrefab: {fileID: 1648141788972320, guid: bb6fc8ac5dcfa7a40b14613d502b56cb, type: 2}
-  startPosition: {x: -560, y: 1095}
-  addPosition: {x: 300, y: 0}
+  startPosition: {x: -670, y: -1200}
+  addPosition: {x: 150, y: 0}
 --- !u!114 &114706047218723258
 MonoBehaviour:
   m_ObjectHideFlags: 1

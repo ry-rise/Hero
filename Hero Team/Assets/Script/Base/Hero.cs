@@ -6,6 +6,8 @@ public class Hero : MonoBehaviour
 {
     [SerializeField]
     private SeManager se;
+    [SerializeField]
+    private GameObject slashPrefab;
     private bool isStarted;
     private WallHitter wallHitter;
     private Rigidbody2D rb;
@@ -133,8 +135,13 @@ public class Hero : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.gameObject.tag == "Enemy")
+        if (collision.gameObject.transform.root.tag == "Enemy")
         {
+            Vector2 a = transform.position;
+            Vector2 b = collision.gameObject.transform.position;
+            Vector2 position = new Vector2(b.x - a.x, b.y - a.y) / Mathf.Sqrt((b.x - a.x) * (b.x - a.x) + (b.y - a.y) * (b.y - a.y));
+            Debug.Log(position);
+            Destroy(Instantiate(slashPrefab, a + position * 1f, Quaternion.identity), 1);
             manager.SmashCounter(ChargeAmount);
         }
     }

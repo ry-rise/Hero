@@ -203,6 +203,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   se: {fileID: 114982907958327748}
+  slashPrefab: {fileID: 1185948633425772, guid: 2fe722c9a17e1a043bd531b3f07d35c0,
+    type: 2}
 --- !u!114 &114982907958327748
 MonoBehaviour:
   m_ObjectHideFlags: 1

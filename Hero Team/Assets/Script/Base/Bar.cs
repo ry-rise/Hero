@@ -32,7 +32,7 @@ public class Bar : MonoBehaviour
             {
                 scaleLevel = scales.Count - 1;
             }
-            transform.localScale = scales[ScaleLevel] / goddess.transform.lossyScale;
+            goddess.transform.localScale = scales[ScaleLevel];
         }
     }
 
@@ -44,7 +44,7 @@ public class Bar : MonoBehaviour
     void Start ()
     {
         IsCounterAttacked = false;
-        transform.localScale = scales[ScaleLevel] / goddess.transform.lossyScale;
+        goddess.transform.localScale = scales[ScaleLevel];
     }
 
     // Update is called once per frame
