@@ -4,14 +4,35 @@ using UnityEngine;
 
 public class Goddess : MonoBehaviour
 {
-    [SerializeField]
-    private SpriteRenderer backLight;
     private PlayerManager manager;
     private InputController controller;
     [SerializeField]
-    private SpriteRenderer sprite;
+    private SpriteRenderer goddessImage;
     [SerializeField]
-    private Sprite[] goddessSprite;
+    private SpriteRenderer backLightImage;
+    
+    private bool isSwungen = false;
+
+    [SerializeField]
+    private ImageStatus[] imageStatuses;
+    private Sprite[] goddessImages;
+
+    [System.Serializable]
+    public class ImageStatus
+    {
+        [SerializeField, Range(0f, 1f)]
+        private float percent;
+        public float Percent { get { return percent; } }
+        [SerializeField]
+        private Sprite goddessNormal;
+        public Sprite GoddessNormal { get { return goddessNormal; } }
+        [SerializeField]
+        private Sprite goddessSwing;
+        public Sprite GoddessSwing { get { return goddessSwing; } }
+        [SerializeField]
+        private Sprite backLight;
+        public Sprite BackLight { get { return backLight; } }
+    }
 
     private Vector2 pastPosition;
 
@@ -55,7 +76,7 @@ public class Goddess : MonoBehaviour
     {
         manager = GameObject.Find("PlayerManager").GetComponent<PlayerManager>();
         controller = GameObject.Find("GameManager").GetComponent<InputController>();
-        BackLightChanged(SmashPercent);
+        ImageChanged();
         IsStoped = false;
         IsSmashStarted = false;
         fallStopper = Instantiate(fallStopperPrefab, new Vector2(0, manager.TapPositionY), Quaternion.identity);
@@ -116,12 +137,29 @@ public class Goddess : MonoBehaviour
     {
         if (manager.IsPenetrated) return;
         SmashCount += value;
-        BackLightChanged(SmashPercent);
+        ImageChanged();
     }
 
-    private void BackLightChanged(float alpha)
+    private void ImageChanged()
     {
-        backLight.color = new Color(backLight.color.r, backLight.color.g, backLight.color.b, alpha);
+        Debug.Log(isSwungen);
+        for (int n = 0; n < imageStatuses.Length; ++n)
+        {
+            if (imageStatuses[n].Percent <= SmashPercent)
+            {
+                backLightImage.sprite = imageStatuses[n].BackLight;
+                if (isSwungen)
+                {
+                    goddessImage.sprite = imageStatuses[n].GoddessSwing;
+                }
+                else
+                {
+                    goddessImage.sprite = imageStatuses[n].GoddessNormal;
+                }
+                return;
+            }
+        }
+        //backLight.color = new Color(backLight.color.r, backLight.color.g, backLight.color.b, alpha);
     }
 
     private void SmashWaiting()
@@ -168,7 +206,7 @@ public class Goddess : MonoBehaviour
         {
             manager.AllSmashing(controller.TouchPoint);
             SmashCount = 0;
-            BackLightChanged(SmashPercent);
+            ImageChanged();
             fallStopper.SetActive(true);
             IsSmashStarted = false;
         }
@@ -184,7 +222,8 @@ public class Goddess : MonoBehaviour
 
     public void Swing()
     {
-        sprite.sprite = goddessSprite[1];
+        isSwungen = true;
+        ImageChanged();
         StartCoroutine("DelayMethod", 0.3f);
         //Coroutine coroutine = StartCoroutine("DelayMethod", 0.3f);
     }
@@ -192,6 +231,7 @@ public class Goddess : MonoBehaviour
     private IEnumerator DelayMethod(float waitTime)
     {
         yield return new WaitForSeconds(waitTime);
-        sprite.sprite = goddessSprite[0];
+        isSwungen = false;
+        ImageChanged();
     }
 }
