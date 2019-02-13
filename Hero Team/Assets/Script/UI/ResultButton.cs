@@ -4,7 +4,8 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 
 public class ResultButton : MonoBehaviour {
-
+    [SerializeField]
+    AudioSource Tap;
 	// Use this for initialization
 	void Start () {
 		
@@ -17,6 +18,7 @@ public class ResultButton : MonoBehaviour {
 
     public void OnClick()
     {
+        Tap.Play();
         SceneManager.LoadScene("Result");
     }
 }

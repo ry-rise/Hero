@@ -4,9 +4,10 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 
 public class ReturnTitle : MonoBehaviour {
-
-	// Use this for initialization
-	void Start () {
+    [SerializeField]
+    AudioSource Tap;
+    // Use this for initialization
+    void Start () {
 		
 	}
 	
@@ -17,6 +18,7 @@ public class ReturnTitle : MonoBehaviour {
 
     public void OnClick()
     {
+        Tap.Play();
         SceneManager.LoadScene("Title");
     }
 }
