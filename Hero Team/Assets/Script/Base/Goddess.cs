@@ -145,7 +145,7 @@ public class Goddess : MonoBehaviour
         Debug.Log(SmashPercent);
         for (int n = 0; n < imageStatuses.Length; ++n)
         {
-            if (imageStatuses[n].Percent <= SmashPercent)
+            if (imageStatuses[n].Percent >= SmashPercent)
             {
                 backLightImage.sprite = imageStatuses[n].BackLight;
                 if (isSwungen)
@@ -233,5 +233,6 @@ public class Goddess : MonoBehaviour
         yield return new WaitForSeconds(waitTime);
         isSwungen = false;
         ImageChanged();
+        transform.localScale = new Vector2(transform.localScale.x * -1, transform.localScale.y);
     }
 }
