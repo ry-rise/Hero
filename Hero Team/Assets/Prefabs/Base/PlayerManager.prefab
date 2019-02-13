@@ -51,7 +51,7 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: d88837e334c397a43aafd9a961e4beff, type: 3}
+  m_audioClip: {fileID: 8300000, guid: 6bcb494be8ce51545930a60bce0f5506, type: 3}
   m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
@@ -149,7 +149,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   controller:
-  - clip: {fileID: 8300000, guid: d88837e334c397a43aafd9a961e4beff, type: 3}
+  - clip: {fileID: 8300000, guid: 6bcb494be8ce51545930a60bce0f5506, type: 3}
     volume: 1
 --- !u!114 &114897251890610894
 MonoBehaviour:
@@ -167,7 +167,6 @@ MonoBehaviour:
   tapLinePrefab: {fileID: 1374147327708728, guid: 14070a1ec32e4074bbc24d896156c231,
     type: 2}
   tapPositionY: -3.5
-  penetratTime: 10
   statuses:
   - {fileID: 11400000, guid: b7707a47203446a428ccb719d0bfbe48, type: 2}
   - {fileID: 11400000, guid: f1516e3b9274e074ba69125b4897fb7e, type: 2}
