@@ -34,10 +34,12 @@ public class Hero : MonoBehaviour
             {
                 nowVelocity = rb.velocity;
                 rb.velocity = Vector2.zero;
+                rb.constraints = RigidbodyConstraints2D.FreezeAll;
             }
             else
             {
                 rb.velocity = nowVelocity;
+                rb.constraints = RigidbodyConstraints2D.FreezeRotation;
             }
             isStoped = value;
         }
@@ -47,7 +49,7 @@ public class Hero : MonoBehaviour
     void Awake()
     {
         manager = GameObject.Find("PlayerManager").GetComponent<PlayerManager>();
-        status = manager.Statuses[GameManager.SmashLevel];
+        status = manager.Statuses[GameManager.SelectLevel];
         transform.localScale = new Vector2(HitSize, HitSize);
         manager.Balls.Add(this);
         wallHitter = GameObject.Find("GameManager").GetComponent<WallHitter>();

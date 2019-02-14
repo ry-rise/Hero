@@ -1078,7 +1078,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   controller:
-  - clip: {fileID: 8300000, guid: 457979eff029415408ab3ab860204930, type: 3}
+  - clip: {fileID: 8300000, guid: 79c354843da094d4fb709c1237f5464e, type: 3}
     volume: 0.25
 --- !u!4 &1932835891
 Transform:

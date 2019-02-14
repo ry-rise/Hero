@@ -78,7 +78,7 @@ public class PlayerManager : MonoBehaviour
             {
                 goddess.SmashAlpha();
             }
-            if (penetratTimeCount < statuses[GameManager.SmashLevel].LimitTime)
+            if (penetratTimeCount < statuses[GameManager.SelectLevel].LimitTime)
             {
                 penetratTimeCount += Time.fixedDeltaTime;
             }

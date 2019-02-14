@@ -52,8 +52,8 @@ public class BgmManager : MonoBehaviour
     {
         GameObject.Find("SoundManager").GetComponent<SoundManager>().BgmList.Add(this);
         bgm = GetComponent<AudioSource>();
-        clipNumber = 0;
-        VolumeChanger();
+        clipNumber = -1;
+        BgmChanger(0);
     }
 
     // Update is called once per frame

@@ -8,9 +8,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d05e7349c6f2ffd4dbe5cbf8097edcd6, type: 3}
-  m_Name: Goddess
+  m_Script: {fileID: 11500000, guid: 69660dd6edd4a5c40a106f7273e29aeb, type: 3}
+  m_Name: Easy
   m_EditorClassIdentifier: 
-  startAngle: -90
-  firstPosition: {x: 0, y: -2}
-  smashCount: 20
+  hitSize: 1
+  limitTime: 6
+  chargeAmount: 5
+  power: 1
+  speed: 5
+  smashSpeed: 20

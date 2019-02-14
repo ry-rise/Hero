@@ -8,8 +8,8 @@ public class GameManager : MonoBehaviour
 {
     public static int StageNumber = 1;
 
+    public static int SelectLevel = 0;
     public static int PlayerLife = 3; //プレイヤー残機
-    public static int SmashLevel = 0;  //スマッシュレベル
 
     private ItemManager item;   //アイテムマネージャー
     private EnemyManager enemy; //エネミーマネージャー

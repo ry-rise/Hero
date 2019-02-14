@@ -10,6 +10,8 @@ public abstract class BaseEnemy : MonoBehaviour
     [SerializeField]
     private int HP = 1;
     [SerializeField]
+    private int[] hpLiset;
+    [SerializeField]
     private int Score = 1;
     // Use this for initialization
     [SerializeField]
@@ -76,6 +78,8 @@ public abstract class BaseEnemy : MonoBehaviour
         move = GetComponent<BaseEnemyMove>();
         attack = GetComponent<BaseEnemyAttack>();
         Stop = StopStatus.None;
+        HP = hpLiset[GameManager.SelectLevel];
+        Score *= 1 << GameManager.SelectLevel;
     }
 
     // Update is called once per frame

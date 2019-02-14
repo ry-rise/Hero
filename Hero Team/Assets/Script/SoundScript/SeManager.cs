@@ -61,8 +61,8 @@ public class SeManager : MonoBehaviour
     {
         GameObject.Find("SoundManager").GetComponent<SoundManager>().SeList.Add(this);
         se = GetComponent<AudioSource>();
-        clipNumber = 0;
-        VolumeChanger();
+        clipNumber = -1;
+        SeChanger(0);
     }
 
     // Update is called once per frame

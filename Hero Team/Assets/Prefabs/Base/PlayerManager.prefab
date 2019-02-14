@@ -169,5 +169,6 @@ MonoBehaviour:
   tapPositionY: -3.5
   statuses:
   - {fileID: 11400000, guid: b7707a47203446a428ccb719d0bfbe48, type: 2}
-  - {fileID: 11400000, guid: f1516e3b9274e074ba69125b4897fb7e, type: 2}
-  - {fileID: 11400000, guid: b2356c9e8471d7244bce83394ebaa338, type: 2}
+  - {fileID: 11400000, guid: 9b7047a42b4d8e545b8085ae2be804b0, type: 2}
+  - {fileID: 11400000, guid: 1acb7e76d294cf140aac4da623741a30, type: 2}
+  - {fileID: 11400000, guid: 36463357c7adcd5469c59787f901dcb7, type: 2}
