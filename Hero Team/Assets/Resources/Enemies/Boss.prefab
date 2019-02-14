@@ -104,8 +104,8 @@ MonoBehaviour:
   speed: 1
   startDirection: -1
   BossSprite:
-  - {fileID: 21300000, guid: b35bd5fde9620d542ac5080272f7a25d, type: 3}
   - {fileID: 21300000, guid: e905cd21475262b4d9b5e5263946fbf8, type: 3}
+  - {fileID: 21300000, guid: b35bd5fde9620d542ac5080272f7a25d, type: 3}
   BossImage: {fileID: 212101513438830386}
 --- !u!114 &114494260285347608
 MonoBehaviour:
@@ -171,7 +171,7 @@ SpriteRenderer:
   m_SortingLayerID: -1135519715
   m_SortingLayer: 2
   m_SortingOrder: 1
-  m_Sprite: {fileID: 21300000, guid: a788bfbcfc3c22f43b2d9c489d7b0b86, type: 3}
+  m_Sprite: {fileID: 21300000, guid: b35bd5fde9620d542ac5080272f7a25d, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
