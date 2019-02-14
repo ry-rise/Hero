@@ -782,8 +782,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7f1c60beaf809204e83f12de5ebed64a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  HP: 30
-  Score: 100000
+  HP: 15
+  Score: 10200
   dropItem: {fileID: 0}
   attacks:
   - {fileID: 114240861599330834}
