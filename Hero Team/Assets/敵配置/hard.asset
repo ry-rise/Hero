@@ -13,92 +13,92 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   status:
   - enemyName: Enemy A
-    position: {x: 0, y: 5.2}
+    position: {x: 0, y: 7}
     dropItem: {fileID: 0}
   - enemyName: Enemy A
-    position: {x: 1, y: 8.5}
+    position: {x: 1, y: 9}
     dropItem: {fileID: 0}
   - enemyName: Enemy A
-    position: {x: -1, y: 8.5}
+    position: {x: -1, y: 9}
     dropItem: {fileID: 0}
   - enemyName: Enemy A
-    position: {x: 2, y: 5.5}
+    position: {x: 2, y: 7}
     dropItem: {fileID: 0}
   - enemyName: Enemy A
-    position: {x: -2, y: 5.5}
-    dropItem: {fileID: 0}
-  - enemyName: Enemy A
-    position: {x: 0, y: 14.5}
-    dropItem: {fileID: 1452063299987798, guid: 5c46f480aa578954c9f61d1c1623a52b, type: 2}
-  - enemyName: Enemy A
-    position: {x: 1, y: 14.5}
-    dropItem: {fileID: 0}
-  - enemyName: Enemy A
-    position: {x: -1, y: 14.5}
-    dropItem: {fileID: 0}
-  - enemyName: Enemy A
-    position: {x: 2, y: 12.5}
-    dropItem: {fileID: 0}
-  - enemyName: Enemy A
-    position: {x: -2, y: 12.5}
-    dropItem: {fileID: 0}
-  - enemyName: Enemy A
-    position: {x: 1, y: 17.5}
-    dropItem: {fileID: 0}
-  - enemyName: Enemy A
-    position: {x: -1, y: 17.5}
-    dropItem: {fileID: 0}
-  - enemyName: Enemy A
-    position: {x: 0, y: 20.5}
-    dropItem: {fileID: 0}
-  - enemyName: Enemy A
-    position: {x: -2, y: 21.5}
-    dropItem: {fileID: 0}
-  - enemyName: Enemy A
-    position: {x: 2, y: 21.5}
-    dropItem: {fileID: 0}
-  - enemyName: Enemy B
-    position: {x: 0, y: 6}
-    dropItem: {fileID: 1452063299987798, guid: d33bec36c4cbb7d4fb0e7a15ef62e95b, type: 2}
-  - enemyName: Enemy B
-    position: {x: -1, y: 6}
-    dropItem: {fileID: 1452063299987798, guid: 5c46f480aa578954c9f61d1c1623a52b, type: 2}
-  - enemyName: Enemy B
-    position: {x: 1, y: 6}
-    dropItem: {fileID: 1452063299987798, guid: d33bec36c4cbb7d4fb0e7a15ef62e95b, type: 2}
-  - enemyName: Enemy B
     position: {x: -2, y: 7}
     dropItem: {fileID: 0}
-  - enemyName: Enemy B
-    position: {x: 2, y: 7}
-    dropItem: {fileID: 1818778818098100, guid: 84801c58fa2d7394c94099f1433f10d4, type: 2}
-  - enemyName: Enemy B
-    position: {x: 0, y: 10}
-    dropItem: {fileID: 1818778818098100, guid: 84801c58fa2d7394c94099f1433f10d4, type: 2}
-  - enemyName: Enemy B
-    position: {x: 2, y: 10.5}
-    dropItem: {fileID: 0}
-  - enemyName: Enemy B
-    position: {x: -2, y: 10}
-    dropItem: {fileID: 0}
-  - enemyName: Enemy B
-    position: {x: -1, y: 11}
-    dropItem: {fileID: 0}
-  - enemyName: Enemy B
-    position: {x: 1, y: 11}
+  - enemyName: Enemy A
+    position: {x: 0, y: 16}
     dropItem: {fileID: 0}
   - enemyName: Enemy A
-    position: {x: 1, y: 24}
+    position: {x: 1, y: 16}
     dropItem: {fileID: 0}
   - enemyName: Enemy A
-    position: {x: -1, y: 24}
+    position: {x: -1, y: 16}
+    dropItem: {fileID: 0}
+  - enemyName: Enemy A
+    position: {x: 2, y: 14}
+    dropItem: {fileID: 0}
+  - enemyName: Enemy A
+    position: {x: -2, y: 14}
+    dropItem: {fileID: 0}
+  - enemyName: Enemy A
+    position: {x: 1, y: 19}
+    dropItem: {fileID: 0}
+  - enemyName: Enemy A
+    position: {x: -1, y: 19}
     dropItem: {fileID: 0}
   - enemyName: Enemy A
     position: {x: 0, y: 22}
     dropItem: {fileID: 0}
   - enemyName: Enemy A
-    position: {x: 2, y: 27}
+    position: {x: -2, y: 23}
     dropItem: {fileID: 0}
   - enemyName: Enemy A
-    position: {x: -2, y: 27}
+    position: {x: 2, y: 23}
+    dropItem: {fileID: 0}
+  - enemyName: Enemy B
+    position: {x: 0, y: 8}
+    dropItem: {fileID: 0}
+  - enemyName: Enemy B
+    position: {x: -1, y: 8}
+    dropItem: {fileID: 0}
+  - enemyName: Enemy B
+    position: {x: 1, y: 8}
+    dropItem: {fileID: 0}
+  - enemyName: Enemy B
+    position: {x: -2, y: 9}
+    dropItem: {fileID: 0}
+  - enemyName: Enemy B
+    position: {x: 2, y: 9}
+    dropItem: {fileID: 0}
+  - enemyName: Enemy B
+    position: {x: 0, y: 13}
+    dropItem: {fileID: 0}
+  - enemyName: Enemy B
+    position: {x: 2, y: 13}
+    dropItem: {fileID: 0}
+  - enemyName: Enemy B
+    position: {x: -2, y: 13}
+    dropItem: {fileID: 0}
+  - enemyName: Enemy B
+    position: {x: -1, y: 15}
+    dropItem: {fileID: 0}
+  - enemyName: Enemy B
+    position: {x: 1, y: 15}
+    dropItem: {fileID: 0}
+  - enemyName: Enemy A
+    position: {x: 1, y: 30}
+    dropItem: {fileID: 0}
+  - enemyName: Enemy A
+    position: {x: -1, y: 30}
+    dropItem: {fileID: 0}
+  - enemyName: Enemy A
+    position: {x: 0, y: 33}
+    dropItem: {fileID: 0}
+  - enemyName: Enemy A
+    position: {x: 2, y: 34}
+    dropItem: {fileID: 0}
+  - enemyName: Enemy A
+    position: {x: -2, y: 34}
     dropItem: {fileID: 0}

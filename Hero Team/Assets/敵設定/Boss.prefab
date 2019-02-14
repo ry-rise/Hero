@@ -9,47 +9,49 @@ Prefab:
     m_Modifications: []
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 0}
-  m_RootGameObject: {fileID: 1452063299987798}
+  m_RootGameObject: {fileID: 1524819136154470}
   m_IsPrefabAsset: 1
---- !u!1 &1452063299987798
+--- !u!1 &1524819136154470
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 4107560414558716}
-  - component: {fileID: 212314389214890170}
-  - component: {fileID: 61508329893173858}
-  - component: {fileID: 50384766942020102}
-  - component: {fileID: 114260810654006188}
-  m_Layer: 0
-  m_Name: BarDefence
-  m_TagString: Item
+  - component: {fileID: 4608213449403532}
+  - component: {fileID: 114494260285347608}
+  - component: {fileID: 114879290039256136}
+  - component: {fileID: 114274566029662506}
+  - component: {fileID: 212101513438830386}
+  - component: {fileID: 50242453856599820}
+  - component: {fileID: 61495846633175282}
+  m_Layer: 9
+  m_Name: Boss
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &4107560414558716
+--- !u!4 &4608213449403532
 Transform:
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1452063299987798}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 4, y: 4, z: 1}
+  m_GameObject: {fileID: 1524819136154470}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 3.34, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!50 &50384766942020102
+--- !u!50 &50242453856599820
 Rigidbody2D:
   serializedVersion: 4
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1452063299987798}
+  m_GameObject: {fileID: 1524819136154470}
   m_BodyType: 0
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
@@ -63,50 +65,83 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 7
---- !u!61 &61508329893173858
+--- !u!61 &61495846633175282
 BoxCollider2D:
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1452063299987798}
+  m_GameObject: {fileID: 1524819136154470}
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 1
+  m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: 0, y: -0.2}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 0.25, y: 0.25}
+    oldSize: {x: 2.48, y: 2.48}
     newSize: {x: 0.16, y: 0.16}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.16, y: 0.16}
+  m_Size: {x: 1.5, y: 2.2}
   m_EdgeRadius: 0
---- !u!114 &114260810654006188
+--- !u!114 &114274566029662506
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1452063299987798}
+  m_GameObject: {fileID: 1524819136154470}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9b9b8990d0a2af34597f439a9ab6fa17, type: 3}
+  m_Script: {fileID: 11500000, guid: 2429f6c7415225d4fb7688e97db4c7ca, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: {x: 0, y: -2}
-  sePrefab: {fileID: 1866375289627150, guid: d1f098d610f515e4b81d50b5bb930a8f, type: 2}
---- !u!212 &212314389214890170
+  speed: 1
+  startDirection: 1
+  BossSprite:
+  - {fileID: 21300000, guid: e905cd21475262b4d9b5e5263946fbf8, type: 3}
+  - {fileID: 21300000, guid: b35bd5fde9620d542ac5080272f7a25d, type: 3}
+  BossImage: {fileID: 212101513438830386}
+--- !u!114 &114494260285347608
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1524819136154470}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3ae34523ca556e14190f781ac5fcba96, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  HP: 10
+  Score: 1
+  dropItem: {fileID: 0}
+--- !u!114 &114879290039256136
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1524819136154470}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 356da8bcf2574ca478a4f7ded9247a8e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  status:
+  - enemyBullet: {fileID: 1899150072275392, guid: 8cf56a288c7a2c5498b02811571a0dd5,
+      type: 2}
+    nextTime: 2.5
+--- !u!212 &212101513438830386
 SpriteRenderer:
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1452063299987798}
+  m_GameObject: {fileID: 1524819136154470}
   m_Enabled: 1
   m_CastShadows: 0
   m_ReceiveShadows: 0
@@ -135,15 +170,15 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -1135519715
   m_SortingLayer: 2
-  m_SortingOrder: 2
-  m_Sprite: {fileID: 0}
-  m_Color: {r: 0.39208794, g: 0.78700507, b: 0.9339623, a: 1}
+  m_SortingOrder: 1
+  m_Sprite: {fileID: 21300000, guid: e905cd21475262b4d9b5e5263946fbf8, type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
   m_Size: {x: 0.16, y: 0.16}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 0
+  m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0

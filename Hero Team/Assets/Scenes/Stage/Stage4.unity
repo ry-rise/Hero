@@ -468,7 +468,7 @@ Prefab:
         type: 2}
       propertyPath: enemiesList.Array.data[0]
       value: 
-      objectReference: {fileID: 11400000, guid: 0efca88805e96644d85fe362190318ed,
+      objectReference: {fileID: 11400000, guid: 97f5b09a387e6b743b110c729d21a494,
         type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b5e94e22beef7e24fa912cfa904d753c, type: 2}

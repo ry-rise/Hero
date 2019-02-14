@@ -102,11 +102,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 1
-  startDirection: 1
-  BossSprite:
-  - {fileID: 21300000, guid: e905cd21475262b4d9b5e5263946fbf8, type: 3}
-  - {fileID: 21300000, guid: b35bd5fde9620d542ac5080272f7a25d, type: 3}
-  BossImage: {fileID: 212101513438830386}
+  startDirection: -1
+  BossSprite: []
+  BossImage: {fileID: 0}
 --- !u!114 &114494260285347608
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -119,10 +117,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   HP: 10
-  Score: 1
+  Score: 3000
   dropItem: {fileID: 0}
-  sePrefab: {fileID: 1866375289627150, guid: 33b36a7e0d8bb5c468a2b5ea100e941b, type: 2}
-  stop: 0
 --- !u!114 &114879290039256136
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -173,7 +169,7 @@ SpriteRenderer:
   m_SortingLayerID: -1135519715
   m_SortingLayer: 2
   m_SortingOrder: 1
-  m_Sprite: {fileID: 21300000, guid: e905cd21475262b4d9b5e5263946fbf8, type: 3}
+  m_Sprite: {fileID: 21300000, guid: a788bfbcfc3c22f43b2d9c489d7b0b86, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0

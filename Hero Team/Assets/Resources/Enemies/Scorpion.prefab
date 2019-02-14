@@ -82,7 +82,7 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 24.800001, y: 24.800001}
+    oldSize: {x: 2.9176471, y: 2.9176471}
     newSize: {x: 24.800001, y: 24.800001}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
@@ -120,11 +120,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7a8937168c2a20046a7b3c8b2f5b5b03, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  HP: 25
-  Score: 3000
+  HP: 15
+  Score: 4500
   dropItem: {fileID: 0}
-  sePrefab: {fileID: 1866375289627150, guid: 33b36a7e0d8bb5c468a2b5ea100e941b, type: 2}
-  stop: 0
   CactusObjects: []
 --- !u!114 &114480600416912674
 MonoBehaviour:
@@ -139,7 +137,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   scopionAnimation: {fileID: 95283332837234390}
   cactus: {fileID: 1929331195131528, guid: a23361b32aad77840b449e6481ac942b, type: 2}
-  time: 10
+  time: 3
   scorpion: {fileID: 114348799709216368}
 --- !u!114 &114789168325623484
 MonoBehaviour:
@@ -191,7 +189,7 @@ SpriteRenderer:
   m_SortingLayerID: -1135519715
   m_SortingLayer: 2
   m_SortingOrder: 2
-  m_Sprite: {fileID: 21300000, guid: 5dfba765e9ce79347aa448de0c888ef0, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 911044d5adf5d654eb868e779ae27b45, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
