@@ -19,6 +19,6 @@ public class TitleButton : MonoBehaviour {
     public void OnClick()
     {
         Tap.Play();
-        SceneManager.LoadScene("MainGame");
+        SceneManager.LoadScene("Stage1");
     }
 }
