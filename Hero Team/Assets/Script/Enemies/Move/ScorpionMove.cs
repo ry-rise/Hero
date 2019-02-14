@@ -9,6 +9,11 @@ public class ScorpionMove : BaseEnemyMove {
     [SerializeField] private float time;
     [SerializeField] private Scorpion scorpion;
 
+    public void Awake()
+    {
+        scopionAnimation.enabled = false;
+    }
+
     public void Update()
     {
         timeCount += Time.deltaTime;
@@ -32,5 +37,11 @@ public class ScorpionMove : BaseEnemyMove {
         {
             scopionAnimation.SetFloat("MoveSpeed", 0.0f);
         }
+    }
+
+    public void AnimationStart()
+    {
+        scopionAnimation.enabled = true;
+        scopionAnimation.SetBool("StartFlag", true);
     }
 }

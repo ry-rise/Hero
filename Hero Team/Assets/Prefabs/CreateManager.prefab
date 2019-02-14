@@ -51,4 +51,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4c4c60f9a74368c438ea71e238605929, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  dataTable: {fileID: 11400000, guid: 461195a6a6dc1f742a056df879106cc5, type: 2}
+  dataTable: {fileID: 0}

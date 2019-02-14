@@ -75,7 +75,7 @@ public abstract class BaseEnemy : MonoBehaviour
         manager.Enemies.Add(this);
         move = GetComponent<BaseEnemyMove>();
         attack = GetComponent<BaseEnemyAttack>();
-        Stop = StopStatus.ALL;
+        Stop = StopStatus.None;
     }
 
     // Update is called once per frame

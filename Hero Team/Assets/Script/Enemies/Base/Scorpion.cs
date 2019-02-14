@@ -24,6 +24,7 @@ public class Scorpion : BaseEnemy
             {
                 ((ScorpionMove)move).AnimationFlagChanger(true);
                 move.enabled = true;
+                ((ScorpionMove)move).AnimationStart();
             }
         }
         else

@@ -57,13 +57,13 @@ public class EnemyManager : MonoBehaviour
         }
     }
 
-    public void AllEnemiesMove(Vector2 move)
+    public void AllEnemiesMove(float y)
     {
         foreach (BaseEnemy it in enemies)
         {
             if (it.GetType() != typeof(ObjectEnemy))
             {
-                it.transform.Translate(move);
+                it.transform.Translate(new Vector2(0, y));
             }
         }
     }

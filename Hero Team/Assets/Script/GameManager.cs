@@ -213,7 +213,7 @@ public class GameManager : MonoBehaviour
     {
         if (backGroundScroll.State == BackGroundScroll.Status.Moving)
         {
-            enemy.AllEnemiesMove(new Vector2(0, -backGroundScroll.DistancePerSecond * Time.deltaTime));
+            enemy.AllEnemiesMove(-backGroundScroll.DistancePerSecond * Time.deltaTime);
         }
         if (RequestGameState == GameStatus.Wait)
         {
