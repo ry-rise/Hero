@@ -102,6 +102,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   HP: 2
+  hpLiset: 02000000020000000300000004000000
   Score: 300
   dropItem: {fileID: 0}
 --- !u!114 &114575154111249116

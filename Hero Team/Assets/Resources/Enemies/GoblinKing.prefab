@@ -26,7 +26,7 @@ GameObject:
   - component: {fileID: 50242453856599820}
   - component: {fileID: 61495846633175282}
   m_Layer: 9
-  m_Name: Boss
+  m_Name: GoblinKing
   m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -119,6 +119,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   HP: 10
+  hpLiset: 0a0000000a000000140000001e000000
   Score: 3000
   dropItem: {fileID: 0}
 --- !u!114 &114879290039256136

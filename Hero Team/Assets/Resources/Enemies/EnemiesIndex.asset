@@ -12,10 +12,10 @@ MonoBehaviour:
   m_Name: EnemiesIndex
   m_EditorClassIdentifier: 
   enemies:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
+  - {fileID: 1524819136154470, guid: 78becdd0b6735cf4884203b6d0df6e6b, type: 2}
+  - {fileID: 1706482983814094, guid: 77d6b85049db20c4a80571bff0ad7b2a, type: 2}
+  - {fileID: 1905270899181740, guid: 8dfecfd807e15f64e88d104b661c8fb2, type: 2}
+  - {fileID: 1848962084300432, guid: 258f21e7aaa940e40a5a2f0933e45814, type: 2}
+  - {fileID: 1134979155797818, guid: e98c8729b83a98142813a51166a007b6, type: 2}
+  - {fileID: 1698059386518268, guid: 793b64733d1b20c47845d4430b7ea9aa, type: 2}
+  - {fileID: 1384076846247454, guid: 1310e0213df307b4fbe30a249c55e509, type: 2}

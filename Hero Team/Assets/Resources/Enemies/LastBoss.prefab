@@ -679,6 +679,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   HP: 5
+  hpLiset: 05000000050000000a00000014000000
   Score: 0
   dropItem: {fileID: 0}
 --- !u!114 &114448046742284362
@@ -723,6 +724,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   HP: 2
+  hpLiset: 02000000020000000400000008000000
   Score: 0
   dropItem: {fileID: 0}
 --- !u!114 &114576377895246116
@@ -737,6 +739,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   HP: 2
+  hpLiset: 02000000020000000400000008000000
   Score: 0
   dropItem: {fileID: 0}
 --- !u!114 &114643890223773982
@@ -769,6 +772,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   HP: 2
+  hpLiset: 02000000020000000400000008000000
   Score: 0
   dropItem: {fileID: 0}
 --- !u!114 &114782063734954420
@@ -783,6 +787,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   HP: 15
+  hpLiset: 0f0000000f0000001e0000002d000000
   Score: 10200
   dropItem: {fileID: 0}
   attacks:

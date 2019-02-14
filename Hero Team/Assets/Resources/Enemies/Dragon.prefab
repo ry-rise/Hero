@@ -469,6 +469,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   HP: 10
+  hpLiset: 0a0000000a000000140000001e000000
   Score: 6000
   dropItem: {fileID: 0}
   parts:
@@ -485,6 +486,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   HP: 2
+  hpLiset: 02000000020000000400000008000000
   Score: 0
   dropItem: {fileID: 0}
 --- !u!212 &212122414828298058
