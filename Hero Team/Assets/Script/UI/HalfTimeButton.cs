@@ -2,7 +2,7 @@
 
 public class HalfTimeButton : MonoBehaviour {
     private HalfTime halftime;
-
+    [SerializeField] private AudioSource Tap;
 	private void Start ()
     {
         halftime = transform.root.gameObject.GetComponent<HalfTime>();
@@ -10,6 +10,7 @@ public class HalfTimeButton : MonoBehaviour {
 	
     public void OnClick()
     {
+        Tap.Play();
         halftime.OnClick(gameObject);
     }
 }
