@@ -19,6 +19,7 @@ public class ReturnTitle : MonoBehaviour {
     public void OnClick()
     {
         Tap.Play();
+        GameManager.ScoreReset();
         SceneManager.LoadScene("Title");
     }
 }

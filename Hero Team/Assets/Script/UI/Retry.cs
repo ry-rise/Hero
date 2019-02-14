@@ -19,6 +19,7 @@ public class Retry : MonoBehaviour {
    public void OnClick()
     {
         Tap.Play();
-        SceneManager.LoadScene("MainGame");
+        GameManager.ScoreReset();
+        SceneManager.LoadScene("Stage1");
     }
 }
