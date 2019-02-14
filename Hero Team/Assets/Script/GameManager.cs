@@ -47,10 +47,11 @@ public class GameManager : MonoBehaviour
     //計算
     public static void ScoreResult()
     {
-        TotalScore += EnemyScore + ItemScore + BarScore;
+        TotalScore += EnemyScore + ItemScore + BarScore + HeroPointScore;
         EnemyScore = 0;
         BarHitCount = 0;
         GetItemCount = 0;
+        HeroPoint = 0;
     }
 
     public static void ScoreReset()
@@ -59,6 +60,7 @@ public class GameManager : MonoBehaviour
         EnemyScore = 0;
         BarHitCount = 0;
         GetItemCount = 0;
+        HeroPoint = 0;
     }
 
     public enum GameStatus
