@@ -26,16 +26,16 @@ public class CallResult : MonoBehaviour {
         TotalText.text = "合計スコア   " + GameManager.TotalScore;
        if (GameManager.TotalScore >= StandardScore[2])
         {
-            GoddessText.text = "「･･･凄まじい活躍ね。もはや神の領域だわ。」";
+            GoddessText.text = "･･･凄まじい活躍ね。もはや神の領域だわ。";
         }
        else if (GameManager.TotalScore >= StandardScore[1])
         {
-            GoddessText.text = "「まさに勇者に相応しい活躍ね。お見事！」";
+            GoddessText.text = "まさに勇者に相応しい活躍ね。お見事！";
         }
         else if (GameManager.TotalScore >= StandardScore[0])
         {
            
-            GoddessText.text = "「ひとまず世界は救われたわね。おつかれさま。」";
+            GoddessText.text = "ひとまず世界は救われたわね。おつかれさま。";
         }
     }
 	
