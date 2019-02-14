@@ -13,14 +13,14 @@ public class EnemyManager : MonoBehaviour
 
     private WallHitter wallHitter;
     private GameManager gameManager;
-    private int waveNumber;
+    //private int waveNumber;
 
     private void Awake()
     {
         wallHitter = GameObject.Find("GameManager").GetComponent<WallHitter>();
         gameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
         SetEnemies(Vector2.zero);
-        waveNumber = 0;
+        //waveNumber = 0;
     }
 
     private void Update()
@@ -36,7 +36,7 @@ public class EnemyManager : MonoBehaviour
 
     public bool LastEnemies()
     {
-        if (enemiesList != null && waveNumber == enemiesList.Count - 1)
+        if (enemiesList != null && 0 == enemiesList.Count)
         {
             return true;
         }
@@ -45,14 +45,15 @@ public class EnemyManager : MonoBehaviour
 
     public void SetEnemies(Vector2 addPosition)
     {
-        if (enemiesList != null && waveNumber < enemiesList.Count)
+        if (enemiesList != null)
         {
-            foreach (EnemiesSetStatus it in enemiesList[waveNumber].Status)
+            foreach (EnemiesSetStatus it in enemiesList[0].Status)
             {
                 GameObject prefab = Resources.Load("Enemies/" + it.EnemyName) as GameObject;
                 GameObject enemy = Instantiate(prefab, it.Position + addPosition, Quaternion.identity);
                 enemy.GetComponent<BaseEnemy>().FirstSetting(it);
             }
+            enemiesList.Remove(enemiesList[0]);
             AllStop();
         }
     }
@@ -117,8 +118,7 @@ public class EnemyManager : MonoBehaviour
         if (gameManager.GameState != GameManager.GameStatus.Play) return;
         if (Enemies.Count == 0)
         {
-            ++waveNumber;
-            if (waveNumber < enemiesList.Count)
+            if (0 < enemiesList.Count)
             {
                 gameManager.RequestGameState = GameManager.GameStatus.NextWave;
             }

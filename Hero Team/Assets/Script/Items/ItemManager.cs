@@ -20,7 +20,6 @@ public class ItemManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Debug.Log(GameManager.HeroPoint);
     }
 
     private void FixedUpdate()
