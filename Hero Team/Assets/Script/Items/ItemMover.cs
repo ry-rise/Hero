@@ -10,6 +10,9 @@ public class ItemMover : MonoBehaviour
     private GameObject sePrefab;
     private ItemManager manager;
     public bool IsStoped { get; set; }
+    [SerializeField]
+    private int itemNumber;
+    public int ItemNumber { get { return itemNumber; } }
 
     // Use this for initialization
     void Start()

@@ -6,6 +6,9 @@ public abstract class BaseItemManager : MonoBehaviour
 {
     //アイテムのマネージャーに張り付けて、この中でアイテムの処理をさせる
     [SerializeField]
+    private int itemNumber;
+    public int ItemNumber { get { return itemNumber; } }
+    [SerializeField]
     private GameObject itemObject;
     public string ItemName { get { return itemObject.name; } }
     public bool IsStoped { get; set; }
