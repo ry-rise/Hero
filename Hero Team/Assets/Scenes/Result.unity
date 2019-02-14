@@ -416,7 +416,7 @@ MonoBehaviour:
   ItemText: {fileID: 1949291715}
   TotalText: {fileID: 1242918748}
   GoddessText: {fileID: 429056172}
-  StandardScore: 00000000dc050000b80b0000
+  StandardScore: 00000000409c000060ea0000
 --- !u!4 &310923183
 Transform:
   m_ObjectHideFlags: 0
