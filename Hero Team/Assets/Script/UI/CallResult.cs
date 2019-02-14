@@ -20,7 +20,7 @@ public class CallResult : MonoBehaviour {
     // Use this for initialization
     void Start()
     {
-        HeroPointText.text = "勇者ポイント" + GameManager.HeroPointScore;
+        HeroPointText.text = "勇者ポイント  " + GameManager.HeroPointScore;
         EnemyText.text = "倒した敵   " + GameManager.EnemyScore;
         RefectionText.text = "ぶっとばし   " + GameManager.BarScore;
         ItemText.text = "アイテム   " + GameManager.ItemScore;
