@@ -31,7 +31,7 @@ public class GameManager : MonoBehaviour
 
     //合計スコア
     private static int totalScore;
-    public static int TotalScore { get { return totalScore + EnemyScore + ItemScore + BarScore; } private set { totalScore = value; } }
+    public static int TotalScore { get { return totalScore + EnemyScore + ItemScore + BarScore + HeroPointScore; } private set { totalScore = value; } }
 
     //個別スコア
     public static int EnemyScore;   //敵スコア
