@@ -20,6 +20,7 @@ public class Retry : MonoBehaviour {
     {
         Tap.Play();
         GameManager.ScoreReset();
+        GameManager.PlayerLife = 3;
         GameManager.StageNumber = 1;
         SceneManager.LoadScene("Stage1");
     }
