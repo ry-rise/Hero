@@ -7,7 +7,6 @@ public class StartImage : MonoBehaviour
 {
     private InputController controller;
     Status state;
-    private Image image;
     enum Status
     {
         Waiting,
@@ -16,7 +15,6 @@ public class StartImage : MonoBehaviour
 
     void Start()
     {
-        image = GetComponent<Image>();
         controller = GameObject.Find("GameManager").GetComponent<InputController>();
         state = Status.Waiting;
     }
