@@ -16,11 +16,9 @@ public class GameManager : MonoBehaviour
     private PlayerManager player; //プレイヤーマネージャー
     private BackGroundScroll backGroundScroll;
     private InputController controller; //操作
-
-    [SerializeField]
-    private GameObject pauseButton;
-    [SerializeField]
-    private GameObject pauseScreen;
+    
+    private GameObject playUI;
+    private GameObject pauseUI;
 
     public GameStatus GameState { get; private set; }   //状態
     public GameStatus RequestGameState { get; set; } //外部から状態を変えたい場合、一度ここを通すこと
@@ -75,6 +73,8 @@ public class GameManager : MonoBehaviour
 
     private void Awake()
     {
+        playUI = GameObject.Find("Canvas").transform.Find("PlayUI").gameObject;
+        pauseUI = GameObject.Find("Canvas").transform.Find("PauseUI").gameObject;
         enemy = GameObject.Find("EnemyManager").GetComponent<EnemyManager>();
         player = GameObject.Find("PlayerManager").GetComponent<PlayerManager>();
         item = GameObject.Find("ItemManager").GetComponent<ItemManager>();
@@ -143,8 +143,8 @@ public class GameManager : MonoBehaviour
             item.AllPause();
             player.AllPause();
 
-            pauseScreen.SetActive(true);
-            pauseButton.SetActive(false);
+            pauseUI.SetActive(true);
+            playUI.SetActive(false);
             GameState = GameStatus.Pause;
             PausePastState = GameStatus.Wait;
         }
@@ -187,8 +187,8 @@ public class GameManager : MonoBehaviour
             item.AllPause();
             player.AllPause();
 
-            pauseScreen.SetActive(true);
-            pauseButton.SetActive(false);
+            pauseUI.SetActive(true);
+            playUI.SetActive(false);
             GameState = GameStatus.Pause;
             PausePastState = GameStatus.Play;
         }
@@ -202,8 +202,8 @@ public class GameManager : MonoBehaviour
             enemy.AllStart();
             item.AllStart();
             player.AllStart();
-            pauseScreen.SetActive(false);
-            pauseButton.SetActive(true);
+            pauseUI.SetActive(false);
+            playUI.SetActive(true);
             GameState = RequestGameState = PausePastState;
         }
     }

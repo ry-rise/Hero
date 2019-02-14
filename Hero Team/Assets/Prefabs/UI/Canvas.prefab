@@ -23,7 +23,7 @@ GameObject:
   - component: {fileID: 114231598589379332}
   - component: {fileID: 114701953445160892}
   m_Layer: 5
-  m_Name: Base
+  m_Name: PlayUI
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -71,7 +71,7 @@ GameObject:
   - component: {fileID: 114331502661546766}
   - component: {fileID: 114966048717776636}
   m_Layer: 5
-  m_Name: Pause
+  m_Name: PauseUI
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
