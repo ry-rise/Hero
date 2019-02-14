@@ -120,8 +120,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7a8937168c2a20046a7b3c8b2f5b5b03, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  HP: 25
-  Score: 3000
+  HP: 15
+  Score: 4500
   dropItem: {fileID: 0}
   CactusObjects: []
 --- !u!114 &114480600416912674
@@ -137,7 +137,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   scopionAnimation: {fileID: 95283332837234390}
   cactus: {fileID: 1929331195131528, guid: a23361b32aad77840b449e6481ac942b, type: 2}
-  time: 10
+  time: 3
   scorpion: {fileID: 114348799709216368}
 --- !u!114 &114789168325623484
 MonoBehaviour:

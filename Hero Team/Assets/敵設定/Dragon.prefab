@@ -468,8 +468,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b94b7ac8c455fd94c9d0fc651019017d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  HP: 30
-  Score: 10000
+  HP: 10
+  Score: 6000
   dropItem: {fileID: 0}
   parts:
   - {fileID: 114920433376172048}
