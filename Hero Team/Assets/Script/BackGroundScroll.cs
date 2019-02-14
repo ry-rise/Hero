@@ -13,6 +13,10 @@ public class BackGroundScroll : MonoBehaviour
     SeManager se;
     [SerializeField]
     GameObject ScrollCanvas;
+    [SerializeField]
+    AudioSource BGM;
+    [SerializeField]
+    AudioSource BossBGM;
     //移動距離
     [SerializeField]
     private float moveDistance;
@@ -109,6 +113,8 @@ public class BackGroundScroll : MonoBehaviour
             ScrollCanvas.SetActive(false);
             state = Status.Stopping;
             manager.RequestGameState = GameManager.GameStatus.Wait;
+            BGM.Stop();
+            BossBGM.Play();
         }
     }
 

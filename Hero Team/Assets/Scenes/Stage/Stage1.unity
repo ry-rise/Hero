@@ -403,7 +403,7 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: 6f239eabaf34a1f4a915c964feb2b6dd, type: 3}
+  m_audioClip: {fileID: 8300000, guid: 9a45f1ea29bf3234b875e02ad54fdd81, type: 3}
   m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
@@ -501,7 +501,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   controller:
-  - clip: {fileID: 8300000, guid: 6f239eabaf34a1f4a915c964feb2b6dd, type: 3}
+  - clip: {fileID: 8300000, guid: 9a45f1ea29bf3234b875e02ad54fdd81, type: 3}
     volume: 0.25
 --- !u!4 &793983497
 Transform:
@@ -547,7 +547,7 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: 6f239eabaf34a1f4a915c964feb2b6dd, type: 3}
+  m_audioClip: {fileID: 8300000, guid: 457979eff029415408ab3ab860204930, type: 3}
   m_PlayOnAwake: 1
   m_Volume: 1
   m_Pitch: 1
@@ -645,7 +645,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   controller:
-  - clip: {fileID: 8300000, guid: 6f239eabaf34a1f4a915c964feb2b6dd, type: 3}
+  - clip: {fileID: 8300000, guid: 457979eff029415408ab3ab860204930, type: 3}
     volume: 0.25
 --- !u!4 &1235799213
 Transform:
@@ -719,6 +719,16 @@ Prefab:
       propertyPath: m_audioClip
       value: 
       objectReference: {fileID: 8300000, guid: 6feaad918b732564f960291bbc65635e, type: 3}
+    - target: {fileID: 114560901171420914, guid: e2731762887561c43886fe55ea71a4de,
+        type: 2}
+      propertyPath: BGM
+      value: 
+      objectReference: {fileID: 1235799211}
+    - target: {fileID: 114560901171420914, guid: e2731762887561c43886fe55ea71a4de,
+        type: 2}
+      propertyPath: BossBGM
+      value: 
+      objectReference: {fileID: 793983495}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e2731762887561c43886fe55ea71a4de, type: 2}
   m_IsPrefabAsset: 0

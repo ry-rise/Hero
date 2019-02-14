@@ -103,8 +103,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 1
   startDirection: -1
-  BossSprite: []
-  BossImage: {fileID: 0}
+  BossSprite:
+  - {fileID: 21300000, guid: b35bd5fde9620d542ac5080272f7a25d, type: 3}
+  - {fileID: 21300000, guid: e905cd21475262b4d9b5e5263946fbf8, type: 3}
+  BossImage: {fileID: 212101513438830386}
 --- !u!114 &114494260285347608
 MonoBehaviour:
   m_ObjectHideFlags: 1
