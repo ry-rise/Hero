@@ -41,6 +41,7 @@ public class LifeUI : MonoBehaviour
         {
             if (GameManager.PlayerLife < lifes.Count)
             {
+                if (lifes.Count == 0) return;
                 Destroy(lifes[lifes.Count - 1]);
                 lifes.RemoveAt(lifes.Count - 1);
             }
