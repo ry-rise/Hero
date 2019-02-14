@@ -22,6 +22,7 @@ public class PauseGame : MonoBehaviour
     public void GoToTitle()
     {
         GameManager.ScoreReset();
+        GameManager.StageNumber = 1;
         SceneManager.LoadScene("Title");
     }
 
