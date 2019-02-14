@@ -67,7 +67,7 @@ public class InputController : MonoBehaviour
         {
             State = Status.Free;
         }
-#elif UNITY_ANDROID
+#elif UNITY_ANDROID||UNITY_IPHONE
         if (Input.touchCount > 0)
         {
             //タップに関する何か
@@ -106,7 +106,7 @@ public class InputController : MonoBehaviour
         Vector3 pos;
 #if UNITY_EDITOR
         pos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-#elif UNITY_ANDROID
+#elif UNITY_ANDROID||UNITY_IPHONE
         pos = Camera.main.ScreenToWorldPoint(Input.touches[0].position);
 #endif
         Collider2D[] colliders = Physics2D.OverlapPointAll(pos);
