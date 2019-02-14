@@ -475,6 +475,16 @@ Prefab:
       value: 
       objectReference: {fileID: 21300000, guid: 98d017a0a7a179a438d564301f8299aa,
         type: 3}
+    - target: {fileID: 114560901171420914, guid: e2731762887561c43886fe55ea71a4de,
+        type: 2}
+      propertyPath: BGM
+      value: 
+      objectReference: {fileID: 1206753021}
+    - target: {fileID: 114560901171420914, guid: e2731762887561c43886fe55ea71a4de,
+        type: 2}
+      propertyPath: BossBGM
+      value: 
+      objectReference: {fileID: 312250830}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e2731762887561c43886fe55ea71a4de, type: 2}
   m_IsPrefabAsset: 0
