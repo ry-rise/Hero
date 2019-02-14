@@ -16,13 +16,12 @@ public class HealBar : BaseItemManager
 
     protected override bool UseItem()
     {
-        bar.Heal(healPoint);
         return true;
     }
 
     //アイテムを取得した
     public override void GetItem()
     {
-
+        bar.Heal(healPoint);
     }
 }

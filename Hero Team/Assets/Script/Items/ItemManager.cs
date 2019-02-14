@@ -20,7 +20,7 @@ public class ItemManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
+        Debug.Log(GameManager.HeroPoint);
     }
 
     private void FixedUpdate()
@@ -46,7 +46,7 @@ public class ItemManager : MonoBehaviour
     {
         foreach (BaseItemManager it in ItemManagers)
         {
-            if (it.ItemName != myItem.name) continue;
+            if (it.ItemNumber != myItem.ItemNumber) continue;
             it.enabled = true;
             it.GetItem();
             Items.Remove(myItem);

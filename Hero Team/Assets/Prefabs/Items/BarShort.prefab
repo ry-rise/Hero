@@ -101,6 +101,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: {x: 0, y: -2}
   sePrefab: {fileID: 1866375289627150, guid: d1f098d610f515e4b81d50b5bb930a8f, type: 2}
+  itemNumber: 1
 --- !u!212 &212314389214890170
 SpriteRenderer:
   m_ObjectHideFlags: 1
