@@ -21,7 +21,7 @@ public class LastBoss : BaseEnemy
     protected override void AttackSwitch()
     {
         if (attack == null) return;
-        if ((stop & StopStatus.AttackStoped) != StopStatus.AttackStoped)
+        if ((Stop & StopStatus.AttackStoped) != StopStatus.AttackStoped)
         {
             if (!attack.enabled)
             {

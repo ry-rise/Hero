@@ -29,12 +29,12 @@ public abstract class BaseEnemy : MonoBehaviour
         ALL = MoveStoped + AttackStoped
     }
 
-    public StopStatus stop;
+    public StopStatus Stop { get; set; }
 
     virtual protected void MoveSwitch()
     {
         if (move == null) return;
-        if ((stop & StopStatus.MoveStoped) != StopStatus.MoveStoped)
+        if ((Stop & StopStatus.MoveStoped) != StopStatus.MoveStoped)
         {
             if (!move.enabled)
             {
@@ -53,7 +53,7 @@ public abstract class BaseEnemy : MonoBehaviour
     virtual protected void AttackSwitch()
     {
         if (attack == null) return;
-        if ((stop & StopStatus.AttackStoped) != StopStatus.AttackStoped)
+        if ((Stop & StopStatus.AttackStoped) != StopStatus.AttackStoped)
         {
             if (!attack.enabled)
             {
@@ -75,6 +75,7 @@ public abstract class BaseEnemy : MonoBehaviour
         manager.Enemies.Add(this);
         move = GetComponent<BaseEnemyMove>();
         attack = GetComponent<BaseEnemyAttack>();
+        Stop = StopStatus.ALL;
     }
 
     // Update is called once per frame

@@ -72,7 +72,7 @@ public class EnemyManager : MonoBehaviour
     {
         foreach (BaseEnemy it in Enemies)
         {
-            it.stop = BaseEnemy.StopStatus.ALL;
+            it.Stop = BaseEnemy.StopStatus.ALL;
         }
         foreach (EnemyBullet it in Bullets)
         {
@@ -84,7 +84,7 @@ public class EnemyManager : MonoBehaviour
     {
         foreach (BaseEnemy it in Enemies)
         {
-            it.stop = BaseEnemy.StopStatus.ALL;
+            it.Stop = BaseEnemy.StopStatus.ALL;
         }
         foreach (EnemyBullet it in Bullets)
         {
@@ -99,11 +99,11 @@ public class EnemyManager : MonoBehaviour
         {
             if (wallHitter.IsHit(it.gameObject, HitPointFlag.GameIn))
             {
-                it.stop = BaseEnemy.StopStatus.None;
+                it.Stop = BaseEnemy.StopStatus.None;
             }
             else
             {
-                it.stop = BaseEnemy.StopStatus.AttackStoped;
+                it.Stop = BaseEnemy.StopStatus.AttackStoped;
             }
         }
         foreach (EnemyBullet it in Bullets)
@@ -133,10 +133,10 @@ public class EnemyManager : MonoBehaviour
     {
         foreach (BaseEnemy it in Enemies)
         {
-            if (it.stop != BaseEnemy.StopStatus.AttackStoped) continue;
+            if (it.Stop != BaseEnemy.StopStatus.AttackStoped) continue;
             if (wallHitter.IsHit(it.gameObject, HitPointFlag.GameIn))
             {
-                it.stop = BaseEnemy.StopStatus.None;
+                it.Stop = BaseEnemy.StopStatus.None;
             }
         }
     }
@@ -147,7 +147,7 @@ public class EnemyManager : MonoBehaviour
         foreach (BaseEnemy it in Enemies)
         {
             if (it == null) continue;
-            if (it.stop == BaseEnemy.StopStatus.MoveStoped || it.stop == BaseEnemy.StopStatus.ALL) continue;
+            if (it.Stop == BaseEnemy.StopStatus.MoveStoped || it.Stop == BaseEnemy.StopStatus.ALL) continue;
             if (wallHitter.IsHit(it.gameObject, HitPointFlag.Bottom))
             {
                 gameManager.RequestGameState = GameManager.GameStatus.GameOver;

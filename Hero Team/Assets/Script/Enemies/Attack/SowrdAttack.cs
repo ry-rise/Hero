@@ -21,7 +21,7 @@ public class SowrdAttack : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        AnimationFlagChanger(baseObject.stop != BaseEnemy.StopStatus.None);
+        AnimationFlagChanger(baseObject.Stop != BaseEnemy.StopStatus.None);
     }
 
     private void AnimationFlagChanger(bool flag)

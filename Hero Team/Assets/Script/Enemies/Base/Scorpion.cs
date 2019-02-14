@@ -18,7 +18,7 @@ public class Scorpion : BaseEnemy
     protected override void MoveSwitch()
     {
         if (move == null) return;
-        if ((stop & StopStatus.MoveStoped) != StopStatus.MoveStoped)
+        if ((Stop & StopStatus.MoveStoped) != StopStatus.MoveStoped)
         {
             if (!move.enabled)
             {
