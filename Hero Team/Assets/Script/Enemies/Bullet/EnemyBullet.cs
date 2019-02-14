@@ -23,7 +23,7 @@ public class EnemyBullet : MonoBehaviour
         if (!IsStoped) {
             transform.Translate(new Vector2(0, Speed * Time.fixedDeltaTime));
 
-            if (wallhitter.IsHit(gameObject, HitPointFlag.Bottom | HitPointFlag.Top))
+            if (wallhitter.IsHit(gameObject, HitPointFlag.Bottom))
             {
                 GameObject.Find("EnemyManager").GetComponent<EnemyManager>().Bullets.Remove(this);
                 Destroy(gameObject);
